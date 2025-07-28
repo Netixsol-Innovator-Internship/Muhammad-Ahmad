@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ahmad - CV</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 3px;
+            margin-top: 25px;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .project {
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .tech-stack {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Muhammad Ahmad</h1>
+        <p><strong>Full Stack Web Developer</strong></p>
+        <div class="contact-info">
+            Email: developer.ahmad@proton.me | Location: Faisalabad, Punjab | Phone: +92-321-1031815<br>
+            Github: <a href="https://github.com/M-Ahmad-Usman">https://github.com/M-Ahmad-Usman</a>
+        </div>
+    </header>
+
+    <section>
+        <h2>Summary</h2>
+        <p>Aspiring Web Developer with strong debugging and problem solving skills. Self & Quick Learner with passion
+            for writing clean and scalable code. Seeking opportunities to learn and contribute to challenging real world
+            projects.</p>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div>
+                <strong>Programming Languages</strong><br>
+                JavaScript, SQL, Python, C#, C, C++
+            </div>
+            <div>
+                <strong>Web Technologies</strong><br>
+                HTML, CSS, JavaScript, Node.js, TailWindCSS, React
+            </div>
+            <div>
+                <strong>Tools</strong><br>
+                Git, SQL Server, Visual Studio, VS Code, Vim
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+
+        <div class="project">
+            <div class="project-title">Mathematical Expression Parser & Evaluator | <a
+                    href="https://m-ahmad-usman.github.io/calculator/">Live Preview</a></div>
+            <div class="tech-stack">JavaScript (ES6+), HTML5, CSS3, Data Structures, Algorithms</div>
+            <ul>
+                <li>Implemented Shunting Yard Algorithm to parse and evaluate complex mathematical expressions with
+                    deeply nested brackets, unary operators and proper operator precedence (PEMDAS/BODMAS).</li>
+                <li>Developed Modular Architecture using ES6 modules with clean separation between UI logic,
+                    mathematical engine and data structures.</li>
+                <li>Developed Sophisticated Input Validation System with multi-layer parsing including balanced
+                    parentheses, syntax validation and real time error feedback.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-title">College Management System</div>
+            <div class="tech-stack">C#, WinForms .NET, SQL Server</div>
+            <ul>
+                <li>Developed a desktop application to manage college administrative tasks such as Student Registration,
+                    Results, Teacher Registration and Attendance with user friendly forms and integrated SQL Server
+                    Backend.</li>
+                <li>Designed Relational Database Schema ensuring data normalization and referential integrity.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-title">Etch A Sketch | <a href="https://m-ahmad-usman.github.io/etch-a-sketch/">Live
+                    Preview</a></div>
+            <div class="tech-stack">HTML5, CSS3, JavaScript</div>
+            <ul>
+                <li>Built a browser based drawing application with dynamic grid system and flexible canvas resizing.
+                </li>
+                <li>Added interactive features like click-and-drag drawing, color modes, rainbow mode and eraser
+                    functionality.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Online Learning</h2>
+        <ul>
+            <li><strong>The Odin Project</strong> (2024 - Present): Full Stack JavaScript. All projects available on
+                Github.</li>
+            <li><strong>CS50x</strong> (Harvard, 2025 - Present): Intro to Computer Science.</li>
+            <li><strong>SEO</strong> (Digi Skills, 2023): On-Page, Off-Page, Technical SEO and Keyword Research</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <p><strong>National Textile University, Faisalabad</strong> (2022-2026)<br>
+            Bachelor Of Science in Computer Science (BSCS)<br>
+            CGPA: 3.55
+        </p>
+    </section>
+</body>
+
+</html>
