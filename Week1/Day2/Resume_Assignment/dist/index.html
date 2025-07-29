@@ -10,26 +10,26 @@
 
 <body>
     <!-- Main Container -->
-    <div class="max-w-[1000px] mx-auto my-6">
+    <div class="max-w-[1000px] p-4 mx-auto my-6">
 
         <!-- Personal & Contect details section starts here -->
         <section class="text-center col-span-2">
             <h1 class="text-4xl text- font-bold">John Doe</h1>
             <h2 class="text-sm my-2 text-gray-700">Creative and Innovative Web Developer</h2>
-            <ul class="flex justify-around my-2 text-sm">
-                <li class="flex gap-2 items-center">
+            <ul class="flex flex-wrap justify-center md:justify-around my-2 text-sm gap-2 md:gap-0">
+                <li class="flex gap-2 items-center mb-2 md:mb-0">
                     <img src="../assets/location.png" class="h-4" alt="An image of location icon">
                     <p>Pleasantville, CA 94588</p>
                 </li>
-                <li class="flex gap-2 items-center">
+                <li class="flex gap-2 items-center mb-2 md:mb-0">
                     <img src="../assets/phone.png" class="h-4" alt="An image of phone icon">
                     <p>(555) 123-4567</p>
                 </li>
-                <li class="flex gap-2 items-center">
+                <li class="flex gap-2 items-center mb-2 md:mb-0">
                     <img src="../assets/email-sign.png" class="h-4" alt="An image of @ symbol">
                     <p>John.doe@gmail.com</p>
                 </li>
-                <li class="flex gap-2 items-center">
+                <li class="flex gap-2 items-center mb-2 md:mb-0">
                     <img src="../assets/link.png" class="h-4" alt="An image of link symbol">
                     <p>https://johndoe.me</p>
                 </li>
@@ -39,9 +39,9 @@
         <hr>
 
         <!-- Profiles section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid sm:grid-cols-[120px_1fr]">
             <h2 class="font-bold">Profiles</h2>
-            <ul class="my-2 text-sm grid grid-cols-3 justify-between">
+            <ul class="my-2 text-sm grid grid-cols-1 sm:grid-cols-3 justify-between">
                 <li class="flex gap-2 items-center">
                     <img src="../assets/linkedin.png" class="h-4" alt="An image of Linkedin icon">
                     <p>Johndoe Linkedin</p>
@@ -59,9 +59,9 @@
         <!-- Profiles section ends here -->
         <hr>
         <!-- Summary section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid sm:grid-cols-[120px_1fr]">
             <h2 class="font-bold my-4">Summary</h2>
-            <p class="">
+            <p>
                 Innovative Web Developer with 5 years of experience in building impactful and user-friendly websites and
                 applications. Specializes in front-end technologies and passionate about modern web standards and
                 cutting-edge development techniques. Proven track record of leading successful projects from concept to
@@ -70,17 +70,17 @@
         <!-- Summary section ends here -->
         <hr>
         <!-- Experience section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid grid-cols-1 md:grid-cols-[120px_1fr]">
             <h2 class="font-bold">Experience</h2>
             <!-- Creative Solutions Experience section starts here -->
             <section>
                 <!-- Company's Name and work duration -->
-                <div class="flex justify-between">
+                <div class="flex flex-col md:flex-row justify-between">
                     <h3 class="font-bold">Creative Solutions Inc.</h3>
                     <h3 class="font-bold">January 2019 to Present</h3>
                 </div>
                 <!-- Job Title -->
-                <div class="flex justify-between">
+                <div class="flex flex-col md:flex-row justify-between">
                     <h3>Senior Web Developer</h3>
                     <h3>San Francisco, CA</h3>
                 </div>
@@ -90,7 +90,7 @@
                     <a href="https://creativesolutions.inc/">creativesolutions.inc</a>
                 </div>
                 <!-- Experience Points -->
-                <ul class="list-disc">
+                <ul class="list-disc ml-4">
                     <li>Spearheaded the redesign of the main product website, resulting in a 40% increase in user engagement</li>
                     <li>Developed and implemented a new responsive framework, improving cross-device compatibility.</li>
                     <li>Mentored a team of four junior developers, fostering a culture of technical excellence.</li>
@@ -98,14 +98,14 @@
             </section>
             <!-- Creative Solution Experience section ends here -->
             <!-- Tech Advancers experience section starts here -->
-             <section class="my-4 col-start-2">
+             <section class="my-4 col-start-1 md:col-start-2">
                 <!-- Company's Name and work duration -->
-                <div class="flex justify-between">
+                <div class="flex flex-col md:flex-row justify-between">
                     <h3 class="font-bold">Tech Advancers</h3>
                     <h3 class="font-bold">June 2016 to December 2018</h3>
                 </div>
                 <!-- Job Title -->
-                <div class="flex justify-between">
+                <div class="flex flex-col md:flex-row justify-between">
                     <h3>Web Developer</h3>
                     <h3>San Jose, CA</h3>
                 </div>
@@ -115,7 +115,7 @@
                     <a href="https://techadvancers.com/">Tech Advancers</a>
                 </div>
                 <!-- Experience Points -->
-                <ul class="list-disc">
+                <ul class="list-disc ml-4">
                     <li>Collaborated in a team of 10 to develop high-quality web applications using React.js and Node.js.</li>
                     <li>Managed the integration of third-party services such as Stripe for payments and Twilio for SMS services.</li>
                     <li>Optimized application performance, achieving a 30% reduction in load times.</li>
@@ -126,23 +126,25 @@
         <!-- Experience section ends here -->
         <hr>
         <!-- Education section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid grid-cols-1 md:grid-cols-[120px_1fr]">
             <h2 class="font-bold">Education</h2>
-            <!-- University Name -->
-            <div class="flex justify-between">
-                <h3 class="font-bold">University of California</h3>
-                <h3 class="font-bold">August 2012 to May 2016</h3>
-            </div>
-            <!-- University Location -->
-            <div class="flex justify-between col-start-2">
-                <h3>University of California</h3>
-                <h3>Bachelor's in Computer Science</h3>
+            <div>
+                <!-- University Name -->
+                <div class="flex flex-col md:flex-row justify-between">
+                    <h3 class="font-bold">University of California</h3>
+                    <h3 class="font-bold">August 2012 to May 2016</h3>
+                </div>
+                <!-- University Location -->
+                <div class="flex flex-col md:flex-row justify-between">
+                    <h3>University of California</h3>
+                    <h3>Bachelor's in Computer Science</h3>
+                </div>
             </div>
         </section>
         <!-- Education section ends here -->
         <hr>
         <!-- Projects section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid grid-cols-1 sm:grid-cols-[120px_1fr]">
             <h2 class="font-bold">Projects</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <!-- Ecommerce Platform -->
@@ -163,7 +165,7 @@
         <hr>
 
         <!-- Skills section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid grid-cols-1 sm:grid-cols-[120px_1fr]">
             <h2 class="font-bold">Skills</h2>
             <div class="w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -192,7 +194,7 @@
         <hr>
 
         <!-- Certifications section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid grid-cols-1 sm:grid-cols-[120px_1fr]">
             <h2 class="font-bold">Certifications</h2>
             <div class="w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
@@ -212,7 +214,7 @@
         <!-- Certifications section ends here -->
         <hr>
         <!-- Languages section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid grid-cols-1 sm:grid-cols-[120px_1fr]">
             <h2 class="font-bold">Languages</h2>
             <div class="w-full">
                 <div class="grid grid-cols-1  lg:grid-cols-2 gap-4 items-center">
@@ -233,7 +235,7 @@
         <hr>
         
         <!-- References section starts here -->
-        <section class="my-4 grid grid-cols-[120px_1fr]">
+        <section class="my-4 grid grid-cols-1 sm:grid-cols-[120px_1fr]">
             <h2 class="font-bold">References</h2>
             <div class="w-full">
                 <span class="font-medium">Available upon request</span>
