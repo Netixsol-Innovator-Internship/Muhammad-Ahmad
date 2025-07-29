@@ -1,9 +1,9 @@
-# Week 1 - Day 1: HTML Practice Task
+# Week 1 - Day 1:
 
-## Objective
+## 1. HTML Practice Task
 Write at least 200+ total HTML tags in a single file using VS Code.
 
-## Task Summary
+### Task Summary
 - Created `day1-html-practice.html` with over 200 HTML tags.
 - Included:
   - Multiple sets of headings (`h1` to `h6`)
@@ -17,17 +17,18 @@ Write at least 200+ total HTML tags in a single file using VS Code.
   - Used `<header>`, `<nav>`, `<section>`, and `<footer>`
 - All requirements met and tags repeated/combined to exceed 200 tags.
 
-## File Location
+### File Location
 - Main file: `Week1\Day1\day1-html-practice.html`
 
-## Live Preview
+### Live Preview
 - **Preview**: [ahmad_week1_day1_html_practice.surge.sh](https://ahmad_week1_day1_html_practice.surge.sh/)
 
-## Resume Task
-## Summary
+## 2. Resume Task
+### Task Summary
 Created a resume webpage using HTML and CSS. The task involved structuring personal, educational, and professional information with semantic HTML tags and styling the layout for clarity and visual appeal. Key sections included contact details, education, experience, skills, and interests. CSS was used for layout, fonts, colors, and responsive design.
 
-## Main File Location:
+### Main File Location:
 - Main file: `Week1\Day1\Resume.html`
 
-Live Preview: [ahmad_week1_day1.surge.sh](https://ahmad_week1_day1.surge.sh).
+### Live Preview
+Preview: [ahmad_week1_day1.surge.sh](https://ahmad_week1_day1.surge.sh).
