@@ -17,3 +17,26 @@
     --dark-blue: hsl(219, 29%, 14%);
     --black: hsl(0, 0%, 7%);
 }
+
+.grid-container {
+    max-width: var(--desktop-width);
+    margin: 0 auto;
+    height: 100vh;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#article-1 {
+    grid-column: 1/3;
+}
+
+#article-3 {
+    grid-column: 4;
+    grid-row: 1/3;
+}
+
+#article-5 {
+    grid-column: 2/4;
+}
