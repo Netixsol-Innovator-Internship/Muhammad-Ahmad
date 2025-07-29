@@ -18,10 +18,16 @@ Write at least 200+ total HTML tags in a single file using VS Code.
 - All requirements met and tags repeated/combined to exceed 200 tags.
 
 ## File Location
-- Main file: `Week1/Day1/day1-html-practice.html`
+- Main file: `Week1\Day1\day1-html-practice.html`
+
+## Live Preview
+- **Preview**: [ahmad_week1_day1_html_practice.surge.sh](https://ahmad_week1_day1_html_practice.surge.sh/)
 
 ## Resume Task
 ## Summary
-Created a resume webpage using HTML and CSS. The task involved structuring personal, educational, and professional information with semantic HTML tags and styling the layout for clarity and visual appeal. Key sections included contact details, education, experience, skills, and interests. CSS was used for layout, fonts, colors, and responsive design. 
+Created a resume webpage using HTML and CSS. The task involved structuring personal, educational, and professional information with semantic HTML tags and styling the layout for clarity and visual appeal. Key sections included contact details, education, experience, skills, and interests. CSS was used for layout, fonts, colors, and responsive design.
 
-Live Preview: [ahmad_week1_day1.surge.sh](http://ahmad_week1_day1.surge.sh).
+## Main File Location:
+- Main file: `Week1\Day1\Resume.html`
+
+Live Preview: [ahmad_week1_day1.surge.sh](https://ahmad_week1_day1.surge.sh).
