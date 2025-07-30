@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Landing Page</title>
     <link rel="stylesheet" href="output.css">
 </head>
+
 <body>
-    
+    <!-- First section starts here -->
+    <section class="min-h-screen p-4 sm:p-0 max-w-[1440px] mx-auto bg-[url(../assets/images/bg1_landing_page.jpg)] bg-cover bg-center">
+        
+        <nav class="py-4 h-24 my-2 grid grid-cols-[1fr_2fr] items-center">
+            <img src="../assets/svgs/logo.svg" class="max-h-18 min-h-8 px-6" alt="Logo">
+            <ul class="hidden sm:flex sm:justify-evenly sm:items-center text-white">
+                <li><img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme"></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Members</a></li>
+                <li><a href="#">Gallery</a></li>
+            </ul>
+        </nav>
+        <!-- Hero Section -->
+        <div class="py-6 mx-auto md:w-[40%]">
+            <h1 class="text-4xl sm:text-6xl text-white text-center font-bold leading-tight">Explore Saudi Arabia</h1>
+            <p class="text-xl mt-2 text-center text-white">Saudi Arabia is rich in heritage and history. The country is
+                home to hundreds of historically important sites.</p>
+        </div>
+
+        <div class="py-6 flex flex-col gap-16 sm:w-[60%] sm:mx-auto md:px-6 md:flex-row md:justify-between md:w-full md:gap-0 text-center text-white">
+                <div class="md:w-[25%]">
+                    <h2 class="text-xl font-bold">History and Heritage</h2>
+                    <p>Saudi Arabia has long occupied an important role at the center of the islamic and Arab worlds.
+                        Located at the heart of three continents.</p>
+                </div>
+                <div class="md:w-[25%]">
+                    <h2 class="text-xl font-bold">People and Culture</h2>
+                    <p>Saudi Arabia has a rich Culture Shaped by the diversity of its people. which has formed the basis
+                        of its cultural identity.</p>
+                </div>
+            </div>
+    </section>
+    <!-- First section ends here -->
 </body>
+
 </html>
