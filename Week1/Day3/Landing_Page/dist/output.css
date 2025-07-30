@@ -158,11 +158,20 @@
   }
 }
 @layer utilities {
+  .grid {
+    display: grid;
+  }
   .table {
     display: table;
   }
+  .h-screen {
+    height: 100vh;
+  }
   .border-collapse {
     border-collapse: collapse;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .resize {
     resize: both;
@@ -170,6 +179,21 @@
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .bg-\[url\] {
+    background-color: url;
+  }
+  .bg-\[url\(\)\] {
+    background-image: url();
+  }
+  .bg-\[url\(\.\.\/\)\] {
+    background-image: url(../);
+  }
+  .bg-\[url\(\.\.\\assets\\images\\bg\)\] {
+    background-image: url(..\assets\images\bg);
+  }
+  .bg-\[url\(\.\.\\assets\\images\\bg1-landing-page\)\] {
+    background-image: url(..\assets\images\bg1-landing-page);
   }
   .text-amber-600 {
     color: var(--color-amber-600);
@@ -181,6 +205,26 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-border-style {
   syntax: "*";
@@ -195,6 +239,11 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-outline-style: solid;
     }
