@@ -9,3 +9,7 @@
 ### Day 02
 - Created a responsive site with testimonial cards using CSS Grid and Flexbox.
 - Created responsive Resume using HTML and TailwindCSS. Utilized CSS Grid and flexbox.
+
+### Day 03-04
+- Design fully responsive tourism site from figma desing.
+- Implement interactive features like responsive sidebar for smaller viewports and toggle theme functionality.
