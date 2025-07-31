@@ -49,13 +49,13 @@ function updateToggleIcons(theme) {
     const mobileImg = themeToggleMobile.querySelector('img');
 
     if (theme === 'light') {
-        desktopImg.src = '../assets/svgs/lightmode-toggle.svg';
-        mobileImg.src = '../assets/svgs/lightmode-toggle.svg';
+        desktopImg.src = './assets/svgs/lightmode-toggle.svg';
+        mobileImg.src = './assets/svgs/lightmode-toggle.svg';
         desktopImg.alt = 'Switch to Light Mode';
         mobileImg.alt = 'Switch to Light Mode';
     } else {
-        desktopImg.src = '../assets/svgs/darkmode-toggle.svg';
-        mobileImg.src = '../assets/svgs/darkmode-toggle.svg';
+        desktopImg.src = './assets/svgs/darkmode-toggle.svg';
+        mobileImg.src = './assets/svgs/darkmode-toggle.svg';
         desktopImg.alt = 'Switch to Dark Mode';
         mobileImg.alt = 'Switch to Dark Mode';
     }

@@ -608,6 +608,11 @@ video {
   z-index: 1;
 }
 
+.mx-2{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mx-4{
   margin-left: 1rem;
   margin-right: 1rem;
@@ -628,11 +633,6 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.mx-2{
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -651,10 +651,6 @@ video {
 
 .mt-6{
   margin-top: 1.5rem;
-}
-
-.mt-\[2px\]{
-  margin-top: 2px;
 }
 
 .mt-\[1px\]{
@@ -701,6 +697,10 @@ video {
   height: 100vmin;
 }
 
+.h-\[18px\]{
+  height: 18px;
+}
+
 .h-\[20\%\]{
   height: 20%;
 }
@@ -727,18 +727,6 @@ video {
 
 .h-screen{
   height: 100vh;
-}
-
-.h-4{
-  height: 1rem;
-}
-
-.h-\[\]{
-  height: ;
-}
-
-.h-\[18px\]{
-  height: 18px;
 }
 
 .max-h-16{
@@ -986,10 +974,6 @@ video {
   background-image: url(../assets/images/bg1-destinations-page.png);
 }
 
-.bg-\[url\(\.\.\/assets\/images\/bg1_landing_page\.jpg\)\]{
-  background-image: url(../assets/images/bg1_landing_page.jpg);
-}
-
 .bg-\[url\(\.\.\/assets\/images\/section3-bg-about-us-page\.jpg\)\]{
   background-image: url(../assets/images/section3-bg-about-us-page.jpg);
 }
@@ -998,12 +982,56 @@ video {
   background-image: url(../assets/images/section3-bg-destinations-page.jpg);
 }
 
-.bg-\[url\(\.\.\/assets\/images\/section3-bg\.jpg\)\]{
-  background-image: url(../assets/images/section3-bg.jpg);
+.bg-\[url\(\.\/assets\/images\/Benjamin-bg\.jpg\)\]{
+  background-image: url(./assets/images/Benjamin-bg.jpg);
 }
 
-.bg-\[url\(\.\.\/assets\/images\/section4-main-pic\.jpg\)\]{
-  background-image: url(../assets/images/section4-main-pic.jpg);
+.bg-\[url\(\.\/assets\/images\/Cristina-bg\.jpg\)\]{
+  background-image: url(./assets/images/Cristina-bg.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/Garrett-bg\.jpg\)\]{
+  background-image: url(./assets/images/Garrett-bg.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/John-bg\.jpg\)\]{
+  background-image: url(./assets/images/John-bg.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/Jonaatan-bg\.jpg\)\]{
+  background-image: url(./assets/images/Jonaatan-bg.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/Wazeem-bg\.jpg\)\]{
+  background-image: url(./assets/images/Wazeem-bg.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/bg1_landing_page\.jpg\)\]{
+  background-image: url(./assets/images/bg1_landing_page.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/section3-bg\.jpg\)\]{
+  background-image: url(./assets/images/section3-bg.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/section4-main-pic\.jpg\)\]{
+  background-image: url(./assets/images/section4-main-pic.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/bg1-destinations-page\.png\)\]{
+  background-image: url(./assets/images/bg1-destinations-page.png);
+}
+
+.bg-\[url\(\.\/assets\/images\/section3-bg-destinations-page\.jpg\)\]{
+  background-image: url(./assets/images/section3-bg-destinations-page.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/bg1-about-us-page\.jpg\)\]{
+  background-image: url(./assets/images/bg1-about-us-page.jpg);
+}
+
+.bg-\[url\(\.\/assets\/images\/section3-bg-about-us-page\.jpg\)\]{
+  background-image: url(./assets/images/section3-bg-about-us-page.jpg);
 }
 
 .bg-cover{
