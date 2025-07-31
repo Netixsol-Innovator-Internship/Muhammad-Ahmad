@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="font-poppins max-w-[1440px] mx-auto">
+    <!-- First section starts here -->
+    <section
+        class="min-h-screen md:h-screen p-4 sm:p-0 mx-auto relative bg-[url(../assets/images/bg1-destinations-page.png)] bg-cover bg-center">
+
+        <nav class="py-4 h-[20%] grid grid-cols-[1fr_auto] items-center">
+            <a href="index.html" class="block pl-4 sm:pl-8">
+                <img src="../assets/svgs/logo.svg" class="max-h-16 min-h-8" alt="Logo">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="hidden sm:flex sm:justify-end sm:mx-8 sm:items-center text-white">
+                <li class="mx-4 hover:text-gray-400"><a href="./destinations.html">Destinations</a></li>
+                <li class="mx-4 hover:text-gray-400"><a href="#">Members</a></li>
+                <li class="mx-4 hover:text-gray-400"><a href="#">Gallery</a></li>
+                <li class="mx-2">
+                    <button id="theme-toggle-desktop" class="cursor-pointer block bg-white rounded-full p-[3px] mt-[1px]">
+                        <img src="../assets/svgs/lightmode-toggle.svg" class="h-[18px]" alt="Toggle Theme">
+                    </button>
+                </li>
+            </ul>
+            
+            <!-- Mobile Hamburger Menu -->
+            <button id="hamburger-btn" class="sm:hidden pr-4 sm:pr-8">
+                <img src="../assets/svgs/hamburger-menu.svg" class="h-6 w-6" alt="Menu">
+            </button>
+        </nav>
+
+        <!-- Mobile Sidebar -->
+        <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-black bg-opacity-95 transform -translate-x-full transition-transform duration-300 ease-in-out z-50 sm:hidden">
+            <div class="flex flex-col p-6 text-white">
+                <!-- Close button -->
+                <button id="close-sidebar" class="self-end mb-8">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                
+                <!-- Navigation Links -->
+                <ul class="space-y-6">
+                    <li class="flex items-center space-x-3">
+                        <button id="theme-toggle-mobile" class="cursor-pointer">
+                            <img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme">
+                        </button>
+                    </li>
+                    <li><a href="./destinations.html" class="text-lg hover:text-gray-400 block py-2">Destinations</a></li>
+                    <li><a href="#" class="text-lg hover:text-gray-400 block py-2">Members</a></li>
+                    <li><a href="#" class="text-lg hover:text-gray-400 block py-2">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+        <!-- Hero Section -->
+        <div class="pt-20 h-[80%] flex flex-col items-center mx-auto sm:w-[80%] md:w-[50%]">
+            <h1 class="text-4xl sm:text-6xl md:text-7xl text-white text-center font-extrabold">Destinations</h1>
+            <p class="text-xl mt-2 text-center text-white">Saudi Arabia is rich in heritage and history. The country is home to hundreds of historically important sites.</p>
+        </div>
+
+        <!-- Gradient -->
+        <div
+            class="absolute left-0 bottom-0 w-full h-32 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.75)_100%)]">
+        </div>
+
+    </section>
+    <!-- First section ends here -->
+
+    <!-- Second section starts here -->
+    <section class="pt-16 bg-black dark:bg-white text-white dark:text-black">
+
+        <div class="px-4 md:w-[50%] mx-auto">
+            <h2 class="text-2xl text-center font-bold md:text-3xl">Best Destinations</h2>
+            <p class="mt-2 text-center">Explore the enchanting landscapes of saudi Arabia, from the
+                breathtaking deserts to the stunning coastal shores.</p>
+        </div>
+
+        <!-- Grid Section -->
+        <section class="pt-16 px-4 text-white min-h-[900px] grid grid-rows-6 gap-4 md:grid-cols-3 md:grid-rows-3">
+
+            <!-- Wazeem Al Mulk -->
+            <article
+                class="px-4 py-6 relative z-0 bg-cover bg-center rounded-xl flex flex-col gap-4 justify-between bg-[url(../assets/images/Wazeem-bg.jpg)] md:row-start-1 md:row-end-3">
+                
+                <div class="absolute inset-0 bg-black rounded-xl -z-[1] opacity-[0.3]"></div>
+
+                <!-- Title -->
+                <div class="max-w-[90%]">
+                    <h2 class="font-extrabold pb-3 sm:text-2xl md:text-4xl">Hisma Desert</h2>
+                    <p>The hisma desert is a true marvel of nature, and several desert oasis.</p>
+                </div>
+                <!-- Profile -->
+                <div class="py-4 flex gap-4">
+                    <img src="../assets/images/Wazeem-profile-pic.png" class="w-14 h-14 object-cover rounded-full"
+                        alt="Wazeem's image">
+                    <div>
+                        <h3>Wazeem Al Mulk</h3>
+                        <p>Traveler</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Benjamin Voros -->
+            <article
+                class="px-4 relative z-0 py-6 bg-cover bg-center rounded-xl flex flex-col gap-4 justify-between bg-[url(../assets/images/Benjamin-bg.jpg)] md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">
+                
+                <div class="absolute inset-0 bg-black rounded-xl -z-[1] opacity-[0.4]"></div>
+                
+                <!-- Title -->
+                <div class="max-w-[90%]">
+                    <h2 class="font-extrabold pb-3 sm:text-2xl md:text-4xl">Kafd World Trade Centre, Riyadh.</h2>
+                    <p>The Towering Structure stands as a testament to Saudi Arabia’s vision for a thriving business
+                        hub.</p>
+                </div>
+                <!-- Profile -->
+                <div class="py-4 flex gap-4">
+                    <img src="../assets/images/Benjamin-profile-pic.png" class="w-14 h-14 object-cover rounded-full"
+                        alt="Benjamin's image">
+                    <div>
+                        <h3>Benjamin Voros</h3>
+                        <p>Traveler</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- John Towner -->
+            <article
+                class="p-4 bg-cover relative z-0 bg-center rounded-xl flex flex-col gap-4 justify-between bg-[url(../assets/images/John-bg.jpg)] md:row-start-1 md:row-end-3 md:col-start-3 md:col-end-4">
+                
+                <div class="absolute inset-0 bg-black rounded-xl -z-[1] opacity-[0.3]"></div>
+
+                <!-- Title -->
+                <div class="max-w-[90%]">
+                    <h2 class="font-extrabold pb-3 sm:text-2xl md:text-4xl">Al Qarah Mountain</h2>
+                    <p>The Mountain’s distractive rocks formations inviting adventures to explore its hidden treasure.
+                    </p>
+                </div>
+                <!-- Profile -->
+                <div class="py-4 flex gap-4">
+                    <img src="../assets/images/John-profile-pic.png" class="w-14 h-14 object-cover rounded-full"
+                        alt="John's image">
+                    <div>
+                        <h3>John Towner</h3>
+                        <p>Traveler</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Jonatan Pie -->
+            <article
+                class="p-4 bg-cover relative z-0 bg-center rounded-xl flex flex-col gap-4 justify-between bg-[url(../assets/images/Jonaatan-bg.jpg)] md:col-start-1 md:col-end-2 md:row-start-3 md:row-end-4">
+
+                <div class="absolute inset-0 bg-black rounded-xl -z-[1] opacity-[0.3]"></div>
+                
+                <!-- Title -->
+                <div class="max-w-[90%]">
+                    <h2 class="font-extrabold pb-3 sm:text-2xl md:text-4xl">The best of Tabuk</h2>
+                    <p>Tabuk also spelled Tabouk, the capital city of the Tabuk Region in northwestern Saudi Arabia.</p>
+                </div>
+                <!-- Profile -->
+                <div class="py-4 flex gap-4">
+                    <img src="../assets/images/Jonatan-profile-pic.png"
+                        class="w-14 h-14 object-cover object-top-right rounded-full" alt="Jonatan's image">
+                    <div>
+                        <h3>Jonatan Pie</h3>
+                        <p>Influencer</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Garrett Parker -->
+            <article
+                class="p-4 bg-cover relative z-0 bg-center rounded-xl flex flex-col gap-4 justify-between bg-[url(../assets/images/Garrett-bg.jpg)] md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-4">
+                
+                <div class="absolute inset-0 bg-black rounded-xl -z-[1] opacity-[0.1]"></div>
+
+                <!-- Title -->
+                <div class="max-w-[90%]">
+                    <h2 class="font-extrabold pb-3 sm:text-2xl md:text-4xl">AIUIa</h2>
+                    <p>AIUIa is located deep in the desert in the northwest of Saudi Arabia</p>
+                </div>
+                <!-- Profile -->
+                <div class="py-4 flex gap-4">
+                    <img src="../assets/images/Garrett-profile-pic.png" class="w-14 h-14 object-cover rounded-full"
+                        alt="Garrett's image">
+                    <div>
+                        <h3>Garrett Parker</h3>
+                        <p>Traveler</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Cristina Gottardi -->
+            <article
+                class="p-4 bg-cover relative z-0 bg-center rounded-xl flex flex-col gap-4 justify-between bg-[url(../assets/images/Cristina-bg.jpg)] md:col-start-3 md:col-end-4 md:row-start-3 md:row-end-4">
+                
+                <div class="absolute inset-0 bg-black rounded-xl -z-[1] opacity-[0.2]"></div>
+
+                <!-- Title -->
+                <div class="max-w-[90%]">
+                    <h2 class="font-extrabold pb-3 sm:text-2xl md:text-4xl">The best things to do in Taif</h2>
+                    <p>Taif is a city and governorate in the Makkah Region of Saudi Arabia.</p>
+                </div>
+                <!-- Profile -->
+                <div class="py-4 flex gap-4">
+                    <img src="../assets/images/Cristina-profile-pic.png" class="w-14 h-14 object-cover rounded-full"
+                        alt="Cristina's image">
+                    <div>
+                        <h3>Cristina Gottardi</h3>
+                        <p>Traveler</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </section>
+    <!-- Second section ends here -->
+     
+    <!-- Third Section starts here -->
+    <section class="p-6 mt-2 md:px-10 min-h-screen md:h-screen bg-black dark:bg-white grid grid-rows-[2fr_4fr] gap-10">
+
+        <!-- Whatsapp contact section -->
+        <section class="self-center border-2 px-10 md:mx-10 border-white text-white flex flex-col justify-center items-center md:flex-row md:justify-between gap-4 rounded-full h-full bg-[linear-gradient(180deg,_#047F01_-19.92%,_#FFFFFF_-4.32%,_#047E01_7.78%,_#047F01_92.62%,_#FFFFFF_108.2%)]">
+            <h2 class="font-semibold sm:text-xl">Contact us on Whatsapp</h2>
+            <button class="px-8 py-2 rounded bg-white text-[#047E01]">Start Chat</button>
+        </section>
+
+        <div class="self-center p-4 h-[100vmin] sm:h-[50vmin] flex flex-col justify-around sm:flex-row sm:justify-between sm:items-center bg-[url(../assets/images/section3-bg-destinations-page.jpg)] bg-center bg-cover">
+            <h2 class="text-4xl sm:text-5xl sm:w-[60%] md:w-[40%] font-semibold text-white">Explore Saudi Arabia</h2>
+            <img src="../assets/svgs/right-arrow.svg" class="h-16" alt="Open">
+        </div>
+
+    </section>
+    <!-- Third Section ends here -->
+
+    <!-- Fourth section starts here -->
+    <footer class="flex flex-col sm:flex-row sm:justify-around items-center gap-10 py-4 min-h-[40vh] text-white bg-[#222222] dark:bg-slate-800 dark:text-white">
+        <!-- Logo -->
+        <div>
+            <a href="index.html">
+                <img src="../assets/svgs/logo.svg" alt="Logo">
+            </a>
+        </div>
+        <!-- Navigations links -->
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-10">
+            <!-- About -->
+            <div>
+                <h3 class="font-bold">About</h3>
+                <ul>
+                    <li class="hover:text-gray-400"><a href="about-us.html">About Us</a></li>
+                    <li class="hover:text-gray-400"><a href="#">Features</a></li>
+                    <li class="hover:text-gray-400"><a href="#">News & Blog</a></li>
+                </ul>
+            </div>
+            <!-- Contact -->
+            <div>
+                <h3 class="font-bold">Contact</h3>
+                <ul>
+                    <li class="hover:text-gray-400"><a href="https://www.instagram.com/">Instagram</a></li>
+                    <li class="hover:text-gray-400"><a href="https://x.com/">Twitter</a></li>
+                    <li class="hover:text-gray-400"><a href="https://www.facebook.com/">Facebook</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold">Support</h3>
+                <ul>
+                    <li class="hover:text-gray-400"><a href="#">FAQs</a></li>
+                    <li class="hover:text-gray-400"><a href="#">Support Centre</a></li>
+                    <li class="hover:text-gray-400"><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- Fourth section ends here -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
