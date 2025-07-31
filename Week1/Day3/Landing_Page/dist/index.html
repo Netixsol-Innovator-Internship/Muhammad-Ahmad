@@ -13,17 +13,49 @@
     <section
         class="min-h-screen md:h-screen p-4 sm:p-0 mx-auto relative bg-[url(../assets/images/bg1_landing_page.jpg)] bg-cover bg-center">
 
-        <nav class="py-4 h-[20%] grid grid-cols-[1fr_2fr] items-center">
-            <a href="index.html" class="block pl-8">
+        <nav class="py-4 h-[20%] grid grid-cols-[1fr_auto] items-center">
+            <a href="index.html" class="block pl-4 sm:pl-8">
                 <img src="../assets/svgs/logo.svg" class="max-h-16 min-h-8" alt="Logo">
             </a>
+            
+            <!-- Desktop Navigation -->
             <ul class="hidden sm:flex sm:justify-end sm:mx-8 sm:items-center text-white">
                 <li class="mx-4"><img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme"></li>
                 <li class="mx-4 hover:text-gray-400"><a href="./destinations.html">Destinations</a></li>
                 <li class="mx-4 hover:text-gray-400"><a href="#">Members</a></li>
                 <li class="mx-4 hover:text-gray-400"><a href="#">Gallery</a></li>
             </ul>
+            
+            <!-- Mobile Hamburger Menu -->
+            <button id="hamburger-btn" class="sm:hidden pr-4 sm:pr-8">
+                <img src="../assets/svgs/hamburger-menu.svg" class="h-6 w-6" alt="Menu">
+            </button>
         </nav>
+
+        <!-- Mobile Sidebar -->
+        <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-black bg-opacity-95 transform -translate-x-full transition-transform duration-300 ease-in-out z-50 sm:hidden">
+            <div class="flex flex-col p-6 text-white">
+                <!-- Close button -->
+                <button id="close-sidebar" class="self-end mb-8">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                
+                <!-- Navigation Links -->
+                <ul class="space-y-6">
+                    <li class="flex items-center space-x-3">
+                        <img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme">
+                    </li>
+                    <li><a href="./destinations.html" class="text-lg hover:text-gray-400 block py-2">Destinations</a></li>
+                    <li><a href="#" class="text-lg hover:text-gray-400 block py-2">Members</a></li>
+                    <li><a href="#" class="text-lg hover:text-gray-400 block py-2">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
         <!-- Hero Section -->
         <div class="py-6 h-[50%] flex flex-col justify-center items-center mx-auto sm:w-[80%] md:w-[50%]">
@@ -279,6 +311,32 @@
         </div>
     </footer>
     <!-- Fith section ends here -->
+
+    <script>
+        // Get elements
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const sidebar = document.getElementById('sidebar');
+        const closeSidebar = document.getElementById('close-sidebar');
+        const overlay = document.getElementById('overlay');
+
+        // Open sidebar
+        hamburgerBtn.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        // Close sidebar
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+
+        // Close sidebar when clicking overlay
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
 </body>
 
 </html>
