@@ -20,10 +20,14 @@
             
             <!-- Desktop Navigation -->
             <ul class="hidden sm:flex sm:justify-end sm:mx-8 sm:items-center text-white">
-                <li class="mx-4"><img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme"></li>
                 <li class="mx-4 hover:text-gray-400"><a href="./destinations.html">Destinations</a></li>
                 <li class="mx-4 hover:text-gray-400"><a href="#">Members</a></li>
                 <li class="mx-4 hover:text-gray-400"><a href="#">Gallery</a></li>
+                <li class="mx-2">
+                    <button id="theme-toggle-desktop" class="cursor-pointer block bg-white rounded-full p-[3px] mt-[1px]">
+                        <img src="../assets/svgs/lightmode-toggle.svg" class="h-[18px]" alt="Toggle Theme">
+                    </button>
+                </li>
             </ul>
             
             <!-- Mobile Hamburger Menu -->
@@ -45,7 +49,9 @@
                 <!-- Navigation Links -->
                 <ul class="space-y-6">
                     <li class="flex items-center space-x-3">
-                        <img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme">
+                        <button id="theme-toggle-mobile" class="cursor-pointer">
+                            <img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme">
+                        </button>
                     </li>
                     <li><a href="./destinations.html" class="text-lg hover:text-gray-400 block py-2">Destinations</a></li>
                     <li><a href="#" class="text-lg hover:text-gray-400 block py-2">Members</a></li>
@@ -72,11 +78,11 @@
     <!-- First section ends here -->
 
     <!-- Second section starts here -->
-    <section class="pt-16 bg-black">
+    <section class="pt-16 bg-black dark:bg-white text-white dark:text-black">
 
         <div class="px-4 md:w-[50%] mx-auto">
-            <h2 class="text-2xl text-center font-bold text-white md:text-3xl">Best Destinations</h2>
-            <p class="text-white mt-2 text-center">Explore the enchanting landscapes of saudi Arabia, from the
+            <h2 class="text-2xl text-center font-bold md:text-3xl">Best Destinations</h2>
+            <p class="mt-2 text-center">Explore the enchanting landscapes of saudi Arabia, from the
                 breathtaking deserts to the stunning coastal shores.</p>
         </div>
 
@@ -221,7 +227,7 @@
     <!-- Second section ends here -->
      
     <!-- Third Section starts here -->
-    <section class="p-6 md:px-10 min-h-screen md:h-screen bg-black grid grid-rows-[2fr_4fr] gap-10">
+    <section class="p-6 mt-2 md:px-10 min-h-screen md:h-screen bg-black dark:bg-white grid grid-rows-[2fr_4fr] gap-10">
 
         <!-- Whatsapp contact section -->
         <section class="self-center border-2 px-10 md:mx-10 border-white text-white flex flex-col justify-center items-center md:flex-row md:justify-between gap-4 rounded-full h-full bg-[linear-gradient(180deg,_#047F01_-19.92%,_#FFFFFF_-4.32%,_#047E01_7.78%,_#047F01_92.62%,_#FFFFFF_108.2%)]">
@@ -238,10 +244,12 @@
     <!-- Third Section ends here -->
 
     <!-- Fourth section starts here -->
-    <footer class="flex flex-col sm:flex-row sm:justify-around items-center gap-10 py-4 min-h-[40vh] text-white bg-[#222222]">
+    <footer class="flex flex-col sm:flex-row sm:justify-around items-center gap-10 py-4 min-h-[40vh] text-white bg-[#222222] dark:bg-slate-800 dark:text-white">
         <!-- Logo -->
         <div>
-            <img src="../assets/svgs/logo.svg" alt="Logo">
+            <a href="index.html">
+                <img src="../assets/svgs/logo.svg" alt="Logo">
+            </a>
         </div>
         <!-- Navigations links -->
         <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-10">
@@ -249,7 +257,7 @@
             <div>
                 <h3 class="font-bold">About</h3>
                 <ul>
-                    <li class="hover:text-gray-400"><a href="#">About Us</a></li>
+                    <li class="hover:text-gray-400"><a href="about-us.html">About Us</a></li>
                     <li class="hover:text-gray-400"><a href="#">Features</a></li>
                     <li class="hover:text-gray-400"><a href="#">News & Blog</a></li>
                 </ul>
@@ -258,9 +266,9 @@
             <div>
                 <h3 class="font-bold">Contact</h3>
                 <ul>
-                    <li class="hover:text-gray-400"><a href="#">Instagram</a></li>
-                    <li class="hover:text-gray-400"><a href="#">Twitter</a></li>
-                    <li class="hover:text-gray-400"><a href="#">Facebook</a></li>
+                    <li class="hover:text-gray-400"><a href="https://www.instagram.com/">Instagram</a></li>
+                    <li class="hover:text-gray-400"><a href="https://x.com/">Twitter</a></li>
+                    <li class="hover:text-gray-400"><a href="https://www.facebook.com/">Facebook</a></li>
                 </ul>
             </div>
             <div>
@@ -275,31 +283,7 @@
     </footer>
     <!-- Fourth section ends here -->
 
-    <script>
-        // Get elements
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const sidebar = document.getElementById('sidebar');
-        const closeSidebar = document.getElementById('close-sidebar');
-        const overlay = document.getElementById('overlay');
-
-        // Open sidebar
-        hamburgerBtn.addEventListener('click', () => {
-            sidebar.classList.remove('-translate-x-full');
-            overlay.classList.remove('hidden');
-        });
-
-        // Close sidebar
-        closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-
-        // Close sidebar when clicking overlay
-        overlay.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

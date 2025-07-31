@@ -15,15 +15,19 @@
 
         <nav class="py-4 h-[20%] grid grid-cols-[1fr_auto] items-center">
             <a href="index.html" class="block pl-4 sm:pl-8">
-                <img src="../assets/svgs/logo.svg" class="max-h-16 min-h-8" alt="Logo">
+                <img src="../assets/svgs/logo.svg" class="max-h-16 min-h-12" alt="Logo">
             </a>
             
             <!-- Desktop Navigation -->
-            <ul class="hidden sm:flex sm:justify-end sm:mx-8 sm:items-center text-white">
-                <li class="mx-4"><img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme"></li>
+            <ul class="hidden sm:flex sm:mx-8 sm:items-center text-white">
                 <li class="mx-4 hover:text-gray-400"><a href="./destinations.html">Destinations</a></li>
                 <li class="mx-4 hover:text-gray-400"><a href="#">Members</a></li>
                 <li class="mx-4 hover:text-gray-400"><a href="#">Gallery</a></li>
+                <li class="mx-2">
+                    <button id="theme-toggle-desktop" class="cursor-pointer block bg-white rounded-full p-[3px] mt-[1px]">
+                        <img src="../assets/svgs/lightmode-toggle.svg" class="h-[18px]" alt="Toggle Theme">
+                    </button>
+                </li>
             </ul>
             
             <!-- Mobile Hamburger Menu -->
@@ -45,7 +49,9 @@
                 <!-- Navigation Links -->
                 <ul class="space-y-6">
                     <li class="flex items-center space-x-3">
-                        <img src="../assets/svgs/darkmode-toggle.svg" class="h-6" alt="Toggle Theme">
+                        <button id="theme-toggle-mobile" class="cursor-pointer">
+                            <img src="../assets/svgs/lightmode-toggle.svg" class="h-6" alt="Toggle Theme">
+                        </button>
                     </li>
                     <li><a href="./destinations.html" class="text-lg hover:text-gray-400 block py-2">Destinations</a></li>
                     <li><a href="#" class="text-lg hover:text-gray-400 block py-2">Members</a></li>
@@ -91,15 +97,15 @@
     <section class="pt-16 bg-black dark:bg-white">
 
         <div class="grid grid-cols-2 gap-6 px-4 justify-items-center md:grid-cols-4">
-            <img src="../assets/svgs/section2-svg1.svg" class="h-12 md:h-16 lg:h-20" alt="SVG Icon">
-            <img src="../assets/svgs/section2-svg2.svg" class="h-12 md:h-16 lg:h-20" alt="SVG Icon">
-            <img src="../assets/svgs/section2-svg3.svg" class="h-12 md:h-16 lg:h-20" alt="SVG Icon">
-            <img src="../assets/svgs/section2-svg4.svg" class="h-12 md:h-16 lg:h-20" alt="SVG Icon">
+            <img src="../assets/svgs/section2-svg1.svg" class="h-12 md:h-16 lg:h-20 dark:invert" alt="SVG Icon">
+            <img src="../assets/svgs/section2-svg2.svg" class="h-12 md:h-16 lg:h-20 dark:invert" alt="SVG Icon">
+            <img src="../assets/svgs/section2-svg3.svg" class="h-12 md:h-16 lg:h-20 dark:invert" alt="SVG Icon">
+            <img src="../assets/svgs/section2-svg4.svg" class="h-12 md:h-16 lg:h-20 dark:invert" alt="SVG Icon">
         </div>
 
-        <div class="pt-20 px-4 md:w-[50%] mx-auto">
-            <h2 class="text-2xl text-center font-bold text-white md:text-3xl">Best Destinations</h2>
-            <p class="text-white mt-2 text-center">Explore the enchanting landscapes of saudi Arabia, from the
+        <div class="pt-20 px-4 md:w-[50%] mx-auto text-white dark:text-black">
+            <h2 class="text-2xl text-center font-bold md:text-3xl">Best Destinations</h2>
+            <p class="mt-2 text-center">Explore the enchanting landscapes of saudi Arabia, from the
                 breathtaking deserts to the stunning coastal shores.</p>
         </div>
 
@@ -278,9 +284,9 @@
     <!-- Third Section ends here -->
      
     <!-- Fourth Section starts here -->
-    <section class="py-4 px-6 md:px-10 min-h-screen md:h-screen bg-black grid grid-rows-[auto_1fr]">
+    <section class="py-4 px-6 md:px-10 min-h-screen md:h-screen bg-black dark:bg-white grid grid-rows-[auto_1fr]">
 
-        <p class="text-white sm:text-xl font-extralight">The Hisma Desert in Saudi Arabia is a realm of ethereal beauty that captivates the senses. Its vast expanse of golden sand dunes, sculpted by the winds of time, creates a mesmerizing landscape that stretches as far as the eye can see. As the sun sets, painting the sky with vivid hues.</p>
+        <p class="text-white dark:text-black sm:text-xl font-extralight">The Hisma Desert in Saudi Arabia is a realm of ethereal beauty that captivates the senses. Its vast expanse of golden sand dunes, sculpted by the winds of time, creates a mesmerizing landscape that stretches as far as the eye can see. As the sun sets, painting the sky with vivid hues.</p>
 
         <div class="self-center relative z-0 p-4 h-[100vmin] sm:h-[50vmin] flex flex-col justify-around sm:flex-row sm:justify-between sm:items-center bg-[url(../assets/images/section4-main-pic.jpg)] bg-center bg-cover">
         
@@ -295,7 +301,7 @@
     <!-- Fourth Section ends here -->
 
     <!-- Fifth section starts here -->
-    <footer class="flex flex-col sm:flex-row sm:justify-around items-center gap-10 py-4 min-h-[40vh] text-white bg-[#222222]">
+    <footer class="flex flex-col sm:flex-row sm:justify-around items-center gap-10 py-4 min-h-[40vh] text-white bg-[#222222] dark:bg-slate-800 dark:text-white">
         <!-- Logo -->
         <div>
             <a href="./index.html">
@@ -317,9 +323,9 @@
             <div>
                 <h3 class="font-bold">Contact</h3>
                 <ul>
-                    <li class="hover:text-gray-400"><a href="#">Instagram</a></li>
-                    <li class="hover:text-gray-400"><a href="#">Twitter</a></li>
-                    <li class="hover:text-gray-400"><a href="#">Facebook</a></li>
+                    <li class="hover:text-gray-400"><a href="https://www.instagram.com/">Instagram</a></li>
+                    <li class="hover:text-gray-400"><a href="https://x.com/">Twitter</a></li>
+                    <li class="hover:text-gray-400"><a href="https://www.facebook.com/">Facebook</a></li>
                 </ul>
             </div>
             <div>
@@ -334,31 +340,7 @@
     </footer>
     <!-- Fith section ends here -->
 
-    <script>
-        // Get elements
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const sidebar = document.getElementById('sidebar');
-        const closeSidebar = document.getElementById('close-sidebar');
-        const overlay = document.getElementById('overlay');
-
-        // Open sidebar
-        hamburgerBtn.addEventListener('click', () => {
-            sidebar.classList.remove('-translate-x-full');
-            overlay.classList.remove('hidden');
-        });
-
-        // Close sidebar
-        closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-
-        // Close sidebar when clicking overlay
-        overlay.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

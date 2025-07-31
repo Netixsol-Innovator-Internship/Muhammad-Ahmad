@@ -588,6 +588,14 @@ video {
   top: 0px;
 }
 
+.-z-\[1\]{
+  z-index: -1;
+}
+
+.z-0{
+  z-index: 0;
+}
+
 .z-40{
   z-index: 40;
 }
@@ -598,18 +606,6 @@ video {
 
 .z-\[1\]{
   z-index: 1;
-}
-
-.-z-\[1\]{
-  z-index: -1;
-}
-
-.z-\[0\]{
-  z-index: 0;
-}
-
-.z-0{
-  z-index: 0;
 }
 
 .mx-4{
@@ -632,6 +628,11 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mx-2{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -650,6 +651,14 @@ video {
 
 .mt-6{
   margin-top: 1.5rem;
+}
+
+.mt-\[2px\]{
+  margin-top: 2px;
+}
+
+.mt-\[1px\]{
+  margin-top: 1px;
 }
 
 .block{
@@ -720,8 +729,24 @@ video {
   height: 100vh;
 }
 
+.h-4{
+  height: 1rem;
+}
+
+.h-\[\]{
+  height: ;
+}
+
+.h-\[18px\]{
+  height: 18px;
+}
+
 .max-h-16{
   max-height: 4rem;
+}
+
+.min-h-12{
+  min-height: 3rem;
 }
 
 .min-h-8{
@@ -771,6 +796,10 @@ video {
 
 .transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 .grid-cols-2{
@@ -877,10 +906,6 @@ video {
   border-radius: 0.75rem;
 }
 
-.rounded-md{
-  border-radius: 0.375rem;
-}
-
 .border-2{
   border-width: 2px;
 }
@@ -905,11 +930,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-.bg-gray-700{
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
-}
-
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
 }
@@ -932,10 +952,6 @@ video {
 
 .bg-\[linear-gradient\(180deg\2c _rgba\(0\2c 0\2c 0\2c 0\)_0\%\2c _rgba\(0\2c 0\2c 0\2c 0\.75\)_100\%\)\]{
   background-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%);
-}
-
-.bg-\[linear-gradient\(180deg\2c _rgba\(0\2c 0\2c 0\2c 0\.98\)_5\%\2c _rgba\(0\2c 0\2c 0\2c 1\)_20\%\2c _rgba\(0\2c 0\2c 0\2c 1\)_100\%\)\]{
-  background-image: linear-gradient(180deg, rgba(0,0,0,0.98) 5%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 100%);
 }
 
 .bg-\[url\(\.\.\/assets\/images\/Benjamin-bg\.jpg\)\]{
@@ -1009,6 +1025,10 @@ video {
 
 .p-6{
   padding: 1.5rem;
+}
+
+.p-\[3px\]{
+  padding: 3px;
 }
 
 .px-10{
@@ -1151,44 +1171,20 @@ video {
   text-decoration-line: underline;
 }
 
-.opacity-25{
-  opacity: 0.25;
-}
-
-.opacity-80{
-  opacity: 0.8;
-}
-
-.opacity-0{
-  opacity: 0;
-}
-
-.opacity-60{
-  opacity: 0.6;
-}
-
-.opacity-\[0\.4\]{
-  opacity: 0.4;
-}
-
-.opacity-\[0\.5\]{
-  opacity: 0.5;
-}
-
-.opacity-\[0\.6\]{
-  opacity: 0.6;
-}
-
-.opacity-\[0\.3\]{
-  opacity: 0.3;
+.opacity-\[0\.1\]{
+  opacity: 0.1;
 }
 
 .opacity-\[0\.2\]{
   opacity: 0.2;
 }
 
-.opacity-\[0\.1\]{
-  opacity: 0.1;
+.opacity-\[0\.3\]{
+  opacity: 0.3;
+}
+
+.opacity-\[0\.4\]{
+  opacity: 0.4;
 }
 
 .transition-transform{
@@ -1210,6 +1206,11 @@ video {
   color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
+.dark\:bg-slate-800:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
+}
+
 .dark\:bg-white:is(.dark *){
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -1218,6 +1219,16 @@ video {
 .dark\:text-black:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
+.dark\:text-white:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.dark\:invert:is(.dark *){
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 @media (min-width: 640px){
