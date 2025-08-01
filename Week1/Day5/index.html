@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NFT Website</title>
     <link rel="stylesheet" href="output.css">
 </head>
+
 <body>
-    
+    <!-- Section 1 start -->
+    <section class="min-h-screen grid grid-rows-[60px_1fr] bg-[url(assets/images/section1-bg.jpg)] bg-cover bg-center">
+
+        <nav
+            class="px-2 grid grid-cols-2 sm:grid-cols-[1fr_3fr] justify-items-center items-center text-white bg-white/10 backdrop-blur-3xl">
+
+            <a href="#" class="text-lg">Logo Here</a>
+
+            <ul class="hidden sm:flex sm:px-8 sm:items-center sm:gap-2 md:gap-4 md:justify-self-end">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Collection</a></li>
+                <li><a href="#">Creator</a></li>
+                <li><a href="#">Road map</a></li>
+                <li><button class="px-6 py-2 rounded-xl text-white inline bg-[#DA8F4D]">Sign in</button></li>
+            </ul>
+
+            <img src="assets/svgs/hamburger-menu.svg" class="sm:hidden h-8" alt="Open sidebar">
+
+        </nav>
+
+        <!-- Hero Section -->
+        <section
+            class="p-2 justify-items-center self-center flex flex-col md:flex-row items-center gap-16 justify-center text-white">
+
+            <!-- Hero text -->
+            <div class="px-8 pt-5 flex flex-col gap-4 md:gap-8 md:w-[50%]">
+                <h1 class="font-bold text-3xl sm:text-4xl lg:text-5xl relative">
+                    We have High Quality NFT Collections
+                    <img src="assets/svgs/star-filled.svg" class="h-12 absolute right-0 top-[60%]" alt="Star">
+                </h1>
+                <p class="lg:text-lg">Lorem ipsum dolor sit amet consectetur. Rhoncus massa suspendisse turpis sed
+                    viverra tempus tortor.
+                    Habitant accumsan sagittis in facilisi placerat ac. Laoreet scelerisque viverra viverra ornare
+                    fermentum faucibus sit purus volutpat. Egestas lectus ornare convallis ornare nullam enim neque.</p>
+                <div class="flex gap-4">
+                    <button class="px-2 sm:px-8 py-2 sm:py-[8px] rounded-xl text-white inline bg-[#DA8F4D]">Get Whitelist</button>
+                    <button class="px-2 sm:px-8 py-2 sm:py-[8px] rounded-xl text-white inline border-white border-2">Contact us</button>
+                </div>
+                <div class="flex justify-around gap-4 py-4 bg-white/5 rounded-xl relative">
+                    <img src="assets/svgs/star-hollow.svg" class="h-8 sm:h-12 absolute right-[-15%]" alt="Star">
+                    <div>
+                        <h3 class="font-semibold text-lg">240k+</h3>
+                        <p>Total Size</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">100k+</h3>
+                        <p>Auctions</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">240k+</h3>
+                        <p>Artists</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Hero image -->
+                <div class="border-white bottom-1 absoulute rounded-xl relative">
+                    <img src="assets/images/section1-img1.png" class="h-[80vmin] sm:h-[50vmin] md:h-[60vmin]"
+                        alt="Tiger">
+                    <div class="flex justify-center items-center absolute bottom-2 right-[-10%] w-[30px] h-[180px] border-white border-[1px] rounded-r-xl">
+                        <img src="assets/svgs/right-arrow.svg" class="h-[10%]" alt="Right Arrow">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- Section 1 end -->
 </body>
+
 </html>
