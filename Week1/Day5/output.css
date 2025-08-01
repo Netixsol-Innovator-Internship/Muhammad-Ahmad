@@ -632,6 +632,26 @@ video {
   top: -5%;
 }
 
+.-bottom-\[5\%\]{
+  bottom: -5%;
+}
+
+.-top-\[20\%\]{
+  top: -20%;
+}
+
+.-top-\[80\%\]{
+  top: -80%;
+}
+
+.-left-\[40\%\]{
+  left: -40%;
+}
+
+.-left-\[10\%\]{
+  left: -10%;
+}
+
 .mx-12{
   margin-left: 3rem;
   margin-right: 3rem;
@@ -744,6 +764,26 @@ video {
 
 .h-\[450px\]{
   height: 450px;
+}
+
+.h-20{
+  height: 5rem;
+}
+
+.h-3{
+  height: 0.75rem;
+}
+
+.h-32{
+  height: 8rem;
+}
+
+.h-2{
+  height: 0.5rem;
+}
+
+.h-24{
+  height: 6rem;
 }
 
 .min-h-screen{
@@ -950,6 +990,10 @@ video {
 
 .bg-white\/5{
   background-color: rgb(255 255 255 / 0.05);
+}
+
+.bg-\[\#D9D9D90F\]{
+  background-color: #D9D9D90F;
 }
 
 .bg-\[url\(assets\/images\/section1-bg\.jpg\)\]{
