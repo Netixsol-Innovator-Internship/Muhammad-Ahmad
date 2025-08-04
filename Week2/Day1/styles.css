@@ -115,10 +115,15 @@ input.error-msg-input {
     background-color: hsl(259, 100%, 65%);
     border-radius: 50%;
     width: fit-content;
-    padding: 0.5rem;
+    padding: 0.85rem;
     align-self: center;
     grid-row: 1;
     grid-column: 1;
+    border: none;
+}
+
+.arrow-container:active {
+    background-color: black;
 }
 
 .output-section {
