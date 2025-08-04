@@ -48,3 +48,27 @@ input[type="text"] {
     padding: 0.5rem 0.75rem;
     border-radius: 4px;
 }
+
+section {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template: 1 / 1;
+}
+
+.ruler {
+    border: 1px solid rgb(133, 133, 133);
+    width: 100%;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.arrow-container {
+    background-color: hsl(259, 100%, 65%);
+    border-radius: 50%;
+    width: fit-content;
+    padding: 0.25rem;
+    align-self: center;
+    grid-row: 1;
+    grid-column: 1;
+}
