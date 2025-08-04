@@ -24,7 +24,7 @@ main {
     font-size: large;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
     gap: 2rem;
 }
 
@@ -49,11 +49,11 @@ input[type="text"] {
     border-radius: 4px;
 }
 
-section {
+.arrow-section {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template: 1 / 1;
+    grid-template: 1fr / 1fr;
 }
 
 .ruler {
@@ -71,4 +71,13 @@ section {
     align-self: center;
     grid-row: 1;
     grid-column: 1;
+}
+
+.output-section {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.output {
+    color: hsl(259, 100%, 65%);
 }
