@@ -17,7 +17,7 @@
 	<main>
 		<div class="container">
 
-			<form action="#">
+			<form action="#" id="dob-input">
 				<div class="input-container">
 					<label for="day">Day</label>
 					<input type="text" required inputmode="numeric" name="day" id="day">
@@ -35,10 +35,12 @@
 			<!-- Arrow with ruler -->
 			<section class="arrow-section">
 				<div class="ruler"></div>
-				<div class="arrow-container">
+
+				<button type="submit" form="dob-input" class="arrow-container">
 					<img src="assets/images/icon-arrow.svg" class="arrow" alt="arrow">
-				</div>
-			</section>
+				</button>
+
+				</section>
 
 			<section class="output-section">
 				<p> <span id="years" class="output">--</span> Years</p>

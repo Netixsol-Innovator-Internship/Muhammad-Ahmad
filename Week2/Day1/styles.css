@@ -6,7 +6,7 @@
 
 main {
     height: 100vh;
-    background-color: rgb(227, 227, 227);
+    background-color: hsl(0, 0%, 94%);
 
     display: flex;
     justify-content: center;
@@ -15,7 +15,7 @@ main {
 
 .container {
     width: 90%;
-    max-width: 600px;
+    max-width: 650px;
     height: 70vh;
     border-radius: 20px;
     border-bottom-right-radius: 120px;
@@ -92,10 +92,6 @@ input[type="text"] {
 
     form {
         gap: 2rem;
-    }
-
-    .input-container {
-        font-size: 1.5rem;
     }
 
     .arrow-container {
