@@ -13,3 +13,7 @@
 ### Day 03-04
 - Design fully responsive tourism site from figma desing.
 - Implement interactive features like responsive sidebar for smaller viewports and toggle theme functionality.
+
+### Day 05
+- Built a multi-section landing page for a tourism website using HTML and TailwindCSS.
+- Implemented advanced responsive layouts and image assets for various sections.
