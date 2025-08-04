@@ -34,7 +34,7 @@ main {
 
 form {
     display: grid;
-    grid-template-columns: repeat(3, minmax(70px, 100px));
+    grid-template-columns: repeat(3, minmax(70px, 120px));
     gap: 1rem;
     font: inherit;
 }
@@ -42,7 +42,7 @@ form {
 .input-container {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.35rem;
     font-size: 1rem;
 }
 
@@ -58,6 +58,26 @@ input[type="text"] {
     border: 1px solid black;
     padding: 0.5rem 0.75rem;
     border-radius: 4px;
+}
+
+label.error-msg-label {
+    color: hsl(0, 100%, 67%);
+}
+
+input.error-msg-input {
+    border: 1px solid hsl(0, 100%, 67%);
+}
+
+.error-msg-p {
+    font-size: 0.75rem;
+    margin: 0;
+    padding: 0;
+    color: hsl(0, 100%, 67%);
+    font-style: italic;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .arrow-section {
