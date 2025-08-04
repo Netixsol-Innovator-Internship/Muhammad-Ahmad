@@ -49,7 +49,7 @@ function validateInput(inputElement) {
 
     // Clear previous error states
     inputElement.previousElementSibling.classList.remove("error-msg-label");
-    inputElement.classList.remove("error-message-input");
+    inputElement.classList.remove("error-msg-input");
     inputElement.nextElementSibling.classList.add("hidden");
 
     // Case 1: Check whether user has entered anything or not
@@ -79,8 +79,13 @@ function validateInput(inputElement) {
 
         // Case 2.3 For year input
         if (inputElement.attributes.id.value == "year") {
-            let value = parseInt(inputElement.value);
-            if (!(value < new Date().getFullYear())) {
+
+            let value = inputElement.value;
+            if (value.length != "4") {
+                errorMessage = "Year must contain 4 digits.";
+                hasError = true;
+            }
+            if (!(+value < new Date().getFullYear())) {
                 errorMessage = "Must be in the past";
                 hasError = true;
             }
@@ -92,25 +97,24 @@ function validateInput(inputElement) {
         // Add error message class on label element
         inputElement.previousElementSibling.classList.add("error-msg-label");
         // Add error message class on input Element
-        inputElement.classList.add("error-message-input");
+        inputElement.classList.add("error-msg-input");
         // Show paragraph with error message 
         inputElement.nextElementSibling.textContent = errorMessage;
         inputElement.nextElementSibling.classList.remove("hidden");
     }
 }
 
-function validateMonthDays () {
+function validateMonthDays() {
 
     let validDays = new Date(yearInput.value, monthInput.value, 0).getDate();
     let enteredDays = dayInput.value;
 
     if (enteredDays > validDays) {
-        console.log("Hello");
-        
+
         // Add error message class on label element
         dayInput.previousElementSibling.classList.add("error-msg-label");
         // Add error message class on input Element
-        dayInput.classList.add("error-message-input");
+        dayInput.classList.add("error-msg-input");
         // Show paragraph with error message 
         dayInput.nextElementSibling.textContent = "Must be a valid Date";
         dayInput.nextElementSibling.classList.remove("hidden");
@@ -119,6 +123,30 @@ function validateMonthDays () {
 
     return true;
 
+}
+
+function animateValue(element, start, end, duration) {
+    const range = end - start;
+    let startTime = null;
+
+    // Smoother ease-out-quart function for more natural feel
+    function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+    }
+
+    function step(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        element.textContent = Math.floor(start + range * easedProgress);
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            element.textContent = end; // Ensure final value
+        }
+    }
+    requestAnimationFrame(step);
 }
 
 function calculateAndDisplayAge() {
@@ -140,14 +168,17 @@ function calculateAndDisplayAge() {
     const age = getAge(inputDate);
 
     // Display results
-    yearsOutput.textContent = age.years;
-    monthsOutput.textContent = age.months;
-    daysOutput.textContent = age.days;
+    // yearsOutput.textContent = age.years;
+    // monthsOutput.textContent = age.months;
+    // daysOutput.textContent = age.days;
+    animateValue(yearsOutput, parseInt(yearsOutput.textContent) || 0, age.years, 1200);
+    animateValue(monthsOutput, parseInt(monthsOutput.textContent) || 0, age.months, 1200);
+    animateValue(daysOutput, parseInt(daysOutput.textContent) || 0, age.days, 1200);
 }
 
 form.addEventListener("blur", (e) => {
     let target = e.target;
-    if (! (target instanceof HTMLInputElement) ) {
+    if (!(target instanceof HTMLInputElement)) {
         return;
     }
 
@@ -157,15 +188,15 @@ form.addEventListener("blur", (e) => {
 // Add event listener for form submission
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    
+
     // Validate all input fields
     validateInput(dayInput);
     validateInput(monthInput);
     validateInput(yearInput);
-    
+
     // Check if any validation errors exist
-    const hasErrors = form.querySelector('.error-message-input') !== null;
-    
+    const hasErrors = form.querySelector('.error-msg-input') !== null;
+
     // Only calculate age if there are no validation errors
     if (!hasErrors && validateMonthDays()) {
         calculateAndDisplayAge();

@@ -10,13 +10,13 @@
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 main {
@@ -42,6 +42,9 @@ main {
     gap: 2rem;
     max-height: 700px;
     font-family: "Poppins", sans-serif;
+    box-shadow: 7px 8px 37px -24px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 7px 8px 37px -24px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 7px 8px 37px -24px rgba(0, 0, 0, 1);
 }
 
 form {
@@ -55,6 +58,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
+    font-family: "Poppins", sans-serif;
     font-size: 1rem;
 }
 
@@ -70,11 +74,14 @@ input[type="number"] {
     border: 1px solid black;
     padding: 0.5rem 0.75rem;
     border-radius: 4px;
+    transition: transform 0.5s ease 0;
 }
 
 input[type="number"]:focus {
     outline: none;
     border: 1px solid hsl(259, 100%, 65%);
+    transform: translateY(-1px);
+    transform: scale(1.05);
 }
 
 label.error-msg-label {
@@ -120,6 +127,7 @@ input.error-msg-input {
     grid-row: 1;
     grid-column: 1;
     border: none;
+    transition: background-color 0.1s ease;
 }
 
 .arrow-container:active {
@@ -138,7 +146,7 @@ input.error-msg-input {
 
 @media screen and (min-width: 640px) {
     .container {
-        height: 85vh;
+        min-height: 75vh;
         padding: 1.5rem 2.5rem;
     }
 
