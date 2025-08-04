@@ -62,7 +62,7 @@ function validateInput(inputElement) {
         // Case 2.1 For Day input
         if (inputElement.attributes.id.value == "day") {
             let value = parseInt(inputElement.value);
-            if (!((value >= 1 || value <= 31))) {
+            if (!((value >= 1 && value <= 31))) {
                 errorMessage = "Must be a valid day";
                 hasError = true;
             }
@@ -71,7 +71,7 @@ function validateInput(inputElement) {
         // Case 2.2 For month input
         if (inputElement.attributes.id.value == "month") {
             let value = parseInt(inputElement.value);
-            if (!(value >= 1 || value <= 12)) {
+            if (!(value >= 1 && value <= 12)) {
                 errorMessage = "Must be a valid month";
                 hasError = true;
             }
