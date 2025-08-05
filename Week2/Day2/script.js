@@ -1,5 +1,8 @@
 const cardsSection = document.querySelector("#cards-section");
 
+const markAllRead = document.querySelector("#mark-read");
+const unreadNotificationsCount = document.querySelector("#unread-notifications");
+
 const data = [
     {
         profilePic: 'assets/images/avatar-mark-webber.webp',
@@ -66,6 +69,9 @@ const styles = {
     redDot: "after:content-[''] after:inline-block after:h-2.5 after:w-2.5 after:rounded-full after:bg-red-500 after:ml-1"
 };
 
+// Stores references of elements whose state can be updated
+const states = [];
+
 function addNotification(notification, fragment) {
     // Create Elements
         // Parent Element
@@ -105,8 +111,16 @@ function addNotification(notification, fragment) {
 
     // If message isn't yet read
     if (!notification.read) {
-        notificationsContainer.classList.add(styles.unread);
+        article.classList.add(styles.unread);
         subject.className += styles.redDot;
+
+        // Add these to states array so that there state can later be updated
+        states.push(
+            {
+                article: article,
+                subject: subject
+            }
+        );
     }
 
     // If notification has image
@@ -140,3 +154,19 @@ data.forEach(notification => addNotification(notification, fragment));
 
 // Append all notifications to DOM
 cardsSection.appendChild(fragment);
+
+markAllRead.addEventListener("click", () => {
+    states.forEach( item => {
+        // Remove Blue background
+        item.article.classList.remove(styles.unread);
+
+        // Remove Red Dot
+        item.subject.classList.remove(...styles.redDot.split(" "))
+    });
+
+    // Update the notifications count
+    unreadNotificationsCount.textContent = 0;
+
+    // Clear the array
+    states.splice(0, states.length);
+})
