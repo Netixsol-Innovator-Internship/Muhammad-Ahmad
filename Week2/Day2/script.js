@@ -72,6 +72,28 @@ const styles = {
 // Stores references of elements whose state can be updated
 const states = [];
 
+function updateStateOnClick(notificationElement) {
+    // Check Notification's State
+    if (!notificationElement.classList.contains(styles.unread)) {
+        return;
+    }
+
+    // Remove styles for Unread Notifications
+
+    // Remove Red Dot
+    const subject = notificationElement.querySelector("#subject");
+    subject.classList.remove(...styles.redDot.split(" "));
+
+    // Remove Blue Background
+    notificationElement.classList.remove(styles.unread);
+
+    // Update notification count
+    let count = parseInt(unreadNotificationsCount.textContent);
+    if (count > 0) {
+        unreadNotificationsCount.textContent = count - 1;
+    }
+}
+
 function addNotification(notification, fragment) {
     // Create Elements
         // Parent Element
@@ -84,6 +106,8 @@ function addNotification(notification, fragment) {
         // Childs of textContainer
     const subject = document.createElement("p");
     const time = document.createElement("p");
+
+    subject.setAttribute("id", "subject")
 
     // Append childs to their parents
     
@@ -143,6 +167,9 @@ function addNotification(notification, fragment) {
         div.className += styles.messageContainer;
         textContainer.appendChild(div)
     }
+
+    // Attach event listener to update state on click
+    article.addEventListener("click", () => updateStateOnClick(article));
 
     // Append notification to fragement
     fragment.appendChild(article);
