@@ -13,71 +13,23 @@
 <body>
 
 	<div class="min-h-screen bg-blue-100 flex flex-col justify-center items-center">
-		<div class="max-w-2xl w-full p-6 rounded-xl bg-white h-[90vh]">
+		<div class="max-w-2xl m-4 p-4 sm:p-6 rounded-xl bg-white">
 
 			<div class="flex justify-between">
 				<div class="flex gap-2 items-center">
-					<h2 class="font-bold text-gray-900 text-2xl">Notifications</h2>
+					<h2 class="font-bold text-gray-900 sm:text-2xl">Notifications</h2>
 					<div class="bg-blue-950 text-white font-semibold rounded-md mt-1 px-3">3</div>
 				</div>
 
-				<button class="tracking-tighter text-gray-600 cursor-pointer">Mark all as read</button>
+				<button class="tracking-tighter text-gray-600 text-sm sm:text-lg cursor-pointer">Mark all as read</button>
 			</div>
 
 			<!-- Notifications cards -->
-			<section class="my-4">
-				<article class="my-2 p-2 text-sm grid grid-cols-[56px_1fr] bg-blue-100 rounded-md gap-3">
-					<img src="assets/images/avatar-mark-webber.webp" class="h-14 object-cover object-center"
-						alt="Profile">
-					<div class="text-gray-600">
-						<p> <span class="font-bold text-black">Mark Webber</span> reacted to your recent post <span
-								class="font-semibold">My first tournament today! <span class="inline-block h-2 w-2 rounded-full bg-red-500"></span></p>
-						<p>1m ago</p>
-					</div>
-				</article>
-
-				<article class="my-2 p-2 text-sm grid grid-cols-[56px_1fr] rounded-md gap-3">
-					<img src="assets/images/avatar-rizky-hasanuddin.webp" class="h-14 object-cover object-center"
-						alt="Profile">
-					<div class="text-gray-600">
-						<p> <span class="font-bold text-black">Rizky Hasanuddin</span> sent you a private message</p>
-						<p>5m ago</p>
-						<div class="border-1 my-4 p-3">
-							<p>Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and
-								I'm already having lots of fun and improving my game.</p>
-						</div>
-					</div>
-				</article>
+			<section class="mt-6 mb-2" id="cards-section">
+				
 			</section>
 		</div>
 	</div>
-
-	Notifications 3
-
-	Mark all as read
-
-	Mark Webber reacted to your recent post My first tournament today!
-	1m ago
-
-	Angela Gray followed you
-	5m ago
-
-	Jacob Thompson has joined your group Chess Club
-	1 day ago
-
-	Rizky Hasanuddin sent you a private message
-	5 days ago
-	Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and
-	I'm already having lots of fun and improving my game.
-
-	Kimberly Smith commented on your picture
-	1 week ago
-
-	Nathan Peterson reacted to your recent post 5 end-game strategies to increase your win rate
-	2 weeks ago
-
-	Anna Kim left the group Chess Club
-	2 weeks ago
 
 	<script src="script.js"></script>
 </body>
