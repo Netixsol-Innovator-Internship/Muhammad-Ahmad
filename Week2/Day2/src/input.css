@@ -1,12 +1,5 @@
 @import "tailwindcss";
-
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('../assets/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
-  font-weight: 500 800;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 @theme {
     /* Primary */
@@ -23,6 +16,5 @@
     --color-navy-950: hsl(224, 21%, 14%);
 
     /* Font Family */
-    --font-primary: 'Plus Jakarta Sans', "sans-serif";
-
+    --font-primary: "Plus Jakarta Sans", sans-serif;
 }
