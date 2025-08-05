@@ -12,6 +12,46 @@
 
 <body>
 
+	<div class="min-h-screen bg-blue-100 flex flex-col justify-center items-center">
+		<div class="max-w-2xl w-full p-6 rounded-xl bg-white h-[90vh]">
+
+			<div class="flex justify-between">
+				<div class="flex gap-2 items-center">
+					<h2 class="font-bold text-gray-900 text-2xl">Notifications</h2>
+					<div class="bg-blue-950 text-white font-semibold rounded-md mt-1 px-3">3</div>
+				</div>
+
+				<button class="tracking-tighter text-gray-600 cursor-pointer">Mark all as read</button>
+			</div>
+
+			<!-- Notifications cards -->
+			<section class="my-4">
+				<article class="my-2 p-2 text-sm grid grid-cols-[56px_1fr] bg-blue-100 rounded-md gap-3">
+					<img src="assets/images/avatar-mark-webber.webp" class="h-14 object-cover object-center"
+						alt="Profile">
+					<div class="text-gray-600">
+						<p> <span class="font-bold text-black">Mark Webber</span> reacted to your recent post <span
+								class="font-semibold">My first tournament today! <span class="inline-block h-2 w-2 rounded-full bg-red-500"></span></p>
+						<p>1m ago</p>
+					</div>
+				</article>
+
+				<article class="my-2 p-2 text-sm grid grid-cols-[56px_1fr] rounded-md gap-3">
+					<img src="assets/images/avatar-rizky-hasanuddin.webp" class="h-14 object-cover object-center"
+						alt="Profile">
+					<div class="text-gray-600">
+						<p> <span class="font-bold text-black">Rizky Hasanuddin</span> sent you a private message</p>
+						<p>5m ago</p>
+						<div class="border-1 my-4 p-3">
+							<p>Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and
+								I'm already having lots of fun and improving my game.</p>
+						</div>
+					</div>
+				</article>
+			</section>
+		</div>
+	</div>
+
 	Notifications 3
 
 	Mark all as read
