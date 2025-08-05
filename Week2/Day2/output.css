@@ -10,10 +10,8 @@
     --color-red-500: hsl(1, 90%, 64%);
     --color-blue-100: hsl(211, 68%, 94%);
     --color-blue-950: hsl(219, 85%, 26%);
-    --color-gray-500: hsl(219, 14%, 63%);
     --color-gray-600: hsl(219, 12%, 42%);
     --color-gray-700: oklch(37.3% 0.034 259.733);
-    --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: oklch(21% 0.034 264.665);
     --color-black: #000;
     --color-white: hsl(0, 100%, 100%);
@@ -23,8 +21,6 @@
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
-    --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
     --font-weight-semibold: 600;
@@ -34,6 +30,7 @@
     --radius-xl: 0.75rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --font-primary: "Plus Jakarta Sans", sans-serif;
   }
 }
 @layer base {
@@ -293,6 +290,9 @@
   }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
+  }
+  .font-primary {
+    font-family: var(--font-primary);
   }
   .text-sm {
     font-size: var(--text-sm);
