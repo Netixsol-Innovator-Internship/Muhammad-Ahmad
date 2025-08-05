@@ -58,7 +58,7 @@ const data = [
 ]
 
 const styles = {
-    article: "my-1 p-2 text-sm grid grid-cols-[56px_1fr] self-center rounded-md gap-3",
+    article: "my-[12px] p-2 text-base grid grid-cols-[52px_1fr] self-center rounded-md gap-1 cursor-pointer",
     unread: "bg-blue-100",
     profilePic: "h-14 object-cover object-center",
     otherImage: "h-14 object-cover object-center",
