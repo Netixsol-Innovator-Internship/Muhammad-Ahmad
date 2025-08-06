@@ -9,18 +9,21 @@
 </head>
 
 <body class="font-primary">
-    <div class="container mx-auto px-4">
+    <div class="md:px-6 lg:container mx-auto">
         <!-- Section 1 -->
-        <section class="min-h-screen flex flex-col justify-between py-6">
-            <nav class="text-black text-xl pl-4 py-6 flex justify-between items-center">
-                <img src="assets/images/logo.png" class="h-12" alt="Logo">
-                <ul class="flex gap-8 items-center">
+        <section class="min-h-screen flex flex-col gap-6 justify-between">
+            <nav class="text-black p-4 sm:px-6 flex justify-between items-center">
+                <img src="assets/images/logo.png" class="h-6 sm:h-8 xl:h-9" alt="Logo">
+                <ul class="hidden lg:flex gap-8 items-center">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Special Offers</a></li>
                     <li><a href="#" class="bg-[#FC8A06] px-6 py-2 text-white rounded-xl">Restaurants</a></li>
                     <li><a href="#">Track Order</a></li>
                 </ul>
-                <div class="flex gap-2 items-center">
+                <div class="flex gap-4 items-center">
+                    <button>
+                        <img src="assets/svgs/hamburger-menu.svg" class="lg:hidden h-10" alt="">
+                    </button>
                     <div class="bg-black w-fit h-fit p-2 rounded-full">
                         <a href="#">
                             <img src="assets/svgs/cart.svg" class="h-6" alt="Cart">
@@ -32,24 +35,24 @@
 
             <!-- Hero Section -->
             <section
-                class="h-screen max-h-[477px] text-white my-4 py-4 px-8 flex justify-between rounded-xl relative bg-[url(assets/images/section1-hero-bg.png)]">
+                class="min-h-[85vh] lg:max-h-[477px] text-white my-4 py-16 lg:py-4 px-8 flex flex-col gap-4 justify-around sm:justify-between lg:flex-row lg:justify-between items-center sm:rounded-xl relative bg-[url(assets/images/section1-hero-bg.png)] bg-cover bg-center">
 
                 <!-- Timings. Absolutely Positioned at the bottom left of hero section -->
-                <div class="flex gap-2 justify-center items-center px-8 py-2 rounded-lg bg-[#FC8A06] absolute bottom-0 left-0 translate-y-[50%]">
+                <div class="flex gap-2 justify-center items-center px-8 py-2 rounded-r-lg bg-[#FC8A06] absolute bottom-0 left-[-0.1%] translate-y-[50%]">
                     <img src="assets/svgs/clock.svg" alt="Clock">
                     <p>Open untill 3:00 AM</p>
                 </div>
 
                 <!-- Text -->
                 <div class="flex flex-col justify-center gap-8">
-                    <p class="text-2xl">I'm lovin' it!</p>
-                    <h1 class="text-6xl font-bold">McDonald's East London</h1>
-                    <div class="flex gap-6">
-                        <button class="flex items-center gap-2 border-white border-1 px-4 py-2 rounded-xl">
+                    <p class="text-xl sm:text-2xl">I'm lovin' it!</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold">McDonald's East London</h1>
+                    <div class="flex flex-col items-center sm:items-start sm:flex-row lg:flex-col xl:flex-row gap-6">
+                        <button class="flex items-center gap-2 border-white text-sm md:text-lg w-fit border-1 px-4 py-2 rounded-xl">
                             <img src="assets/svgs/order-completed.svg" class="h-8 w-8" alt="Order Completed">
                             <p>Minimum Order: 12GBP</p>
                         </button>
-                        <button class="flex items-center gap-2 border-white border-1 px-4 py-2 rounded-xl">
+                        <button class="flex items-center gap-2 border-white text-sm md:text-lg w-fit border-1 px-4 py-2 rounded-xl">
                             <img src="assets/svgs/motorcross.svg" class="h-8 w-8" alt="MotorCross">
                             <p>Delivery in 20-25 Minutes</p>
                         </button>
@@ -58,26 +61,35 @@
                 <!-- Image -->
                 <div class="flex justify-end items-center">
                     <div class="relative">
-                        <img src="assets/images/section1-hero-img.png" class="max-w-[581px] object-cover object-center"
+                        <img src="assets/images/section1-hero-img.png" class="max-w-[250px] sm:max-w-[490px] lg:max-w-[430px] xl:max-w-[530px] object-cover object-center"
                             alt="Burger & Fries">
 
                         <!-- Reviews Image -->
                         <img src="assets/images/section1-review-img.png"
-                            class="max-w-[136px] absolute bottom-0 left-0 translate-x-[-30%] translate-y-[20%]"
+                            class="max-w-[40px] sm:max-w-[80px] xl:max-w-[136px] absolute bottom-0 left-0 translate-x-[-30%] translate-y-[20%]"
                             alt="Reviews">
                     </div>
                 </div>
             </section>
 
-            <div class="flex justify-between items-center">
-                <h2 class="font-bold text-[32px] px-4 text-black">All Offers from McDonald's East London</h2>
-                <div class="flex gap-2 items-center border-1 p-2 mb-2 rounded-xl border-[#03081F]">
+            <div class="flex flex-col gap-4 px-2 sm:flex-row justify-between items-center mb-2">
+                <h2 class="font-bold sm:text-lg lg:text-[26px] xl:text-[32px] px-4 text-black">All Offers from McDonald's East London</h2>
+                <div class="flex gap-2 items-center border-1 p-2 lg:mb-2 rounded-xl border-[#03081F]">
                     <img src="assets/svgs/search.svg" alt="Search">
                     <input type="search" name="search-menu" id="search-menu" placeholder="Search From menu...">
                 </div>
             </div>
         </section>
     </div>
+
+    <!-- Section 2 -->
+    <section>
+        <!-- Products Navigation bar -->
+        <ul>
+
+        </ul>
+    </section>
+
     <script src="script.js"></script>
 </body>
 
