@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="output.css">
 </head>
 
-<body>
+<body class="font-primary">
     <div class="container mx-auto px-4">
         <!-- Section 1 -->
-        <section class="min-h-screen text-xl">
-            <nav class="text-black pl-4 py-6 flex justify-between items-center">
+        <section class="min-h-screen flex flex-col justify-between py-6">
+            <nav class="text-black text-xl pl-4 py-6 flex justify-between items-center">
                 <img src="assets/images/logo.png" class="h-12" alt="Logo">
-                <ul class="flex gap-4 items-center">
+                <ul class="flex gap-8 items-center">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Special Offers</a></li>
                     <li><a href="#" class="bg-[#FC8A06] px-6 py-2 text-white rounded-xl">Restaurants</a></li>
@@ -29,6 +29,53 @@
                     <a href="#">Cart</a>
                 </div>
             </nav>
+
+            <!-- Hero Section -->
+            <section
+                class="h-screen max-h-[477px] text-white my-4 py-4 px-8 flex justify-between rounded-xl relative bg-[url(assets/images/section1-hero-bg.png)]">
+
+                <!-- Timings. Absolutely Positioned at the bottom left of hero section -->
+                <div class="flex gap-2 justify-center items-center px-8 py-2 rounded-lg bg-[#FC8A06] absolute bottom-0 left-0 translate-y-[50%]">
+                    <img src="assets/svgs/clock.svg" alt="Clock">
+                    <p>Open untill 3:00 AM</p>
+                </div>
+
+                <!-- Text -->
+                <div class="flex flex-col justify-center gap-8">
+                    <p class="text-2xl">I'm lovin' it!</p>
+                    <h1 class="text-6xl font-bold">McDonald's East London</h1>
+                    <div class="flex gap-6">
+                        <button class="flex items-center gap-2 border-white border-1 px-4 py-2 rounded-xl">
+                            <img src="assets/svgs/order-completed.svg" class="h-8 w-8" alt="Order Completed">
+                            <p>Minimum Order: 12GBP</p>
+                        </button>
+                        <button class="flex items-center gap-2 border-white border-1 px-4 py-2 rounded-xl">
+                            <img src="assets/svgs/motorcross.svg" class="h-8 w-8" alt="MotorCross">
+                            <p>Delivery in 20-25 Minutes</p>
+                        </button>
+                    </div>
+                </div>
+                <!-- Image -->
+                <div class="flex justify-end items-center">
+                    <div class="relative">
+                        <img src="assets/images/section1-hero-img.png" class="max-w-[581px] object-cover object-center"
+                            alt="Burger & Fries">
+
+                        <!-- Reviews Image -->
+                        <img src="assets/images/section1-review-img.png"
+                            class="max-w-[136px] absolute bottom-0 left-0 translate-x-[-30%] translate-y-[20%]"
+                            alt="Reviews">
+                    </div>
+                </div>
+            </section>
+
+            <div class="flex justify-between items-center">
+                <h2 class="font-bold text-[32px] px-4 text-black">All Offers from McDonald's East London</h2>
+                <div class="flex gap-2 items-center border-1 p-2 mb-2 rounded-xl border-[#03081F]">
+                    <img src="assets/svgs/search.svg" alt="Search">
+                    <input type="search" name="search-menu" id="search-menu" placeholder="Search From menu...">
+                </div>
+            </div>
         </section>
     </div>
     <script src="script.js"></script>
