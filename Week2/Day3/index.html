@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Website</title>
     <link rel="stylesheet" href="output.css">
 </head>
+
 <body>
-    
+    <div class="container mx-auto px-4">
+        <!-- Section 1 -->
+        <section class="min-h-screen text-xl">
+            <nav class="text-black pl-4 py-6 flex justify-between items-center">
+                <img src="assets/images/logo.png" class="h-12" alt="Logo">
+                <ul class="flex gap-4 items-center">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#" class="bg-[#FC8A06] px-6 py-2 text-white rounded-xl">Restaurants</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+                <div class="flex gap-2 items-center">
+                    <div class="bg-black w-fit h-fit p-2 rounded-full">
+                        <a href="#">
+                            <img src="assets/svgs/cart.svg" class="h-6" alt="Cart">
+                        </a>
+                    </div>
+                    <a href="#">Cart</a>
+                </div>
+            </nav>
+        </section>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
