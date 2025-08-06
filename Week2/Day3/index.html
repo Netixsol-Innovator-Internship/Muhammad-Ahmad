@@ -9,9 +9,11 @@
 </head>
 
 <body class="font-primary">
-    <div class="md:px-6 lg:container mx-auto">
+
+    <!-- Container -->
+    <div class="w-full xl:max-w-screen-2xl lg:px-4 mx-auto">
         <!-- Section 1 -->
-        <section class="min-h-screen flex flex-col gap-6 justify-between">
+        <section class="flex flex-col gap-6 justify-between">
             <nav class="text-black p-4 sm:px-6 flex justify-between items-center">
                 <img src="assets/images/logo.png" class="h-6 sm:h-8 xl:h-9" alt="Logo">
                 <ul class="hidden lg:flex gap-8 items-center">
@@ -20,7 +22,7 @@
                     <li><a href="#" class="bg-[#FC8A06] px-6 py-2 text-white rounded-xl">Restaurants</a></li>
                     <li><a href="#">Track Order</a></li>
                 </ul>
-                <div class="flex gap-4 items-center">
+                <div class="flex gap-2 items-center">
                     <button>
                         <img src="assets/svgs/hamburger-menu.svg" class="lg:hidden h-10" alt="">
                     </button>
@@ -35,10 +37,11 @@
 
             <!-- Hero Section -->
             <section
-                class="min-h-[85vh] lg:max-h-[477px] text-white my-4 py-16 lg:py-4 px-8 flex flex-col gap-4 justify-around sm:justify-between lg:flex-row lg:justify-between items-center sm:rounded-xl relative bg-[url(assets/images/section1-hero-bg.png)] bg-cover bg-center">
+                class="min-h-[500px] text-white my-4 py-16 lg:py-4 px-8 flex flex-col gap-4 justify-around sm:justify-between lg:flex-row lg:justify-between items-center sm:rounded-xl relative bg-[url(assets/images/section1-hero-bg.png)] bg-cover bg-center">
 
                 <!-- Timings. Absolutely Positioned at the bottom left of hero section -->
-                <div class="flex gap-2 justify-center items-center px-8 py-2 rounded-r-lg bg-[#FC8A06] absolute bottom-0 left-[-0.1%] translate-y-[50%]">
+                <div
+                    class="flex gap-2 justify-center items-center px-8 py-2 rounded-r-lg bg-[#FC8A06] absolute bottom-0 left-[-0.1%] translate-y-[50%]">
                     <img src="assets/svgs/clock.svg" alt="Clock">
                     <p>Open untill 3:00 AM</p>
                 </div>
@@ -48,11 +51,13 @@
                     <p class="text-xl sm:text-2xl">I'm lovin' it!</p>
                     <h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold">McDonald's East London</h1>
                     <div class="flex flex-col items-center sm:items-start sm:flex-row lg:flex-col xl:flex-row gap-6">
-                        <button class="flex items-center gap-2 border-white text-sm md:text-lg w-fit border-1 px-4 py-2 rounded-xl">
+                        <button
+                            class="flex items-center gap-2 border-white text-sm md:text-lg w-fit border-1 px-4 py-2 rounded-xl">
                             <img src="assets/svgs/order-completed.svg" class="h-8 w-8" alt="Order Completed">
                             <p>Minimum Order: 12GBP</p>
                         </button>
-                        <button class="flex items-center gap-2 border-white text-sm md:text-lg w-fit border-1 px-4 py-2 rounded-xl">
+                        <button
+                            class="flex items-center gap-2 border-white text-sm md:text-lg w-fit border-1 px-4 py-2 rounded-xl">
                             <img src="assets/svgs/motorcross.svg" class="h-8 w-8" alt="MotorCross">
                             <p>Delivery in 20-25 Minutes</p>
                         </button>
@@ -61,7 +66,8 @@
                 <!-- Image -->
                 <div class="flex justify-end items-center">
                     <div class="relative">
-                        <img src="assets/images/section1-hero-img.png" class="max-w-[250px] sm:max-w-[490px] lg:max-w-[430px] xl:max-w-[530px] object-cover object-center"
+                        <img src="assets/images/section1-hero-img.png"
+                            class="max-w-[250px] sm:max-w-[490px] lg:max-w-[430px] xl:max-w-[530px] object-cover object-center"
                             alt="Burger & Fries">
 
                         <!-- Reviews Image -->
@@ -73,22 +79,157 @@
             </section>
 
             <div class="flex flex-col gap-4 px-2 sm:flex-row justify-between items-center mb-2">
-                <h2 class="font-bold sm:text-lg lg:text-[26px] xl:text-[32px] px-4 text-black">All Offers from McDonald's East London</h2>
+                <h2 class="font-bold sm:text-lg lg:text-[26px] xl:text-[32px] px-4 text-black">All Offers from
+                    McDonald's East London</h2>
                 <div class="flex gap-2 items-center border-1 p-2 lg:mb-2 rounded-xl border-[#03081F]">
                     <img src="assets/svgs/search.svg" alt="Search">
                     <input type="search" name="search-menu" id="search-menu" placeholder="Search From menu...">
                 </div>
             </div>
         </section>
+        <!-- Section 2 -->
+        <section class="my-4 flex flex-col gap-8">
+            <!-- Products Navigation bar -->
+            <ul
+                class="max-w-[1500px] text-white font-bold flex justify-evenly gap-4 flex-wrap w-full text-lg bg-[#FC8A06] px-4 py-4">
+                <li class="bg-black text-white py-1 px-5 rounded-[120px]">Offers</li>
+                <li class="py-1 px-5">Burgers</li>
+                <li class="py-1 px-5">Fries</li>
+                <li class="py-1 px-5">Snacks</li>
+                <li class="py-1 px-5">Salads</li>
+                <li class="py-1 px-5">Cold Drinks</li>
+                <li class="py-1 px-5">Happy Meal &copy;</li>
+                <li class="py-1 px-5">Desserts</li>
+                <li class="py-1 px-5">Hot drinks</li>
+                <li class="py-1 px-5">Sauces</li>
+                <li class="py-1 px-5">Orbit &copy;</li>
+            </ul>
+
+            <h2 class="font-extrabold m-4 text-4xl">Burgers</h2>
+
+            <!-- Burgers Section -->
+            <section class="grid lg:grid-cols-2 justify-items-center gap-6 2xl:grid-cols-3">
+                <!-- Article 01 -->
+                <article class="flex flex-col sm:flex-row gap-4 w-[90%] sm:w-[600px] md:w-[700px] lg:w-[500px] py-7 px-7 rounded-2xl shadow-[0_0_15px_5px_rgba(0,0,0,0.2)]">
+                    <!-- Text Section -->
+                    <div class="sm:w-1/2 flex flex-col justify-between gap-6">
+                        <h3 class="text-xl font-bold">Royal Cheese Burgers with Extra Fries</h3>
+                        <p class="md:text-xl lg:text-base">1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium</p>
+                        <p class="text-lg font-bold md:text-xl lg:text-base">GBP 23.10</p>
+                    </div>
+
+                    <!-- Img Section -->
+                    <div class="sm:w-1/2 relative">
+                        <img src="assets/images/section2-card-img1.png" class="h-full w-full object-cover object-center"
+                            alt="Order">
+                        <div
+                            class="bg-white/90 w-[88px] h-[81px] rounded-tl-[48px] absolute bottom-0 right-0 flex justify-center items-center">
+                            <img src="assets/svgs/add-icon.svg" class="" alt="Add">
+                        </div>
+                    </div>
+                </article>
+                <!-- Article 02 -->
+                <article class="flex flex-col sm:flex-row gap-4 w-[90%] sm:w-[600px] md:w-[700px] lg:w-[500px] py-7 px-7 rounded-2xl shadow-[0_0_15px_5px_rgba(0,0,0,0.2)]">
+                    <!-- Text Section -->
+                    <div class="sm:w-1/2 flex flex-col justify-between gap-6">
+                        <h3 class="text-xl font-bold">Royal Cheese Burgers with Extra Fries</h3>
+                        <p class="md:text-xl lg:text-base">1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium</p>
+                        <p class="text-lg font-bold md:text-xl lg:text-base">GBP 23.10</p>
+                    </div>
+
+                    <!-- Img Section -->
+                    <div class="sm:w-1/2 relative">
+                        <img src="assets/images/section2-card-img1.png" class="h-full w-full object-cover object-center"
+                            alt="Order">
+                        <div
+                            class="bg-white/90 w-[88px] h-[81px] rounded-tl-[48px] absolute bottom-0 right-0 flex justify-center items-center">
+                            <img src="assets/svgs/add-icon.svg" class="" alt="Add">
+                        </div>
+                    </div>
+                </article>
+                <!-- Article 03 -->
+                <article class="flex flex-col sm:flex-row gap-4 w-[90%] sm:w-[600px] md:w-[700px] lg:w-[500px] py-7 px-7 rounded-2xl shadow-[0_0_15px_5px_rgba(0,0,0,0.2)]">
+                    <!-- Text Section -->
+                    <div class="sm:w-1/2 flex flex-col justify-between gap-6">
+                        <h3 class="text-xl font-bold">Royal Cheese Burgers with Extra Fries</h3>
+                        <p class="md:text-xl lg:text-base">1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium</p>
+                        <p class="text-lg font-bold md:text-xl lg:text-base">GBP 23.10</p>
+                    </div>
+
+                    <!-- Img Section -->
+                    <div class="sm:w-1/2 relative">
+                        <img src="assets/images/section2-card-img1.png" class="h-full w-full object-cover object-center"
+                            alt="Order">
+                        <div
+                            class="bg-white/90 w-[88px] h-[81px] rounded-tl-[48px] absolute bottom-0 right-0 flex justify-center items-center">
+                            <img src="assets/svgs/add-icon.svg" class="" alt="Add">
+                        </div>
+                    </div>
+                </article>
+                <!-- Article 04 -->
+                <article class="flex flex-col sm:flex-row gap-4 w-[90%] sm:w-[600px] md:w-[700px] lg:w-[500px] py-7 px-7 rounded-2xl shadow-[0_0_15px_5px_rgba(0,0,0,0.2)]">
+                    <!-- Text Section -->
+                    <div class="sm:w-1/2 flex flex-col justify-between gap-6">
+                        <h3 class="text-xl font-bold">Royal Cheese Burgers with Extra Fries</h3>
+                        <p class="md:text-xl lg:text-base">1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium</p>
+                        <p class="text-lg font-bold md:text-xl lg:text-base">GBP 23.10</p>
+                    </div>
+
+                    <!-- Img Section -->
+                    <div class="sm:w-1/2 relative">
+                        <img src="assets/images/section2-card-img1.png" class="h-full w-full object-cover object-center"
+                            alt="Order">
+                        <div
+                            class="bg-white/90 w-[88px] h-[81px] rounded-tl-[48px] absolute bottom-0 right-0 flex justify-center items-center">
+                            <img src="assets/svgs/add-icon.svg" class="" alt="Add">
+                        </div>
+                    </div>
+                </article>
+                <!-- Article 05 -->
+                <article class="flex flex-col sm:flex-row gap-4 w-[90%] sm:w-[600px] md:w-[700px] lg:w-[500px] py-7 px-7 rounded-2xl shadow-[0_0_15px_5px_rgba(0,0,0,0.2)]">
+                    <!-- Text Section -->
+                    <div class="sm:w-1/2 flex flex-col justify-between gap-6">
+                        <h3 class="text-xl font-bold">Royal Cheese Burgers with Extra Fries</h3>
+                        <p class="md:text-xl lg:text-base">1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium</p>
+                        <p class="text-lg font-bold md:text-xl lg:text-base">GBP 23.10</p>
+                    </div>
+
+                    <!-- Img Section -->
+                    <div class="sm:w-1/2 relative">
+                        <img src="assets/images/section2-card-img1.png" class="h-full w-full object-cover object-center"
+                            alt="Order">
+                        <div
+                            class="bg-white/90 w-[88px] h-[81px] rounded-tl-[48px] absolute bottom-0 right-0 flex justify-center items-center">
+                            <img src="assets/svgs/add-icon.svg" class="" alt="Add">
+                        </div>
+                    </div>
+                </article>
+                <!-- Article 06 -->
+                <article class="flex flex-col sm:flex-row gap-4 w-[90%] sm:w-[600px] md:w-[700px] lg:w-[500px] py-7 px-7 rounded-2xl shadow-[0_0_15px_5px_rgba(0,0,0,0.2)]">
+                    <!-- Text Section -->
+                    <div class="sm:w-1/2 flex flex-col justify-between gap-6">
+                        <h3 class="text-xl font-bold">Royal Cheese Burgers with Extra Fries</h3>
+                        <p class="md:text-xl lg:text-base">1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium</p>
+                        <p class="text-lg font-bold md:text-xl lg:text-base">GBP 23.10</p>
+                    </div>
+
+                    <!-- Img Section -->
+                    <div class="sm:w-1/2 relative">
+                        <img src="assets/images/section2-card-img1.png" class="h-full w-full object-cover object-center"
+                            alt="Order">
+                        <div
+                            class="bg-white/90 w-[88px] h-[81px] rounded-tl-[48px] absolute bottom-0 right-0 flex justify-center items-center">
+                            <img src="assets/svgs/add-icon.svg" class="" alt="Add">
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </section>
+
+        <!-- Section 3 -->
+        
+
     </div>
-
-    <!-- Section 2 -->
-    <section>
-        <!-- Products Navigation bar -->
-        <ul>
-
-        </ul>
-    </section>
 
     <script src="script.js"></script>
 </body>
