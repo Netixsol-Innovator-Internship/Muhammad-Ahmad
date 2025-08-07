@@ -6,13 +6,25 @@
   --font-primary: "Space Mono", monospace;
 
   /* Primary */
+  /* Green 400 */
   --color-primary: hsl(172, 67%, 45%);
 
   /* Netral */
-  --green-900: hsl(183, 100%, 15%);
-  --grey-500: hsl(186, 14%, 43%);
-  --grey-400: hsl(184, 14%, 56%);
-  --grey-200: hsl(185, 41%, 84%);
-  --grey-50: hsl(189, 47%, 97%);
-  --white: hsl(0, 100%, 100%);
+  --green-900: hsl(183,100%,15%);
+  --grey-500: hsl(186,14%,43%);
+  --grey-400: hsl(184,14%,56%);
+  --grey-200: hsl(185,41%,84%);
+  --grey-50: hsl(189,47%,97%);
+  --white: hsl(0,100%,100%);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
