@@ -7,11 +7,8 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-200: oklch(88.5% 0.062 18.334);
-    --color-red-300: oklch(80.8% 0.114 19.571);
     --color-red-400: oklch(70.4% 0.191 22.216);
     --color-red-500: oklch(63.7% 0.237 25.331);
-    --color-red-600: oklch(57.7% 0.245 27.325);
     --color-white: #fff;
     --spacing: 0.25rem;
     --breakpoint-lg: 64rem;
@@ -219,18 +216,6 @@
   .w-\[80px\] {
     width: 80px;
   }
-  .w-\[100px\] {
-    width: 100px;
-  }
-  .w-auto {
-    width: auto;
-  }
-  .w-fit {
-    width: fit-content;
-  }
-  .w-min {
-    width: min-content;
-  }
   .w-screen {
     width: 100vw;
   }
@@ -243,14 +228,8 @@
   .max-w-screen-lg {
     max-width: var(--breakpoint-lg);
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -288,16 +267,9 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
   .border-\[1px\] {
     border-style: var(--tw-border-style);
     border-width: 1px;
-  }
-  .border-red-400 {
-    border-color: var(--color-red-400);
   }
   .border-red-500 {
     border-color: var(--color-red-500);
@@ -319,9 +291,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .p-1 {
-    padding: calc(var(--spacing) * 1);
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
@@ -415,18 +384,12 @@
   .text-white {
     color: var(--color-white);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
   .blur {
     --tw-blur: blur(8px);
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
-  .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .hover\:bg-\[\#9ee7df\] {
