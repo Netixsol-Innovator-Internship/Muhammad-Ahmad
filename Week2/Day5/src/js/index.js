@@ -808,7 +808,7 @@ const Router = {
         if (nav && !document.getElementById('logout-btn')) {
             const logoutBtn = document.createElement('button');
             logoutBtn.id = 'logout-btn';
-            logoutBtn.className = 'text-red-600 hover:text-red-700 font-medium';
+            logoutBtn.className = 'text-red-600 hover:text-red-700 font-medium cursor-pointer';
             logoutBtn.textContent = 'Logout';
             logoutBtn.addEventListener('click', () => {
                 AuthManager.logout();
@@ -908,7 +908,7 @@ function renderHomePage() {
                 <div class="my-6 grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Card 1 -->
                     <div
-                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 hover:scale-105 transition-transform">
+                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 hover:scale-105 transition-transform cursor-pointer">
                         <img src="assets/svgs/clock.svg" alt="General Knowledge" class="h-[18px] mb-4">
                         <h3 class="font-semibold text-lg mb-2">General Knowledge</h3>
                         <p class="text-[#61738A] text-sm">Test your overall knowledge with fun and challenging
@@ -916,7 +916,7 @@ function renderHomePage() {
                     </div>
                     <!-- Card 2 -->
                     <div
-                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 items-center hover:scale-105 transition-transform">
+                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 items-center hover:scale-105 transition-transform cursor-pointer">
                         <img src="assets/svgs/trophy.svg" alt="Science & Tech" class="h-[18px] mb-4">
                         <h3 class="font-semibold text-lg mb-2">Science & Tech</h3>
                         <p class="text-[#61738A] text-sm">Explore quizzes on science, technology, and innovation.
@@ -924,7 +924,7 @@ function renderHomePage() {
                     </div>
                     <!-- Card 3 -->
                     <div
-                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 items-center hover:scale-105 transition-transform">
+                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 items-center hover:scale-105 transition-transform cursor-pointer">
                         <img src="assets/svgs/progress-graph.svg" alt="History" class="h-[18px] mb-4">
                         <h3 class="font-semibold text-lg mb-2">History</h3>
                         <p class="text-[#61738A] text-sm">Dive into the past with quizzes on world history and
@@ -950,8 +950,8 @@ function renderDashboardPage() {
             <a href=\"index.html\"><img src=\"assets/svgs/logo.svg\" alt=\"Logo\"></a>
             <div class=\"flex items-center gap-6\">
                 <ul class=\"hidden md:flex gap-6 items-center\">
-                    <li><button onclick=\"navigateToPage('home')\" class=\"hover:text-blue-600\">Home</button></li>
-                    <li><button onclick=\"navigateToPage('quiz-selection')\" class=\"hover:text-blue-600\">Quizzes</button></li>
+                    <li><button onclick=\"navigateToPage('home')\" class=\"hover:text-blue-600 cursor-pointer\">Home</button></li>
+                    <li><button onclick=\"navigateToPage('quiz-selection')\" class=\"hover:text-blue-600 cursor-pointer\">Quizzes</button></li>
                     <li><a href=\"#\">LeaderBoard</a></li>
                     <li><a href=\"#\">Profile</a></li>
                 </ul>
@@ -1123,7 +1123,7 @@ function renderQuizSelectionPage() {
             <div class="flex items-center gap-2 md:gap-4">
                 <a href="index.html"><img src="assets/svgs/logo.svg" class="h-5" alt="Logo"></a>
                 <ul class="hidden md:flex gap-6 items-center">
-                    <li><button onclick="navigateToPage('dashboard')" class="hover:text-blue-600">Dashboard</button></li>
+                    <li><button onclick="navigateToPage('dashboard')" class="hover:text-blue-600 cursor-pointer">Dashboard</button></li>
                     <li><a href="#">Categories</a></li>
                     <li><a href="#">My Quizzes</a></li>
                     <li><a href="#">Leaderboard</a></li>
@@ -1153,12 +1153,12 @@ function renderQuizSelectionPage() {
 
             <!-- Quiz Filters -->
             <ul class="flex gap-3">
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl"><a href="#">All</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl"><a href="#">HTML</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl"><a href="#">CSS</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl"><a href="#">JavaScript</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl"><a href="#">React</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl"><a href="#">Node.js</a></li>
+                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">All</a></li>
+                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">HTML</a></li>
+                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">CSS</a></li>
+                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">JavaScript</a></li>
+                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">React</a></li>
+                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">Node.js</a></li>
             </ul>
         </div>
 
@@ -1298,17 +1298,17 @@ function renderQuizPage() {
             <!-- Navigation Buttons -->
             <div class="flex justify-between items-center">
                 <div class="flex gap-4">
-                    <button onclick="navigateToPage('quiz-selection')" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium">
+                    <button onclick="navigateToPage('quiz-selection')" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium cursor-pointer">
                         Exit Quiz
                     </button>
                     ${QuizManager.currentQuestionIndex > 0 ? 
-                        '<button onclick="previousQuizQuestion()" class="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium">Previous</button>' : 
+                        '<button onclick="previousQuizQuestion()" class="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium cursor-pointer">Previous</button>' : 
                         ''}
                 </div>
                 <div class="flex gap-4">
                     ${QuizManager.currentQuestionIndex < QuizManager.currentQuiz.questions.length - 1 ? 
-                        '<button onclick="nextQuizQuestion()" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">Next</button>' : 
-                        '<button onclick="submitCurrentQuiz()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium">Finish Quiz</button>'}
+                        '<button onclick="nextQuizQuestion()" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium cursor-pointer">Next</button>' : 
+                        '<button onclick="submitCurrentQuiz()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium cursor-pointer">Finish Quiz</button>'}
                 </div>
             </div>
 
@@ -1327,61 +1327,49 @@ function renderReviewIncorrectAnswersPage() {
     }
 
     const section = document.createElement("section");
+    section.className = "font-primary";
     section.innerHTML = `<!-- Container -->
-    <div class=\"max-w-screen-2xl mx-auto\">
-        <nav class=\"flex justify-between items-center border-b-[1px] border-[#61738A] px-4 md:px-6 py-3\">
-            <a href=\"index.html\"><img src=\"assets/svgs/logo.svg\" alt=\"Logo\"></a>
-            <div class=\"flex items-center gap-6\">
-                <ul class=\"hidden md:flex gap-6 items-center\">
-                    <li><a href=\"index.html\">Home</a></li>
-                    <li><a href=\"#\">Quizzes</a></li>
-                    <li><a href=\"#\">LeaderBoard</a></li>
-                    <li><a href=\"#\">Profile</a></li>
+    <div class="max-w-screen-2xl mx-auto">
+        <!-- NavBar -->
+        <nav class="flex justify-between items-center border-b-[1px] border-[#61738A] px-4 md:px-6 py-3">
+            <a href="index.html"><img src="assets/svgs/logo.svg" alt="Logo"></a>
+            <div class="flex items-center gap-6">
+                <ul class="hidden md:flex gap-6 items-center">
+                    <li><button onclick="navigateToPage('home')" class="hover:text-blue-600 cursor-pointer">Home</button></li>
+                    <li><button onclick="navigateToPage('quiz-selection')" class="hover:text-blue-600 cursor-pointer">Quizzes</button></li>
+                    <li><a href="#">LeaderBoard</a></li>
+                    <li><a href="#">Profile</a></li>
                 </ul>
-                <img src=\"assets/svgs/hamburger-menu.svg\" class=\"h-6 md:hidden\" alt=\"Open Sidebar\">
-                <div class=\"bg-[#F0F2F5] rounded-md p-[6px]\"><img src=\"assets/svgs/bell-icon.svg\" alt=\"Notificaions\"></div>
-                <div><img src=\"assets/images/profile-pic-small.png\" class=\"h-8\" alt=\"Profile pic\"></div>
+                <img src="assets/svgs/hamburger-menu.svg" class="h-6 md:hidden" alt="Open Sidebar">
+                <div class="bg-[#F0F2F5] rounded-md p-[6px]"><img src="assets/svgs/bell-icon.svg" alt="Notificaions"></div>
+                <div><img src="assets/images/profile-pic-small.png" class="h-8" alt="Profile pic"></div>
             </div>
         </nav>
     </div>
-    <div class=\"max-w-screen-lg mx-auto px-4\">
-        <section class=\"py-12\">
-            <h1 class=\"text-2xl md:text-3xl font-bold text-gray-900 mb-8\">Review Incorrect Answers - ${result.quiz}</h1>
+
+    <div class="max-w-screen-lg mx-auto px-4">
+        <section class="py-12">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">Review Incorrect Answers</h1>
             
-            ${result.incorrectAnswers.length === 0 ? 
-                `<div class=\"text-center py-12\">
-                    <div class=\"text-green-600 text-xl font-semibold mb-4\">Perfect Score!</div>
-                    <p class=\"text-gray-600\">You answered all questions correctly. Great job!</p>
-                </div>` :
-                `<div class=\"space-y-8\">
-                    <div class=\"bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6\">
-                        <p class=\"text-blue-800\">
-                            <strong>Review Summary:</strong> You got ${result.incorrectAnswers.length} out of ${result.score.total} questions wrong. 
-                            Review these questions to improve your understanding.
-                        </p>
+            <div id="incorrect-answers-list" class="space-y-8">
+                ${result.incorrectAnswers.length === 0 ? 
+                    `<div class="text-center py-12">
+                        <div class="text-green-600 text-xl font-semibold mb-4">Perfect Score!</div>
+                        <p class="text-gray-600">You answered all questions correctly. Great job!</p>
+                    </div>` :
+                    result.incorrectAnswers.map(item => `
+                    <div class="space-y-2">
+                        <h2 class="text-lg font-semibold text-gray-800">Question ${item.questionIndex}</h2>
+                        <p class="text-base text-gray-700">${escapeHtml(item.question)}</p>
+                        <p class="text-base text-gray-700"><span class="font-medium">Your answer:</span> ${escapeHtml(item.userAnswer)}</p>
+                        <p class="text-base text-gray-700"><span class="font-medium">Correct answer:</span> ${escapeHtml(item.correctAnswer)}</p>
                     </div>
-                    
-                    ${result.incorrectAnswers.map(item => `
-                    <div class=\"bg-white border border-gray-200 rounded-lg p-6 shadow-sm\">
-                        <h2 class=\"text-lg font-semibold text-gray-800 mb-3\">Question ${item.questionIndex}</h2>
-                        <p class=\"text-base text-gray-700 mb-4\">${item.question}</p>
-                        <div class=\"space-y-2\">
-                            <div class=\"p-3 bg-red-50 border border-red-200 rounded\">
-                                <span class=\"font-medium text-red-700\">Your answer:</span> 
-                                <span class=\"text-red-600\">${item.userAnswer}</span>
-                            </div>
-                            <div class=\"p-3 bg-green-50 border border-green-200 rounded\">
-                                <span class=\"font-medium text-green-700\">Correct answer:</span> 
-                                <span class=\"text-green-600\">${item.correctAnswer}</span>
-                            </div>
-                        </div>
-                    </div>
-                    `).join('')}
-                </div>`
-            }
+                    `).join('')
+                }
+            </div>
             
-            <div class=\"flex justify-center mt-12\">
-                <button onclick=\"navigateToPage('quiz-selection')\" class=\"px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium\">Back to Quizzes</button>
+            <div class="flex justify-end mt-12">
+                <button onclick="navigateToPage('quiz-selection')" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium cursor-pointer">Back to Quizzes</button>
             </div>
         </section>
     </div>`;
@@ -1402,11 +1390,11 @@ function renderSignInPage() {
             <form class=\"space-y-4\">
                 <input type=\"email\" placeholder=\"Email\" name=\"email\" id=\"email\" class=\"w-full border border-gray-300 bg-[#F0F2F5] rounded-md p-4 focus:outline-none focus:ring-2 focus:ring-blue-500\" required />
                 <input type=\"password\" placeholder=\"Password\" name=\"password\" id=\"password\" class=\"w-full border border-gray-300 bg-[#F0F2F5] rounded-md p-4 focus:outline-none focus:ring-2 focus:ring-blue-500\" required />
-                <button type=\"submit\" class=\"w-full bg-blue-600 text-white rounded-md py-3 font-semibold hover:bg-blue-700 transition-colors\">Sign In</button>
+                <button type=\"submit\" class=\"w-full bg-blue-600 text-white rounded-md py-3 font-semibold hover:bg-blue-700 transition-colors cursor-pointer\">Sign In</button>
             </form>
             <div class=\"text-center mt-6\">
                 <p class=\"text-gray-600\">Don't have an account? 
-                    <button onclick=\"navigateToPage('signup')\" class=\"text-blue-600 hover:text-blue-700 font-medium\">Sign up here</button>
+                    <button onclick=\"navigateToPage('signup')\" class=\"text-blue-600 hover:text-blue-700 font-medium cursor-pointer\">Sign up here</button>
                 </p>
             </div>
         </div>
@@ -1430,11 +1418,11 @@ function renderSignUpPage() {
                 <input type=\"email\" placeholder=\"Email\" name=\"email\" id=\"email\" class=\"w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500\" required />
                 <input type=\"password\" placeholder=\"Password (min 6 characters)\" name=\"password\" id=\"password\" class=\"w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500\" required minlength=\"6\" />
                 <input type=\"password\" placeholder=\"Confirm Password\" name=\"confirm-password\" id=\"confirm-password\" class=\"w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500\" required />
-                <button type=\"submit\" class=\"w-full bg-blue-600 text-white rounded-md py-3 font-semibold hover:bg-blue-700 transition-colors\">Sign Up</button>
+                <button type=\"submit\" class=\"w-full bg-blue-600 text-white rounded-md py-3 font-semibold hover:bg-blue-700 transition-colors cursor-pointer\">Sign Up</button>
             </form>
             <div class=\"text-center mt-6\">
                 <p class=\"text-gray-600\">Already have an account? 
-                    <button onclick=\"navigateToPage('signin')\" class=\"text-blue-600 hover:text-blue-700 font-medium\">Sign in here</button>
+                    <button onclick=\"navigateToPage('signin')\" class=\"text-blue-600 hover:text-blue-700 font-medium cursor-pointer\">Sign in here</button>
                 </p>
             </div>
         </div>
