@@ -1,12 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
     <link rel="stylesheet" href="output.css">
 </head>
-<body>
-    
+
+<body class="font-primary">
+
+    <div id="home page">
+
+        <nav class="flex justify-between items-center px-4 md:px-6 py-2">
+            <a href="index.html"><img src="assets/svgs/logo.svg" alt="Logo"></a>
+            <div class="flex items-center gap-6">
+                <ul class="hidden md:flex gap-4 items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Quizzes</a></li>
+                    <li><a href="#">LeaderBoard</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+                <img src="assets/svgs/hamburger-menu.svg" class="h-6 md:hidden" alt="Open Sidebar">
+                <div class="bg-[#F0F2F5] rounded-md p-[6px]"><img src="assets/svgs/bell-icon.svg" alt="Notificaions">
+                </div>
+                <div><img src="assets/images/profile-pic.png" class="h-8" alt="Profile pic"></div>
+            </div>
+        </nav>
+        <div class="max-w-screen-lg mx-auto px-4">
+            <!-- Hero Section -->
+            <section
+                class="relative min-h-[400px] my-10 rounded-xl p-4 bg-[url('assets/images/home-hero-img.png')] bg-cover bg-center">
+                <!-- Dark overlay -->
+                <div class="absolute inset-0 rounded-xl bg-black/40"></div>
+                <div class="absolute top-[15%] min-[625px]:top-[30%] min-[815px]:top-[35%] z-1 text-white p-8 ">
+                    <div class="w-full min-[815px]:max-w-[80%] min-[815px]:mx-auto text-center flex flex-col gap-4">
+                        <h1 class="text-3xl min-[815px]:text-5xl font-bold">Welcome to QuizMaster</h1>
+                        <p>Test your knowledge with our engaging quizzes. Compete with friends and climb the
+                            leaderboard.
+                            Start your quiz journey today!
+                        <p>
+                            <button class="bg-[#0D78F2] py-2 px-4 rounded-lg mt-2 cursor-pointer" id="get-started-btn">Get Started</button>
+                    </div>
+                </div>
+            </section>
+            <div class="my-12">
+                <h2 class="text-2xl md:text-3xl font-bold">Featured Quizzes</h2>
+                <p class="text-[#121417] my-2">Challenge yourself with our top quizzes. Pick a category and start
+                    playing!</p>
+                <div class="my-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 hover:scale-105 transition-transform">
+                        <img src="assets/svgs/clock.svg" alt="General Knowledge" class="h-[18px] mb-4">
+                        <h3 class="font-semibold text-lg mb-2">General Knowledge</h3>
+                        <p class="text-[#61738A] text-sm">Test your overall knowledge with fun and challenging
+                            questions.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 items-center hover:scale-105 transition-transform">
+                        <img src="assets/svgs/trophy.svg" alt="Science & Tech" class="h-[18px] mb-4">
+                        <h3 class="font-semibold text-lg mb-2">Science & Tech</h3>
+                        <p class="text-[#61738A] text-sm">Explore quizzes on science, technology, and innovation.
+                        </p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-white rounded-xl border-1 border-[#DBE0E5] py-6 px-4 items-center hover:scale-105 transition-transform">
+                        <img src="assets/svgs/progress-graph.svg" alt="History" class="h-[18px] mb-4">
+                        <h3 class="font-semibold text-lg mb-2">History</h3>
+                        <p class="text-[#61738A] text-sm">Dive into the past with quizzes on world history and
+                            events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </body>
+
 </html>
