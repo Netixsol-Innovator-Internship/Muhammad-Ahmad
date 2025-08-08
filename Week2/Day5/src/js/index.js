@@ -624,9 +624,19 @@ const AuthManager = {
 // Simple router
 const Router = {
     currentPage: 'home',
+    currentFilter: 'all', // Add filter state
     
     navigate(page) {
         this.currentPage = page;
+        // Reset filter when navigating to quiz-selection
+        if (page === 'quiz-selection') {
+            this.currentFilter = 'all';
+        }
+        this.render();
+    },
+
+    setFilter(filter) {
+        this.currentFilter = filter.toLowerCase();
         this.render();
     },
 
@@ -824,6 +834,11 @@ function navigateToPage(page) {
     Router.navigate(page);
 }
 
+// Global filter function
+function setQuizFilter(filter) {
+    Router.setFilter(filter);
+}
+
 // Helper function to escape HTML
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -965,7 +980,7 @@ function renderDashboardPage() {
         <!-- Image Section -->
         <section>
             <div class=\"my-6 space-y-[2px] flex flex-col items-center\">
-                <img src=\"assets/images/profile-pic-big.png\" class=\"h-32 w-32\" alt=\"Profile Pic\">
+                <img src=\"assets/images/default-profile-pic.jpg\" class=\"h-32 w-32\" alt=\"Profile Pic\">
                 <p class=\"font-semibold text-lg\">${currentUser ? currentUser.fullName : 'Sophia Bennett'}</p>
                 <p class=\"text-[#61738A] text-sm\">Quiz Enthusiast</p>
                 <p class=\"text-[#61738A] text-[12px]\">Joined ${currentUser ? new Date(currentUser.joinedDate).getFullYear() : '2021'}</p>
@@ -1115,6 +1130,18 @@ function renderQuizResultsPage() {
 
 function renderQuizSelectionPage() {
     const quizzes = QuizData.getAllQuizzes();
+    const currentFilter = Router.currentFilter;
+    
+    // Filter quizzes based on current filter
+    const filteredQuizzes = currentFilter === 'all' 
+        ? quizzes 
+        : quizzes.filter(quiz => quiz.id === currentFilter);
+    
+    // Determine section heading based on filter
+    const sectionHeading = currentFilter === 'all' 
+        ? 'All Quizzes' 
+        : `${quizzes.find(q => q.id === currentFilter)?.title || currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1)} Quizzes`;
+    
     const section = document.createElement("section");
     section.innerHTML = `<!-- Container -->
     <div class="max-w-screen-2xl mx-auto">
@@ -1153,12 +1180,24 @@ function renderQuizSelectionPage() {
 
             <!-- Quiz Filters -->
             <ul class="flex gap-3">
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">All</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">HTML</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">CSS</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">JavaScript</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">React</a></li>
-                <li class="bg-[#F0F2F5] py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors"><a href="#">Node.js</a></li>
+                <li class="${currentFilter === 'all' ? 'bg-blue-200 border-blue-400' : 'bg-[#F0F2F5]'} py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors border" onclick="setQuizFilter('all')">
+                    <span>All</span>
+                </li>
+                <li class="${currentFilter === 'html' ? 'bg-blue-200 border-blue-400' : 'bg-[#F0F2F5]'} py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors border" onclick="setQuizFilter('html')">
+                    <span>HTML</span>
+                </li>
+                <li class="${currentFilter === 'css' ? 'bg-blue-200 border-blue-400' : 'bg-[#F0F2F5]'} py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors border" onclick="setQuizFilter('css')">
+                    <span>CSS</span>
+                </li>
+                <li class="${currentFilter === 'javascript' ? 'bg-blue-200 border-blue-400' : 'bg-[#F0F2F5]'} py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors border" onclick="setQuizFilter('javascript')">
+                    <span>JavaScript</span>
+                </li>
+                <li class="${currentFilter === 'react' ? 'bg-blue-200 border-blue-400' : 'bg-[#F0F2F5]'} py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors border" onclick="setQuizFilter('react')">
+                    <span>React</span>
+                </li>
+                <li class="${currentFilter === 'nodejs' ? 'bg-blue-200 border-blue-400' : 'bg-[#F0F2F5]'} py-1 px-3 rounded-xl cursor-pointer hover:bg-gray-300 transition-colors border" onclick="setQuizFilter('nodejs')">
+                    <span>Node.js</span>
+                </li>
             </ul>
         </div>
 
@@ -1185,10 +1224,10 @@ function renderQuizSelectionPage() {
 
         <!-- All Quizzes Section -->
         <section class="my-12">
-            <h2 class="text-xl sm:text-2xl mb-4 sm:mb-6">All Quizzes</h2>
+            <h2 class="text-xl sm:text-2xl mb-4 sm:mb-6">${sectionHeading}</h2>
 
             <div>
-                ${quizzes.map(quiz => `
+                ${filteredQuizzes.length > 0 ? filteredQuizzes.map(quiz => `
                 <article class="mx-auto flex flex-col gap-2 justify-between items-center w-fit p-4 sm:flex-row sm:w-auto shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="startQuiz('${quiz.id}')">
                     <!-- Text Section -->
                     <div class="px-2 py-4">
@@ -1202,7 +1241,11 @@ function renderQuizSelectionPage() {
                         <img src="${quiz.image}" class="max-h-[170px]" alt="${quiz.title} Logo">
                     </div>
                 </article>
-                `).join('')}
+                `).join('') : `
+                <div class="text-center py-12">
+                    <p class="text-gray-500 text-lg">No quizzes found for the selected category.</p>
+                </div>
+                `}
             </div>
         </section>
 
