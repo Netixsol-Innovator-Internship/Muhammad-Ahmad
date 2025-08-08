@@ -12,35 +12,43 @@
 
     <div id="home page">
 
-        <nav class="flex justify-between items-center px-4 md:px-6 py-2">
-            <a href="index.html"><img src="assets/svgs/logo.svg" alt="Logo"></a>
-            <div class="flex items-center gap-6">
-                <ul class="hidden md:flex gap-4 items-center">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Quizzes</a></li>
-                    <li><a href="#">LeaderBoard</a></li>
-                    <li><a href="#">Profile</a></li>
-                </ul>
-                <img src="assets/svgs/hamburger-menu.svg" class="h-6 md:hidden" alt="Open Sidebar">
-                <div class="bg-[#F0F2F5] rounded-md p-[6px]"><img src="assets/svgs/bell-icon.svg" alt="Notificaions">
+        <!-- Container -->
+        <div class="max-w-screen-2xl mx-auto">
+            <nav class="flex justify-between items-center border-b-[1px] border-[#61738A] px-4 md:px-6 py-3">
+                <a href="index.html"><img src="assets/svgs/logo.svg" alt="Logo"></a>
+                <div class="flex items-center gap-6">
+                    <ul class="hidden md:flex gap-6 items-center">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Quizzes</a></li>
+                        <li><a href="#">LeaderBoard</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul>
+                    <img src="assets/svgs/hamburger-menu.svg" class="h-6 md:hidden" alt="Open Sidebar">
+                    <div class="bg-[#F0F2F5] rounded-md p-[6px]"><img src="assets/svgs/bell-icon.svg" alt="Notificaions">
+                    </div>
+                    <div><img src="assets/images/profile-pic.png" class="h-8" alt="Profile pic"></div>
                 </div>
-                <div><img src="assets/images/profile-pic.png" class="h-8" alt="Profile pic"></div>
-            </div>
-        </nav>
-        <div class="max-w-screen-lg mx-auto px-4">
+            </nav>
+        </div>
+
+        <!-- Container -->
+        <div class="max-w-screen-xl mx-auto px-4">
             <!-- Hero Section -->
             <section
                 class="relative min-h-[400px] my-10 rounded-xl p-4 bg-[url('assets/images/home-hero-img.png')] bg-cover bg-center">
                 <!-- Dark overlay -->
                 <div class="absolute inset-0 rounded-xl bg-black/40"></div>
-                <div class="absolute top-[15%] min-[625px]:top-[30%] min-[815px]:top-[35%] z-1 text-white p-8 ">
-                    <div class="w-full min-[815px]:max-w-[80%] min-[815px]:mx-auto text-center flex flex-col gap-4">
+
+                <div class="absolute top-[15%] min-[625px]:top-[30%] min-[815px]:top-[35%] w-full z-1 text-white p-8 ">
+                    
+                    <div class="w-full min-[815px]:max-w-[80%] mx-auto text-center flex flex-col gap-4">
                         <h1 class="text-3xl min-[815px]:text-5xl font-bold">Welcome to QuizMaster</h1>
                         <p>Test your knowledge with our engaging quizzes. Compete with friends and climb the
                             leaderboard.
                             Start your quiz journey today!
                         <p>
-                            <button class="bg-[#0D78F2] py-2 px-4 rounded-lg mt-2 cursor-pointer" id="get-started-btn">Get Started</button>
+                            <button class="bg-[#0D78F2] py-2 px-4 rounded-lg mt-2 cursor-pointer"
+                                id="get-started-btn">Get Started</button>
                     </div>
                 </div>
             </section>
