@@ -15,4 +15,4 @@ Build a responsive Age Calculator web app. The user enters their date of birth (
   - Prevents calculation if any validation fails.
 
 ## Live Preview:
-**Preview:** [ahmad-week2-day1-calculator.vercel.app](https://ahmad-week2-day1-calculator)
+**Preview:** [ahmad-week2-day1-calculator.vercel.app](https://ahmad-week2-day1-calculator.vercel.app)
