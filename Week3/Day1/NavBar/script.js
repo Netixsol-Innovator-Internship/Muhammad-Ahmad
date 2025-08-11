@@ -28,3 +28,21 @@ function toggleDropDown () {
 toggleDropDownBtn.addEventListener("click", () => {
     toggleDropDown();
 });
+
+// Activate Links functionality
+let activeLink = document.querySelector(`li[data-active="true"]`);
+const uls = document.querySelectorAll("ul");
+
+uls.forEach(ul => {
+    ul.addEventListener("click", (event) => {
+        let target = event.target.closest("li");
+
+        if (!(target instanceof HTMLLIElement)) return;
+
+        activeLink.dataset.active = "false";
+
+        activeLink = target;
+
+        activeLink.dataset.active = "true";
+    })
+})
