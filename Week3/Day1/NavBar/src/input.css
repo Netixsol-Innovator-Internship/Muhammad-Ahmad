@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+.bg-button-gradient {
+    background: linear-gradient(83.21deg, #3B0066 -130.25%, #175FC4 -5.2%, #00E1E7 140.51%, #00F7E0 172.5%, #00FFDD 192.89%);
+}
+
+li[data-active="true"] {
+    border-bottom: 1px solid;
+    border-image-source: linear-gradient(270deg, #08BBDD 0%, #1668C7 100%);
+    border-image-slice: 1;
+    color: black;
+}
+
+li[data-active="false"] {
+    color: #828282;
+}
+
+@font-face {
+    font-family: 'Avenir Arabic Medium';
+    src: url('../assets/fonts/avenir-arabic-medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@theme {
+    --font-primary: 'Avenir Arabic Medium', sans-serif;
+
+    --breakpoint-*: initial;
+    --breakpoint-xl: 1920px;
+    --breakpoint-lg: 1440px;
+    --breakpoint-md: 744px;
+    --breakpoint-sm: 390px;
+}
