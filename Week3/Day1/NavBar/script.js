@@ -30,19 +30,19 @@ toggleDropDownBtn.addEventListener("click", () => {
 });
 
 // Activate Links functionality
-let activeLink = document.querySelector(`li[data-active="true"]`);
-const uls = document.querySelectorAll("ul");
+const navUls = document.querySelectorAll("nav>ul, section>ul");
 
-uls.forEach(ul => {
+navUls.forEach(ul => {
     ul.addEventListener("click", (event) => {
-        let target = event.target.closest("li");
+        let target = event.target.closest("li[data-active]");
+        if (!target) return;
 
-        if (!(target instanceof HTMLLIElement)) return;
+        // Remove active from all links in this ul
+        ul.querySelectorAll("li[data-active]").forEach(li => {
+            li.dataset.active = "false";
+        });
 
-        activeLink.dataset.active = "false";
-
-        activeLink = target;
-
-        activeLink.dataset.active = "true";
-    })
-})
+        // Set active to the clicked link
+        target.dataset.active = "true";
+    });
+});

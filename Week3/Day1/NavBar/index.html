@@ -20,17 +20,27 @@
             <ul class="hidden md:flex text-sm cursor-pointer lg:gap-2">
                 <li class="py-[6px] px-3" data-active="true"><a href="#">Home</a></li>
                 <li class="py-[6px] px-3" data-active="false"><a href="#">About Us</a></li>
-                <li class="py-[6px] px-3" data-active="false">
+                <li class="py-[6px] px-3 relative group" data-active="false">
                     <a href="#" class="flex lg:gap-1 items-center">
                         <span>Features</span>
                         <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
                     </a>
+                    <ul class="absolute left-0 pt-3 w-40 bg-white rounded-xl hidden group-hover:block">
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Feature 1</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Feature 2</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Feature 3</a></li>
+                    </ul>
                 </li>
-                <li class="py-[6px] px-3" data-active="false">
+                <li class="py-[6px] px-3 relative group" data-active="false">
                     <a href="#" class="flex lg:gap-1 items-center">
                         <span>Our Services</span>
                         <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
                     </a>
+                    <ul class="absolute left-0 pt-3 w-40 bg-white rounded-xl hidden group-hover:block">
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Service 1</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Service 2</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Service 3</a></li>
+                    </ul>
                 </li>
                 <li class="py-[6px] px-3" data-active="false"><a href="#">Why ADS?</a></li>
             </ul>
@@ -47,10 +57,10 @@
             </button>
         </nav>
 
-    <div id="separator" class="hidden md:hidden mx-6 border border-[#F0F0F0]"></div>
+        <div id="separator" class="hidden md:hidden mx-6 border border-[#F0F0F0]"></div>
 
         <!-- Drop Down menu -->
-    <section id="dropdown" class="hidden md:hidden bg-white py-5">
+        <section id="dropdown" class="hidden md:hidden bg-white py-5">
 
             <ul class="text-sm cursor-pointer grid gap-2 px-6">
                 <li class="py-2 px-3 flex justify-center w-full" data-active="true"><a href="#">Home</a>
@@ -76,8 +86,7 @@
                         ADS?</a></li>
 
                 <li class="mt-2">
-                    <button
-                        class="w-full py-2 px-6 text-[18px] text-white rounded-[8px] bg-button-gradient">
+                    <button class="w-full py-2 px-6 text-[18px] text-white rounded-[8px] bg-button-gradient">
                         <a href="#">Contact Us</a>
                     </button>
                 </li>
