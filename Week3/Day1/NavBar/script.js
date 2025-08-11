@@ -46,3 +46,27 @@ navUls.forEach(ul => {
         target.dataset.active = "true";
     });
 });
+
+// Mobile Dropdown Functionality
+const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+mobileDropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const parentLi = toggle.parentElement;
+        const dropdownContent = parentLi.querySelector('.mobile-dropdown-content');
+        const arrow = toggle.querySelector('img');
+        
+        // Toggle the dropdown
+        dropdownContent.classList.toggle('hidden');
+        
+        // Rotate the arrow
+        if (dropdownContent.classList.contains('hidden')) {
+            arrow.style.transform = 'rotate(0deg)';
+        } else {
+            arrow.style.transform = 'rotate(180deg)';
+        }
+    });
+});

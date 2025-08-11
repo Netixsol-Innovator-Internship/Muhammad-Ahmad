@@ -23,23 +23,23 @@
                 <li class="py-[6px] px-3 relative group" data-active="false">
                     <a href="#" class="flex lg:gap-1 items-center">
                         <span>Features</span>
-                        <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
+                        <img src="assets/svgs/down-arrow.svg" class="h-4 transition-transform duration-300 group-hover:rotate-180" alt="DropDown">
                     </a>
-                    <ul class="absolute left-0 pt-3 w-40 bg-white rounded-xl hidden group-hover:block">
-                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Feature 1</a></li>
-                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Feature 2</a></li>
-                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Feature 3</a></li>
+                    <ul class="absolute left-0 pt-3 w-40 bg-white rounded-xl shadow-lg border border-gray-100 hidden group-hover:block transform opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"><a href="#">Feature 1</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"><a href="#">Feature 2</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"><a href="#">Feature 3</a></li>
                     </ul>
                 </li>
                 <li class="py-[6px] px-3 relative group" data-active="false">
                     <a href="#" class="flex lg:gap-1 items-center">
                         <span>Our Services</span>
-                        <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
+                        <img src="assets/svgs/down-arrow.svg" class="h-4 transition-transform duration-300 group-hover:rotate-180" alt="DropDown">
                     </a>
-                    <ul class="absolute left-0 pt-3 w-40 bg-white rounded-xl hidden group-hover:block">
-                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Service 1</a></li>
-                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Service 2</a></li>
-                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100"><a href="#">Service 3</a></li>
+                    <ul class="absolute left-0 pt-3 w-40 bg-white rounded-xl shadow-lg border border-gray-100 hidden group-hover:block transform opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"><a href="#">Service 1</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"><a href="#">Service 2</a></li>
+                        <li class="px-4 py-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"><a href="#">Service 3</a></li>
                     </ul>
                 </li>
                 <li class="py-[6px] px-3" data-active="false"><a href="#">Why ADS?</a></li>
@@ -68,18 +68,28 @@
                 <li class="py-2 px-3 flex justify-center w-full" data-active="false"><a href="#">About
                         Us</a></li>
 
-                <li class="py-2 px-3 flex justify-center  w-full  gap-1" data-active="false">
-                    <a href="#" class="flex lg:gap-1 items-center">
+                <li class="py-2 px-3 w-full" data-active="false">
+                    <div class="mobile-dropdown-toggle flex justify-center items-center gap-1 cursor-pointer">
                         <span>Features</span>
-                        <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
-                    </a>
+                        <img src="assets/svgs/down-arrow.svg" class="h-4 transition-transform duration-200" alt="DropDown">
+                    </div>
+                    <ul class="mobile-dropdown-content hidden mt-2 space-y-1 text-center">
+                        <li class="py-1 px-2 text-gray-600 hover:text-gray-800"><a href="#">Feature 1</a></li>
+                        <li class="py-1 px-2 text-gray-600 hover:text-gray-800"><a href="#">Feature 2</a></li>
+                        <li class="py-1 px-2 text-gray-600 hover:text-gray-800"><a href="#">Feature 3</a></li>
+                    </ul>
                 </li>
 
-                <li class="py-2 px-3 flex justify-center w-full gap-1" data-active="false">
-                    <a href="#" class="flex lg:gap-1 items-center">
+                <li class="py-2 px-3 w-full" data-active="false">
+                    <div class="mobile-dropdown-toggle flex justify-center items-center gap-1 cursor-pointer">
                         <span>Our Services</span>
-                        <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
-                    </a>
+                        <img src="assets/svgs/down-arrow.svg" class="h-4 transition-transform duration-200" alt="DropDown">
+                    </div>
+                    <ul class="mobile-dropdown-content hidden mt-2 space-y-1 text-center">
+                        <li class="py-1 px-2 text-gray-600 hover:text-gray-800"><a href="#">Web Development</a></li>
+                        <li class="py-1 px-2 text-gray-600 hover:text-gray-800"><a href="#">Mobile Apps</a></li>
+                        <li class="py-1 px-2 text-gray-600 hover:text-gray-800"><a href="#">UI/UX Design</a></li>
+                    </ul>
                 </li>
 
                 <li class="py-2 px-3 flex justify-center w-full" data-active="false"><a href="#">Why
