@@ -81,7 +81,7 @@ let nextId = 3;
  */
 // GET all tasks
 app.get('/api/tasks', (req, res) => {
-	res.status(200).json({
+	return res.status(200).json({
 		success: true,
 		data: tasks,
 		message: "Here are all your tasks"
@@ -153,14 +153,14 @@ app.get("/api/tasks/:id", (req, res) => {
 	let task = tasks.find(task => task.id == id);
 
 	if (!task) {
-		res.status(404).json({
+		return res.status(404).json({
 			success: false,
 			data: null,
 			message: "Invalid Task ID"
 		});
 	}
 
-	res.status(200).json({
+	return res.status(200).json({
 		success: true,
 		data: task,
 		message: `Here's your task ${id}`
@@ -241,7 +241,7 @@ app.post("/api/tasks", (req, res) => {
 	const { title, completed } = req.body;
 
 	if (!title) {
-		res.status(404).json({
+		return res.status(404).json({
 			success: false,
 			data: null,
 			message: "Title is required"
@@ -258,7 +258,7 @@ app.post("/api/tasks", (req, res) => {
 	tasks.push(newTask);
 
 	// Send success message
-	res.status(201).json({
+	return res.status(201).json({
 		success: true,
 		data: newTask,
 		message: "Task created successfully"
@@ -312,7 +312,7 @@ app.put("/api/tasks/:id", (req, res) => {
 	const taskIndex = tasks.findIndex(task => task.id == id);
 
 	if (taskIndex == -1) {
-		res.status(404).json({
+		return res.status(404).json({
 			success: false,
 			data: null,
 			message: "Task not found"
@@ -322,7 +322,7 @@ app.put("/api/tasks/:id", (req, res) => {
 	if (title) tasks[taskIndex].title = title;
 	if (completed) tasks[taskIndex].completed = completed;
 
-	res.status(201).json({
+	return res.status(201).json({
 		success: true,
 		data: tasks[taskIndex],
 		message: "Task updated successfully"
@@ -358,7 +358,7 @@ app.delete("/api/tasks/:id", (req, res) => {
 	const taskIndex = tasks.findIndex(task => task.id == id);
 
 	if (taskIndex == -1) {
-		res.status(404).json({
+		return res.status(404).json({
 			success: false,
 			data: null,
 			message: "Task not found"
@@ -369,7 +369,7 @@ app.delete("/api/tasks/:id", (req, res) => {
 
 	tasks.splice(taskIndex, 1);
 
-	res.status(200).json({
+	return res.status(200).json({
 		success: true,
 		data: task,
 		message: "Task deleted successfuly"
