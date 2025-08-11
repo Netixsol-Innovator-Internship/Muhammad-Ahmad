@@ -28,6 +28,6 @@ li[data-active="false"] {
     --breakpoint-*: initial;
     --breakpoint-xl: 1920px;
     --breakpoint-lg: 1440px;
-    --breakpoint-md: 744px;
+    --breakpoint-md: 754px;
     --breakpoint-sm: 390px;
 }

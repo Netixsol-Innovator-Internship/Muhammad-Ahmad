@@ -8,28 +8,76 @@
     <link rel="stylesheet" href="./src/output.css">
 </head>
 
-<body class="font-primary">
-    <div class="max-w-screen-[1920px] mx-auto">
-        <nav class="flex justify-between items-center px-4 py-6 xl:px-[100px]">
-            <img src="assets/svgs/logo.svg" class="w-[144px]" alt="Logo">
-            
-            <ul class="flex gap-2">
-                <li class="py-2 px-3 text-sm cursor-pointer" data-active="true"><a href="#">Home</a></li>
-                <li class="py-2 px-3 text-sm cursor-pointer" data-active="false"><a href="#">About Us</a></li>
-                <li class="py-2 px-3 text-sm cursor-pointer flex gap-1 items-center" data-active="false">
+<body class="font-primary bg-[#36323a]">
+
+    <!-- Container -->
+    <div class="max-w-screen-[1920px] mx-auto bg-white">
+
+        <nav class="flex justify-between items-center py-5 px-4 md:px-[25px] lg:px-[60px] xl:px-[100px]">
+
+            <img src="assets/svgs/logo.svg" class="w-[93px] lg:w-[144px]" alt="Logo">
+
+            <ul class="hidden md:flex text-sm cursor-pointer lg:gap-2">
+                <li class="py-[6px] px-3" data-active="true"><a href="#">Home</a></li>
+                <li class="py-[6px] px-3" data-active="false"><a href="#">About Us</a></li>
+                <li class="py-[6px] px-3 flex lg:gap-1 items-center" data-active="false">
                     <a href="#">Features</a>
                     <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
                 </li>
-                <li class="py-2 px-3 text-sm cursor-pointer flex gap-1 items-center" data-active="false">
-                    <a href="#">Services</a>
+                <li class="py-[6px] px-3 flex lg:gap-1 items-center" data-active="false">
+                    <a href="#">Our Services</a>
                     <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
                 </li>
-                <li class="py-2 px-3 text-sm cursor-pointer" data-active="false"><a href="#">Why ADS?</a></li>
+                <li class="py-[6px] px-3" data-active="false"><a href="#">Why ADS?</a></li>
             </ul>
 
-            <button><a href="#" class="py-3 px-6 text-[18px] text-white rounded-[8px] bg-button-gradient cursor-pointer">Contact Us</a></button>
+            <!-- Hamburger menu for mobile screens -->
+            <button id="hamburger-btn" class="md:hidden cursor-pointer">
+                <img src="assets/svgs/hamburger-menu-open.svg" id="hamburger-img" alt="Open NavBar">
+            </button>
+
+            <!-- Contact us button for desktop and tablet screens -->
+            <button
+                class="hidden md:block py-2 px-6 text-[18px] text-white rounded-[8px] bg-button-gradient cursor-pointer">
+                <a href="#">Contact Us</a>
+            </button>
         </nav>
+
+        <div id="separator" class="hidden mx-6 border border-[#F0F0F0]"></div>
+
+        <!-- Drop Down menu -->
+        <section id="drop-down" class="hidden bg-white py-5">
+
+            <ul class="text-sm cursor-pointer grid gap-2 px-6">
+                <li class="py-2 px-3 flex justify-center w-full" data-active="true"><a href="#">Home</a>
+                </li>
+                <li class="py-2 px-3 flex justify-center w-full" data-active="false"><a href="#">About
+                        Us</a></li>
+
+                <li class="py-2 px-3 flex justify-center items-center w-full  gap-1" data-active="false">
+                    <a href="#">Features</a>
+                    <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
+                </li>
+
+                <li class="py-2 px-3 flex justify-center items-center w-full gap-1" data-active="false">
+                    <a href="#">Our Services</a>
+                    <img src="assets/svgs/down-arrow.svg" class="h-4" alt="DropDown">
+                </li>
+
+                <li class="py-2 px-3 flex justify-center w-full" data-active="false"><a href="#">Why
+                        ADS?</a></li>
+
+                <li class="mt-2">
+                    <button
+                        class="w-full py-2 px-6 text-[18px] text-white rounded-[8px] bg-button-gradient">
+                        <a href="#">Contact Us</a>
+                    </button>
+                </li>
+            </ul>
+        </section>
+
     </div>
+
 </body>
 
 </html>
