@@ -198,10 +198,6 @@
   .border-collapse {
     border-collapse: collapse;
   }
-  .-translate-y-\[full\] {
-    --tw-translate-y: calc(full * -1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-translate-y-full {
     --tw-translate-y: -100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -236,6 +232,10 @@
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
   }
   .border-\[\#F0F0F0\] {
     border-color: #F0F0F0;
