@@ -15,13 +15,14 @@ const generalLimiter = rateLimit({
 // Auth rate limiting (stricter)
 const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5, // limit each IP to 5 auth requests per windowMs
+    max: 10, // limit each IP to 10 auth requests per windowMs
     message: {
         success: false,
         message: 'Too many authentication attempts, please try again later.',
     },
     standardHeaders: true,
     legacyHeaders: false,
+    skipSuccessfulRequests: false, // Count successful requests too
 });
 
 module.exports = {

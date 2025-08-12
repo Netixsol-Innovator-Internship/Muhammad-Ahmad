@@ -10,7 +10,7 @@ const handleCastErrorDB = (err) => {
 
 // Handle MongoDB duplicate key errors
 const handleDuplicateKeyErrorDB = (err) => {
-    const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+    const value = err.keyValue ? Object.values(err.keyValue)[0] : 'duplicate value';
     const message = `Duplicate field value: ${value}. Please use another value!`;
     return {
         success: false,

@@ -6,6 +6,15 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 require('dotenv').config();
 
+// Validate required environment variables
+const requiredEnvVars = ['MONGODB_URI', 'JWT_SECRET'];
+const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+
+if (missingVars.length > 0) {
+    console.error('❌ Missing required environment variables:', missingVars.join(', '));
+    console.error('💡 Please check your .env file');
+}
+
 // Import database connection
 const connectDB = require('./src/config/db');
 const errorHandler = require('./src/middleware/errorHandler');
@@ -77,12 +86,17 @@ app.get('/', (req, res) => {
 
 // Health check endpoint
 app.get('/health', (req, res) => {
+  const mongoose = require('mongoose');
   res.status(200).json({
     success: true,
     message: 'Server is healthy',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
-    environment: process.env.NODE_ENV
+    environment: process.env.NODE_ENV,
+    database: {
+      connected: mongoose.connection.readyState === 1,
+      status: ['disconnected', 'connected', 'connecting', 'disconnecting'][mongoose.connection.readyState]
+    }
   });
 });
 
