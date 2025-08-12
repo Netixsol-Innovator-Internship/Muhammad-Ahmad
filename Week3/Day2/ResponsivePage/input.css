@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components{
+    .custom-shadow{
+        box-shadow: 0px 0px 8px #292929;
+    }
+    .custom-shadow-dark{
+        box-shadow: 0px 0px 8px #925FF0;
+    }
+}
+
+#mobileNav a{
+    @apply hover:border-b dark:border-white border-black;
+}
+
+.paddings{
+    @apply xxl:px-[100px] 2xl:px-[90px] xl:px-[60px] lg:px-10 px-[30px];
+}
+
+#social-links a{
+    @apply transform hover:-translate-y-2 transition-all duration-150 ease-in-out
+}
+
+
+#desktopNav li a{
+    @apply font-montserrat 2xl:text-xl text-lg tracking-[-5%] hover:border-b dark:border-white border-black
+}
+header .btn{
+    @apply dark:bg-[#925FF0] bg-[#292929] w-[133px] h-[40px] rounded-[4px] px-6 py-3 flex items-center justify-center text-white hover:custom-shadow dark:hover:custom-shadow-dark;
+}
+
+.otherMode{
+    @apply h-6 w-6 rounded-xl bg-[#FFFDED]
+}
+
+
+#downloadBtn{
+    @apply hover:custom-shadow
+}
+
+.custom-text{
+ background: linear-gradient(90deg, #FA709A 0%, #FEE140 100%);
+ background-clip: text;
+ -webkit-text-fill-color: transparent;
+}
+
+
+
+

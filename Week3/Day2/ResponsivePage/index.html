@@ -1,41 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Page</title>
-    <link rel="stylesheet" href="src/output.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Section</title>
+  <script src="https://kit.fontawesome.com/9b197449cc.js" crossorigin="anonymous"></script>
+  <link href="./output.css" rel="stylesheet" />
 </head>
-<body>
 
-    <!-- Container -->
-    <div class="max-w-screen2xl mx-auto min-h-screen bg-black">
+<body class="dark:bg-black  dark:text-white text-[#292929] overflow-x-hidden">
+  <div class="max-w-[1728px] min-w-[320px] mx-auto flex flex-col xxl:gap-[60px] 2xl:gap-[30px] gap-[20px]">
+    <header
+      class="xxl:h-[120px] md:h-[100px] h-[120px] paddings py-3 md:py-5 xxl:pt-[50px] xxl:pb-[30px] flex items-center justify-between md:bg-transparent dark:bg-[#0B0B0B]">
+      <div class="brand flex gap-[5px]">
+        <img src="./assets/logo_white.png" alt="" class="w-[26.2px] h-[26.2px] dark:inline-block hidden" />
+        <img src="./assets/Group_1.png" alt="" class="w-[26.2px] h-[26.2px] dark:hidden inline-block" />
+        <span class="text-xl font-bold font-poppins">tian</span>
+      </div>
+      <ul class="md:flex hidden items-center gap-[30px]" id="desktopNav">
+        <li><a href="https://medium.com/">Home</a></li>
+        <li><a href="https://medium.com/">Portfolio</a></li>
+        <li><a href="https://medium.com/">Skills</a></li>
+        <li><a href="https://medium.com/">About Me</a></li>
+      </ul>
+      <div class="md:flex hidden items-center gap-5 ">
+        <div
+          class="w-14 rounded-[32px] flex gap-1 p-1 h-8 bg-[#051724] dark:bg-[#FFEC70] items-center justify-between cursor-pointer"
+          id="themeToggler">
+          <div class=" flex items-center justify-center" id="sun">
+            <img src="./assets/sun.png" alt="" />
+          </div>
+          <div class="otherMode flex items-center justify-center" id="moon">
+            <img src="./assets/moon_dark.png" alt="" class="w-5 h-5 hidden" />
+          </div>
+        </div>
+        <a class="inline-block btn" href="https://medium.com/">Contact Me</a>
+      </div>
 
-        <main class="text-white py-2">
+      <!-- Menu Button -->
+      <div class="md:hidden" id="toggleBtn">
+        <i class="fa-solid fa-bars text-4xl cursor-pointer"></i>
+      </div>
+    </header>
 
-            <nav class="flex justify-between items-center px-6">
-                <img src="assets/svgs/logo.svg" alt="Logo">
 
-                <ul class="flex gap-6">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Skills</a></li>
-                    <li><a href="#">About Me</a></li>
-                </ul>
+    <section id="sidebar"
+      class="fixed top-0 right-0 bg-white/95 dark:bg-black/95 w-[250px] h-screen pl-8 rounded-l-2xl py-5 transition-all duration-200 ease-linear md:hidden block transform translate-x-full border border-black ">
+      <div>
+        <div class="closeSidebar mt-5">
+          <i class="fa-solid fa-xmark text-4xl cursor-pointer"></i>
+        </div>
+      </div>
 
-                <div class="flex gap-4 items-center">
-                    <div class="flex gap-1 rounded-xl px-1 py-[2px] bg-[#FFEC70]">
-                        <img src="assets/svgs/sun-toggle-lightmode.svg" alt="Toggle Lightmode">
-                        <img src="assets/svgs/moon-toggle-lightmode.svg" alt="Toggle Lightmode">
-                    </div>
+      <!-- Links -->
+      <ul class="md:hidden flex flex-col  mt-10 gap-[40px] dark:text-white text-[#292929]" id="mobileNav">
+        <li><a href="https://medium.com/">Home</a></li>
+        <li><a href="https://medium.com/">Portfolio</a></li>
+        <li><a href="https://medium.com/">Skills</a></li>
+        <li><a href="https://medium.com/">About Me</a></li>
+      </ul>
+    </section>
 
-                    <button class="bg-[#925FF0] px-6 py-3 rounded-lg">Contact Me</button>
-                </div>
-            </nav>
+    <section
+      class="flex items-center lg:justify-between justify-center  paddings 2xl:gap-5 gap-2 py-5 lg:min-h-fit min-h-screen">
+      <div class="left xxl:w-[840px] xxl:h-[695px]  flex">
+        <div class="flex flex-col 2xl:gap-[70px] md:gap-10 gap-[70px]">
+          <div class="flex flex-col  2xl:gap-[18px] gap-3 ">
+            <div class="xxl:w-[700px] 2xl:w-[600px]">
+              <h1
+                class="xxl:text-[200px] 2xl:text-[170px] xl:text-[160px] lg:text-[130px] md:text-[200px] sm:text-[110px] text-[90px] leading-[90%] tracking-[-3%] font-anton md:text-left text-center">
+                PRODUCT
+              </h1>
+              <h1
+                class="xxl:text-[200px] 2xl:text-[170px] xl:text-[160px] lg:text-[130px] md:text-[200px] sm:text-[110px] text-[90px] leading-[90%] tracking-[-3%] font-anton md:text-left text-center">
+                DESIGNER
+              </h1>
+            </div>
+            <h2
+              class="custom-text font-anton xxl:text-[112px] 2xl:text-[97px] xl:text-[88px]  lg:text-[74px] md:text-[112px]  sm:text-[64px] text-[50px] leading-[90%] tracking-[-3%] md:text-left text-center">
+              CRISTIAN MUÑOZ
+            </h2>
+          </div>
+          <div class="xxl:w-[700px] 2xl:w-[600px]   flex flex-col gap-10">
+            <div class="w-full flex items-center justify-between" id="social-links">
 
-        </main>
+              <!-- Instagram -->
+              <a class="sm:h-[52px] sm:w-[52px] w-10 h-10 border dark:border-white border-[#E6E6E6] rounded-[10px] inline-flex sm:p-0 p-1 items-center justify-center"
+                href="https://www.instagram.com/" target="_blank">
+                <img src="./assets/instagram.png" alt="" class="dark:inline-block hidden">
+                <img src="./assets/instagram_1.png" alt="" class="dark:hidden inline-block">
 
-    </div>
+              </a>
 
+              <!-- Figma -->
+              <a class="sm:h-[52px] sm:w-[52px] w-10 h-10 border dark:border-white border-[#E6E6E6] rounded-[10px] inline-flex sm:p-0 p-1 items-center justify-center"
+                href="https://www.figma.com/design/velmnDGJhvY6RtJLGbrX4h/Week-3?node-id=236-13533&t=MhBSoJsC18kFzG3b-0"
+                target="_blank">
+                <img src="./assets/Figma.png" alt="" class="dark:inline-block hidden">
+                <img src="./assets/Figma_1.png" alt="" class="dark:hidden inline-block">
+              </a>
+
+              <!-- Linkedin -->
+              <a class="sm:h-[52px] sm:w-[52px] w-10 h-10 border dark:border-white border-[#E6E6E6] rounded-[10px] inline-flex sm:p-0 p-1 items-center justify-center"
+                href="https://pk.linkedin.com/" target="_blank">
+                <img src="./assets/linkedin.png" alt="" class="dark:inline-block hidden">
+                <img src="./assets/linkedin_1.png" alt="" class="dark:hidden inline-block">
+              </a>
+
+              <!-- Twitter -->
+              <a class="sm:h-[52px] sm:w-[52px] w-10 h-10 border dark:border-white border-[#E6E6E6] rounded-[10px] inline-flex sm:p-0 p-1 items-center justify-center"
+                href="https://x.com/" target="_blank">
+                <img src="./assets/twitter.png" alt="" class="dark:inline-block hidden">
+                <img src="./assets/twitter_1.png" alt="" class="dark:hidden inline-block">
+              </a>
+
+              <!-- Telegram -->
+              <a class="sm:h-[52px] sm:w-[52px] w-10 h-10 border dark:border-white border-[#E6E6E6] rounded-[10px] inline-flex sm:p-0 p-1 items-center justify-center"
+                href="https://telegram.org/" target="_blank">
+                <img src="./assets/telegram.png" alt="" class="dark:inline-block hidden">
+                <img src="./assets/telegram_1.png" alt="" class="dark:hidden inline-block">
+              </a>
+
+              <!-- Medium -->
+              <a class="sm:h-[52px] sm:w-[52px] w-10 h-10 border dark:border-white border-[#E6E6E6] rounded-[10px] sm:p-0 p-1 inline-flex items-center justify-center"
+                href="https://medium.com/" target="_blank">
+                <img src="./assets/Medium Logo.png" alt="" class="dark:inline-block hidden">
+                <img src="./assets/Medium Logo_1.png" alt="" class="dark:hidden inline-block">
+              </a>
+            </div>
+
+            <a class="w-full h-[52px]  pl-8 pr-6 py-4 inline-flex items-center gap-2 justify-center bg-[#292929] text-white"
+              id="downloadBtn" href="https://medium.com/" target="_blank">
+              Download Curriculum Vitae <img src="./assets/arrow-circle-right.png" alt="" class="w-5 h-5">
+            </a>
+          </div>
+        </div>
+        <div class="2xl:max-w-[160px] 2xl:max-h-[160px] max-w-[130px] max-h-[130px] -ml-3 lg:block hidden">
+          <img src="./assets/Portal.png" alt="" class="h-full w-full">
+        </div>
+      </div>
+      <div class="right lg:block hidden">
+        <img src="./assets/hero_img1.jpg" alt=""
+          class="xxl:w-[694px] xxl:h-[778px] 2xl:w-[650px] 2xl:h-[700px] xl:w-[570px]   xl:h-[640px] w-[500px] h-[600px] object-cover">
+      </div>
+    </section>
+  </div>
+
+
+
+  <script src="./script.js"></script>
 </body>
+
 </html>
