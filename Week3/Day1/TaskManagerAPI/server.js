@@ -378,6 +378,8 @@ app.delete("/api/tasks/:id", (req, res) => {
 
 
 // Start the server (like opening your shop for business)
-app.listen(port, () => {
-	console.log(`Server is running on http://localhost:${port}`);
-});
+// app.listen(port, () => {
+// 	console.log(`Server is running on http://localhost:${port}`);
+// });
+
+module.exports=app;

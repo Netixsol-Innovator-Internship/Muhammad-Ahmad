@@ -107,5 +107,5 @@ DELETE /api/tasks/1
 }
 ```
 
----
-For more details, see the Swagger docs at `/api-docs`.
+## Live Preview:
+Preview: [ahmad-week3-day1-api-docs.vercel.app](https://ahmad-week3-day1-api-docs.vercel.app/)
