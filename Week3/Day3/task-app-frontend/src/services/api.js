@@ -7,7 +7,7 @@ const api = axios.create({
   }
 });
 
-// Attach token if exists
+// Attach token if it exists
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -16,7 +16,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 Unauthorized globally
+// Handle expired token or unauthorized globally
 api.interceptors.response.use(
   (response) => response,
   (error) => {
