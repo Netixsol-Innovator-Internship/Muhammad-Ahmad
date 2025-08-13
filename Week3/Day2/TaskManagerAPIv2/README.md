@@ -1,8 +1,8 @@
-# Task Manager API v2 🚀
+# Week 03 - Day 02
 
-A production-ready RESTful API for task management with MongoDB integration, JWT authentication, input validation, and comprehensive documentation.
+RESTful API for task management with MongoDB integration, JWT authentication, input validation, and comprehensive documentation.
 
-## 🎯 Features
+## Features
 
 - **MongoDB Integration**: Persistent data storage with Mongoose ODM
 - **JWT Authentication**: Secure user authentication and authorization
@@ -14,7 +14,7 @@ A production-ready RESTful API for task management with MongoDB integration, JWT
 - **API Documentation**: Interactive Swagger/OpenAPI documentation
 - **Error Handling**: Comprehensive error handling with detailed responses
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Backend**: Node.js + Express.js
 - **Database**: MongoDB + Mongoose
@@ -24,7 +24,7 @@ A production-ready RESTful API for task management with MongoDB integration, JWT
 - **Security**: helmet, cors, express-rate-limit
 - **Environment**: dotenv
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -60,7 +60,7 @@ A production-ready RESTful API for task management with MongoDB integration, JWT
    - Server: `http://localhost:3000`
    - Documentation: `http://localhost:3000/api-docs`
 
-## 📊 API Endpoints
+## API Endpoints
 
 ### Authentication
 | Method | Endpoint | Description | Auth Required |
@@ -85,7 +85,7 @@ A production-ready RESTful API for task management with MongoDB integration, JWT
 | GET | `/health` | Health check | ❌ |
 | GET | `/api-docs` | API documentation | ❌ |
 
-## 🔐 Authentication
+## Authentication
 
 The API uses JWT (JSON Web Tokens) for authentication. After login/register, include the token in the Authorization header:
 
@@ -93,7 +93,7 @@ The API uses JWT (JSON Web Tokens) for authentication. After login/register, inc
 Authorization: Bearer <your-jwt-token>
 ```
 
-## 📝 Request Examples
+## Request Examples
 
 ### Register User
 ```json
@@ -132,7 +132,7 @@ GET /api/tasks?completed=false&priority=high&page=1&limit=10
 Authorization: Bearer <token>
 ```
 
-## 📋 Task Properties
+## Task Properties
 
 | Field | Type | Required | Options | Description |
 |-------|------|----------|---------|-------------|
@@ -142,7 +142,7 @@ Authorization: Bearer <token>
 | priority | String | ❌ | low/medium/high | Priority level |
 | dueDate | Date | ❌ | ISO 8601 format | Due date |
 
-## 🧪 Testing
+## Testing
 
 ### Using Swagger UI
 1. Visit `http://localhost:3000/api-docs`
@@ -166,7 +166,7 @@ Authorization: Bearer <token>
 - ✅ Test filtering and pagination
 - ✅ Test rate limiting
 
-## 🔒 Security Features
+## Security Features
 
 - **Password Hashing**: bcrypt with salt rounds
 - **JWT Tokens**: Secure token-based authentication
@@ -176,7 +176,7 @@ Authorization: Bearer <token>
 - **CORS**: Cross-origin resource sharing
 - **Error Handling**: No sensitive data in error responses
 
-## 📊 Response Format
+## Response Format
 
 All API responses follow this consistent format:
 
@@ -193,7 +193,7 @@ All API responses follow this consistent format:
 }
 ```
 
-## 🚨 Error Handling
+## Error Handling
 
 The API handles various error scenarios:
 - **400**: Bad Request (validation errors)
@@ -212,7 +212,7 @@ PORT=3000
 NODE_ENV=development
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -234,35 +234,7 @@ src/
 └── config/
     └── db.js               # Database connection
 ```
-
-## 🎯 Day 2 Task Completion
-
-✅ **MongoDB Integration**: Complete with Mongoose models and connection  
-✅ **JWT Authentication**: Register, login, and protected routes  
-✅ **Request Validation**: Comprehensive validation with express-validator  
-✅ **Swagger Documentation**: Complete API documentation  
-✅ **Task CRUD with Auth**: Users can only access their own tasks  
-✅ **Error Handling**: Production-ready error handling  
-✅ **Security**: Rate limiting, CORS, security headers  
-
-## 🚀 Deployment Ready
-
-This API is production-ready and can be deployed to platforms like:
-- Heroku
-- Vercel
-- AWS
-- Digital Ocean
-- Railway
-
 ---
-
-**Happy Coding! 🎉**
-{
-	"success": true,
-	"data": { "id": 1, "title": "Learn Node.js", "completed": false },
-	"message": "Here's your task 1"
-}
-```
 
 ### Create a New Task
 **Request:**
@@ -317,4 +289,4 @@ DELETE /api/tasks/1
 ```
 
 ## Live Preview:
-Preview: [ahmad-week3-day1-api-docs.vercel.app](https://ahmad-week3-day1-api-docs.vercel.app/)
+Preview: [ahmad-week3-day2-api-docs.vercel.app](https://ahmad-week3-day2-api-docs.vercel.app/)
