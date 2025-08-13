@@ -27,12 +27,12 @@ export default function Dashboard() {
   }, []);
 
   // Add a new task
-  const handleAddTask = async (title) => {
-    if (!title.trim()) return;
+  const handleAddTask = async (taskData) => {
+    if (!taskData.title.trim()) return;
     setLoading(true);
     setError("");
     try {
-      await api.post("/tasks", { title });
+      await api.post("/tasks", taskData);
       fetchTasks();
     } catch (err) {
       setError(err.response?.data?.message || "Failed to add task");
@@ -46,7 +46,7 @@ export default function Dashboard() {
     setLoading(true);
     setError("");
     try {
-      await api.put(`/tasks/${id}`, { completed: !completed });
+      await api.put(`/tasks/${id}`, { completed });
       fetchTasks();
     } catch (err) {
       setError(err.response?.data?.message || "Failed to update task");
@@ -69,23 +69,42 @@ export default function Dashboard() {
     }
   };
 
+  // Edit a task
+  const handleEditTask = async (id, updatedData) => {
+    setLoading(true);
+    setError("");
+    try {
+      await api.put(`/tasks/${id}`, updatedData);
+      fetchTasks();
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to update task");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Task Dashboard</h1>
+    <div className="min-h-screen bg-gray-50 py-4 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 text-center sm:text-left">
+          Task Dashboard
+        </h1>
 
-      {/* Task Form Component */}
-      <TaskForm onAdd={handleAddTask} />
+        {/* Task Form Component */}
+        <TaskForm onAdd={handleAddTask} />
 
-      {/* Loading & Error Messages */}
-      {loading && <p className="text-blue-500 mb-2">Loading...</p>}
-      {error && <p className="text-red-500 mb-2">{error}</p>}
+        {/* Loading & Error Messages */}
+        {loading && <p className="text-blue-500 mb-4 text-center">Loading...</p>}
+        {error && <p className="text-red-500 mb-4 text-center bg-red-50 p-3 rounded">{error}</p>}
 
-      {/* Task List Component */}
-      <TaskList 
-        tasks={tasks}
-        onToggle={handleToggleComplete}
-        onDelete={handleDeleteTask}
-      />
+        {/* Task List Component */}
+        <TaskList 
+          tasks={tasks}
+          onToggle={handleToggleComplete}
+          onDelete={handleDeleteTask}
+          onEdit={handleEditTask}
+        />
+      </div>
     </div>
   );
 }

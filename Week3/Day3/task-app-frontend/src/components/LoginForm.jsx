@@ -26,38 +26,38 @@ export default function LoginForm({ onLoginSuccess }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full"
+      className="bg-white shadow-lg rounded-lg p-6 sm:p-8 w-full"
     >
-      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-gray-800">
         Login
       </h2>
 
       {error && (
-        <div className="bg-red-100 text-red-600 p-2 rounded mb-4 text-sm">
+        <div className="bg-red-100 text-red-600 p-3 rounded mb-4 text-sm">
           {error}
         </div>
       )}
 
       <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Email</label>
+        <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base">Email</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
           placeholder="you@example.com"
         />
       </div>
 
       <div className="mb-6">
-        <label className="block text-gray-700 font-medium mb-2">Password</label>
+        <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base">Password</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 sm:px-4 py-2 sm:py-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
           placeholder="••••••••"
         />
       </div>
@@ -65,7 +65,7 @@ export default function LoginForm({ onLoginSuccess }) {
       <button
         type="submit"
         disabled={loading}
-        className={`w-full py-2 text-white rounded transition ${
+        className={`w-full py-2 sm:py-3 text-white rounded transition text-sm sm:text-base ${
           loading
             ? "bg-blue-400 cursor-not-allowed"
             : "bg-blue-600 hover:bg-blue-700"
@@ -74,7 +74,7 @@ export default function LoginForm({ onLoginSuccess }) {
         {loading ? "Logging in..." : "Login"}
       </button>
 
-      <p className="text-sm mt-4 text-center text-gray-600">
+      <p className="text-xs sm:text-sm mt-4 text-center text-gray-600">
         Don't have an account?{" "}
         <a href="/signup" className="text-blue-600 hover:underline">
           Sign up

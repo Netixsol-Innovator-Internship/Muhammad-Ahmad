@@ -25,18 +25,19 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg rounded p-6 w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
-        {error && <p className="text-red-500 mb-2">{error}</p>}
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white shadow-lg rounded p-6 sm:p-8 w-full max-w-md">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Sign Up</h2>
+        {error && <div className="bg-red-100 text-red-600 p-3 rounded mb-4 text-sm">{error}</div>}
 
-        <form onSubmit={handleSignup} className="space-y-3">
+        <form onSubmit={handleSignup} className="space-y-4">
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border border-gray-300 px-3 py-2 rounded w-full focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 px-3 py-2 sm:py-3 rounded w-full focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
+            required
           />
 
           <input
@@ -44,19 +45,20 @@ export default function SignupPage() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border border-gray-300 px-3 py-2 rounded w-full focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 px-3 py-2 sm:py-3 rounded w-full focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
+            required
           />
 
           <button
             type="submit"
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full"
+            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 sm:py-3 rounded w-full transition-colors text-sm sm:text-base"
             disabled={loading}
           >
             {loading ? "Signing up..." : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-sm mt-4 text-center">
+        <p className="text-xs sm:text-sm mt-4 text-center">
           Already have an account?{" "}
           <a href="/login" className="text-blue-600 hover:underline">
             Login

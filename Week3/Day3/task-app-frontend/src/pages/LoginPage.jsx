@@ -9,8 +9,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
-      <LoginForm onLoginSuccess={handleLoginSuccess} />
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md">
+        <LoginForm onLoginSuccess={handleLoginSuccess} />
+      </div>
     </div>
   );
 }
