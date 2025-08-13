@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
       <div className="font-bold text-lg">
-        <Link to="/dashboard">TaskApp</Link>
+        <Link to={token ? "/dashboard" : "/login"}>TaskApp</Link>
       </div>
       <div>
         {token ? (
@@ -35,9 +35,14 @@ export default function Navbar() {
             </button>
           </>
         ) : (
-          <Link to="/login" className="hover:underline">
-            Login
-          </Link>
+          <div className="space-x-4">
+            <Link to="/login" className="hover:underline">
+              Login
+            </Link>
+            <Link to="/signup" className="hover:underline">
+              Sign Up
+            </Link>
+          </div>
         )}
       </div>
     </nav>

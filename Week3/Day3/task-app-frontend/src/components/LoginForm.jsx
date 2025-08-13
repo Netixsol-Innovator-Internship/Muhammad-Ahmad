@@ -73,6 +73,13 @@ export default function LoginForm({ onLoginSuccess }) {
       >
         {loading ? "Logging in..." : "Login"}
       </button>
+
+      <p className="text-sm mt-4 text-center text-gray-600">
+        Don't have an account?{" "}
+        <a href="/signup" className="text-blue-600 hover:underline">
+          Sign up
+        </a>
+      </p>
     </form>
   );
 }
