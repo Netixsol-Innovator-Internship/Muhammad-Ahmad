@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Task = require("../models/Task");
 const auth = require("../middleware/auth");
 const { add: addToBlacklist } = require("../utils/tokenBlacklist");
 
@@ -52,6 +53,43 @@ router.post("/logout", auth, async (req, res, next) => {
     // token exp in seconds since epoch is in req.tokenPayload.exp
     addToBlacklist(req.token, req.tokenPayload.exp);
     res.json({ message: "Logged out" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// GET /api/users/me (requires auth) – get current user info
+router.get("/me", auth, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json({ user: { id: user._id, email: user.email } });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// DELETE /api/users/account (requires auth) – deletes user account and all associated tasks
+router.delete("/account", auth, async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+
+    // Delete all tasks associated with the user
+    await Task.deleteMany({ userId });
+
+    // Delete the user account
+    const deletedUser = await User.findByIdAndDelete(userId);
+    
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Blacklist the current token
+    addToBlacklist(req.token, req.tokenPayload.exp);
+
+    res.json({ message: "Account deleted successfully" });
   } catch (err) {
     next(err);
   }
