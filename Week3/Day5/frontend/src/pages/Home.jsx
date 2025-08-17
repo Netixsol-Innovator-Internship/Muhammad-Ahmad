@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import FeaturedProducts from '../components/product/FeaturedProducts';
-import Testimonials from '../components/common/Testimonials';
-import Newsletter from '../components/common/Newsletter';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -14,6 +13,10 @@ const Home = () => {
     document.getElementById('collections').scrollIntoView({ 
       behavior: 'smooth' 
     });
+  };
+
+  const handleCollectionClick = (collectionName) => {
+    navigate(`/collections?collection=${encodeURIComponent(collectionName)}`);
   };
 
   return (
@@ -131,7 +134,11 @@ const Home = () => {
             { name: 'GREEN TEA', image: '/images/collections/green-tea.jpg', delay: '200' },
             { name: 'WHITE TEA', image: '/images/collections/white-tea.jpg', delay: '300' }
           ].map((tea, index) => (
-            <div key={tea.name} className={`group cursor-pointer animate-fade-in-up delay-${tea.delay}`}>
+            <div 
+              key={tea.name} 
+              className={`group cursor-pointer animate-fade-in-up delay-${tea.delay}`}
+              onClick={() => handleCollectionClick(tea.name)}
+            >
               <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4 relative">
                 <img
                   src={tea.image}
@@ -159,7 +166,11 @@ const Home = () => {
             { name: 'HERBAL TEA', image: '/images/collections/herbal-tea.jpg', delay: '500' },
             { name: 'CHAI', image: '/images/collections/chai.jpg', delay: '600' }
           ].map((tea, index) => (
-            <div key={tea.name} className={`group cursor-pointer animate-fade-in-up delay-${tea.delay}`}>
+            <div 
+              key={tea.name} 
+              className={`group cursor-pointer animate-fade-in-up delay-${tea.delay}`}
+              onClick={() => handleCollectionClick(tea.name)}
+            >
               <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4 relative">
                 <img
                   src={tea.image}
@@ -187,7 +198,11 @@ const Home = () => {
             { name: 'ROOIBOS', image: '/images/collections/rooibos.jpg', delay: '800' },
             { name: 'TEAWARE', image: '/images/collections/teaware.jpg', delay: '900' }
           ].map((tea, index) => (
-            <div key={tea.name} className={`group cursor-pointer animate-fade-in-up delay-${tea.delay}`}>
+            <div 
+              key={tea.name} 
+              className={`group cursor-pointer animate-fade-in-up delay-${tea.delay}`}
+              onClick={() => handleCollectionClick(tea.name)}
+            >
               <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4 relative">
                 <img
                   src={tea.image}
@@ -210,15 +225,6 @@ const Home = () => {
           ))}
         </div>
       </section>
-
-      {/* Featured Products */}
-      <FeaturedProducts />
-
-      {/* Testimonials */}
-      <Testimonials />
-
-      {/* Newsletter */}
-      <Newsletter />
     </div>
   );
 };

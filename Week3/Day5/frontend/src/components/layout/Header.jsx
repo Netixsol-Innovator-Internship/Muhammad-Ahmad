@@ -20,17 +20,17 @@ const Header = () => {
       name: 'TEA COLLECTIONS', 
       path: '/collections',
       dropdown: [
-        { name: 'Black Tea', path: '/collections/black-tea' },
-        { name: 'Green Tea', path: '/collections/green-tea' },
-        { name: 'White Tea', path: '/collections/white-tea' },
-        { name: 'Oolong Tea', path: '/collections/oolong' },
-        { name: 'Herbal Tea', path: '/collections/herbal' },
-        { name: 'Matcha', path: '/collections/matcha' },
-        { name: 'Chai', path: '/collections/chai' },
-        { name: 'Teaware', path: '/collections/teaware' },
+        { name: 'Black Tea', path: '/collections?collection=Black Tea' },
+        { name: 'Green Tea', path: '/collections?collection=Green Tea' },
+        { name: 'White Tea', path: '/collections?collection=White Tea' },
+        { name: 'Oolong Tea', path: '/collections?collection=Oolong' },
+        { name: 'Herbal Tea', path: '/collections?collection=Herbal Tea' },
+        { name: 'Matcha', path: '/collections?collection=Matcha' },
+        { name: 'Chai', path: '/collections?collection=Chai' },
+        { name: 'Teaware', path: '/collections?collection=Teaware' },
       ]
     },
-    { name: 'ACCESSORIES', path: '/accessories' },
+    { name: 'ACCESSORIES', path: '/collections?collection=Teaware' },
     { name: 'BLOG', path: '/blog' },
     { name: 'CONTACT US', path: '/contact' },
   ];
@@ -160,19 +160,30 @@ const Header = () => {
             )}
 
             {/* Cart */}
-            <button 
-              className="relative p-1 text-gray-700 hover:text-gray-900 transition-colors"
-              onClick={() => setIsCartOpen(true)}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4m-2.4 0L3 3H1m6 10v6a1 1 0 001 1h8a1 1 0 001-1v-6M7 13L5.4 5H21l-4 8H7z" />
-              </svg>
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center text-[10px]">
-                  {itemCount > 9 ? '9+' : itemCount}
-                </span>
-              )}
-            </button>
+            <div className="flex items-center space-x-2">
+              <Link
+                to="/cart"
+                className="relative p-1 text-gray-700 hover:text-gray-900 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4m-2.4 0L3 3H1m6 10v6a1 1 0 001 1h8a1 1 0 001-1v-6M7 13L5.4 5H21l-4 8H7z" />
+                </svg>
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center text-[10px]">
+                    {itemCount > 9 ? '9+' : itemCount}
+                  </span>
+                )}
+              </Link>
+              
+              <button 
+                className="p-1 text-gray-700 hover:text-gray-900 transition-colors"
+                onClick={() => setIsCartOpen(true)}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* Mobile menu button */}

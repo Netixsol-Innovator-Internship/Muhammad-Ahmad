@@ -3,6 +3,13 @@ import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
+import Collections from './pages/Collections';
+import ProductDetail from './pages/ProductDetail';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Cart from './pages/Cart';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -12,7 +19,13 @@ function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* More routes will be added in later phases */}
+              <Route path="/collections" element={<Collections />} />
+              <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="*" element={
                 <div className="min-h-96 flex items-center justify-center">
                   <div className="text-center">

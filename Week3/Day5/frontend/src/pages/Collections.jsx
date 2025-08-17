@@ -1,0 +1,264 @@
+import { useState, useEffect } from 'react';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
+
+const Collections = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [filters, setFilters] = useState({
+    collection: searchParams.get('collection') || '',
+    priceRange: '',
+    sortBy: 'name'
+  });
+
+  const collections = [
+    'Black Tea', 'Green Tea', 'White Tea', 'Herbal Tea', 
+    'Matcha', 'Chai', 'Oolong', 'Rooibos'
+  ];
+
+  const priceRanges = [
+    { label: 'All Prices', value: '' },
+    { label: 'Under $20', value: '0-20' },
+    { label: '$20 - $50', value: '20-50' },
+    { label: '$50 - $100', value: '50-100' },
+    { label: 'Over $100', value: '100+' }
+  ];
+
+  useEffect(() => {
+    fetchProducts();
+  }, [filters]);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const queryParams = new URLSearchParams();
+      
+      if (filters.collection) queryParams.append('collection', filters.collection);
+      if (filters.priceRange) queryParams.append('priceRange', filters.priceRange);
+      queryParams.append('sortBy', filters.sortBy);
+
+      console.log('Fetching products with params:', queryParams.toString()); // Debug log
+      
+      const response = await fetch(`http://localhost:5000/api/products?${queryParams}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      console.log('API response:', data); // Debug log
+      
+      if (data.success) {
+        setProducts(data.products || []);
+      } else {
+        setError(data.message || 'Failed to fetch products');
+        setProducts([]);
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setError('Failed to load products. Please try again.');
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFilterChange = (key, value) => {
+    const newFilters = { ...filters, [key]: value };
+    setFilters(newFilters);
+    
+    // Update URL params
+    const newSearchParams = new URLSearchParams(searchParams);
+    if (value) {
+      newSearchParams.set(key, value);
+    } else {
+      newSearchParams.delete(key);
+    }
+    setSearchParams(newSearchParams);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-96 flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-96 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-red-500 mb-4">
+            <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">Error Loading Products</h3>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-gray-900 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-light text-gray-900 mb-2">Tea Collections</h1>
+        <p className="text-gray-600">Discover our premium selection of teas from around the world</p>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Sidebar Filters */}
+        <div className="lg:w-64 flex-shrink-0">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <h3 className="text-lg font-medium text-gray-900 mb-4">Filters</h3>
+            
+            {/* Collection Filter */}
+            <div className="mb-6">
+              <h4 className="text-sm font-medium text-gray-900 mb-3">Collection</h4>
+              <div className="space-y-2">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="collection"
+                    value=""
+                    checked={filters.collection === ''}
+                    onChange={(e) => handleFilterChange('collection', e.target.value)}
+                    className="h-4 w-4 text-gray-900 border-gray-300 focus:ring-gray-900"
+                  />
+                  <span className="ml-2 text-sm text-gray-700">All Collections</span>
+                </label>
+                {collections.map((collection) => (
+                  <label key={collection} className="flex items-center">
+                    <input
+                      type="radio"
+                      name="collection"
+                      value={collection}
+                      checked={filters.collection === collection}
+                      onChange={(e) => handleFilterChange('collection', e.target.value)}
+                      className="h-4 w-4 text-gray-900 border-gray-300 focus:ring-gray-900"
+                    />
+                    <span className="ml-2 text-sm text-gray-700">{collection}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Price Range Filter */}
+            <div className="mb-6">
+              <h4 className="text-sm font-medium text-gray-900 mb-3">Price Range</h4>
+              <select
+                value={filters.priceRange}
+                onChange={(e) => handleFilterChange('priceRange', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+              >
+                {priceRanges.map((range) => (
+                  <option key={range.value} value={range.value}>
+                    {range.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Sort Filter */}
+            <div>
+              <h4 className="text-sm font-medium text-gray-900 mb-3">Sort By</h4>
+              <select
+                value={filters.sortBy}
+                onChange={(e) => handleFilterChange('sortBy', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+              >
+                <option value="name">Name</option>
+                <option value="price_asc">Price: Low to High</option>
+                <option value="price_desc">Price: High to Low</option>
+                <option value="newest">Newest</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Products Grid */}
+        <div className="flex-1">
+          <div className="flex justify-between items-center mb-6">
+            <p className="text-sm text-gray-600">
+              {products.length} product{products.length !== 1 ? 's' : ''} found
+            </p>
+          </div>
+
+          {products.length === 0 ? (
+            <div className="text-center py-12">
+              <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4-8-4m16 0v10l-8 4-8-4V7" />
+              </svg>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No Products Found</h3>
+              <p className="text-gray-500 mb-4">
+                {filters.collection || filters.priceRange ? 
+                  'No products match your current filters. Try adjusting your search criteria.' :
+                  'No products are currently available. Please check back later.'
+                }
+              </p>
+              {(filters.collection || filters.priceRange) && (
+                <button
+                  onClick={() => {
+                    setFilters({ collection: '', priceRange: '', sortBy: 'name' });
+                    setSearchParams({});
+                  }}
+                  className="text-gray-900 hover:text-gray-700 font-medium"
+                >
+                  Clear All Filters
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.map((product) => (
+                <Link
+                  key={product._id}
+                  to={`/products/${product._id}`}
+                  className="group cursor-pointer"
+                >
+                  <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
+                    <img
+                      src={product.images?.[0] || '/images/placeholders/product-placeholder.jpg'}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.target.src = '/images/placeholders/product-placeholder.jpg';
+                      }}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-sm font-medium text-gray-900 group-hover:text-gray-700 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 uppercase tracking-wide">
+                      {product.collection}
+                    </p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      ${product.price?.toFixed(2) || '0.00'}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Collections;
