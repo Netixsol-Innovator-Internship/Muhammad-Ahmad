@@ -12,6 +12,13 @@ app.use(express.json());
 // Connect to MongoDB
 connectDB();
 
+// Routes
+const authRoutes = require('./routes/authRoutes');
+const productRoutes = require('./routes/productRoutes');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 const PORT = process.env.PORT || 5000;
