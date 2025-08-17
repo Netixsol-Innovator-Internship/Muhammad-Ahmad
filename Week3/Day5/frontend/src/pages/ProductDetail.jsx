@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import ApiService from '../services/api';
 
@@ -8,6 +9,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { isAuthenticated } = useAuth();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -106,30 +108,27 @@ const ProductDetail = () => {
   };
 
   const handleAddToCart = async () => {
+    if (!isAuthenticated) {
+      // Redirect to login with current page as return destination
+      navigate('/login', { state: { from: { pathname: `/products/${id}` } } });
+      return;
+    }
+
     try {
       setAddingToCart(true);
       
-      // Add to cart with variant and price information
-      await addToCart({
-        id: product._id,
-        name: product.name,
-        price: getCurrentPrice(),
-        image: product.images?.[0] || '/images/placeholders/product-placeholder.jpg',
-        variant: selectedVariant,
-        quantity: quantity
-      });
-
-      // Also try to sync with backend cart if user is logged in
-      try {
-        await ApiService.addToCart(product._id, quantity);
-      } catch (backendError) {
-        console.log('Backend cart sync failed (user may not be logged in):', backendError.message);
-      }
+      // Add to cart using the backend API
+      const result = await addToCart(product._id, quantity);
       
-      // Show success message
-      alert('Added to bag successfully!');
+      if (result.success) {
+        // Show success message (you could use toast notification here)
+        alert('Added to bag successfully!');
+      } else {
+        alert(result.error || 'Failed to add to cart');
+      }
     } catch (error) {
       console.error('Error adding to cart:', error);
+      alert('Failed to add to cart. Please try again.');
     } finally {
       setAddingToCart(false);
     }
@@ -280,7 +279,7 @@ const ProductDetail = () => {
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H20M7 13v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-9m15-4v4a1 1 0 01-1 1h-1" />
               </svg>
-              {addingToCart ? 'Adding to Bag...' : 'ADD TO BAG'}
+              {addingToCart ? 'Adding to Bag...' : isAuthenticated ? 'ADD TO BAG' : 'LOGIN TO ADD TO BAG'}
             </button>
           </div>
         </div>

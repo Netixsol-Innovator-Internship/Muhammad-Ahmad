@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../contexts/ToastContext';
 
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { register } = useAuth();
+  const { success, error: showError } = useToast();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -44,21 +46,31 @@ const Register = () => {
       return;
     }
 
-    try {
-      setLoading(true);
-      setError('');
-      await register({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password
-      });
-      navigate(from, { replace: true });
-    } catch (error) {
-      setError(error.message || 'Registration failed. Please try again.');
-    } finally {
-      setLoading(false);
+    // Check password strength (must contain lowercase, uppercase, and number)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/;
+    if (!passwordRegex.test(formData.password)) {
+      setError('Password must contain at least one lowercase letter, one uppercase letter, and one number');
+      return;
     }
+
+    setLoading(true);
+    setError('');
+    
+    const result = await register({
+      name: `${formData.firstName} ${formData.lastName}`.trim(),
+      email: formData.email,
+      password: formData.password
+    });
+    
+    if (result.success) {
+      success('Account created successfully! Welcome!');
+      navigate(from, { replace: true });
+    } else {
+      setError(result.error || 'Registration failed. Please try again.');
+      showError(result.error || 'Registration failed. Please try again.');
+    }
+    
+    setLoading(false);
   };
 
   return (

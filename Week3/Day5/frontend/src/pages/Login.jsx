@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../contexts/ToastContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
+  const { success, error: showError } = useToast();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -31,16 +33,20 @@ const Login = () => {
       return;
     }
 
-    try {
-      setLoading(true);
-      setError('');
-      await login(formData.email, formData.password);
+    setLoading(true);
+    setError('');
+    
+    const result = await login(formData);
+    
+    if (result.success) {
+      success('Successfully logged in!');
       navigate(from, { replace: true });
-    } catch (error) {
-      setError(error.message || 'Login failed. Please try again.');
-    } finally {
-      setLoading(false);
+    } else {
+      setError(result.error || 'Login failed. Please try again.');
+      showError(result.error || 'Login failed. Please try again.');
     }
+    
+    setLoading(false);
   };
 
   return (
