@@ -2,19 +2,37 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
+import { SearchDropdown, NavigationDropdown } from '../navigation/NavigationComponents';
+import CartSidebar from '../cart/CartSidebar';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const { isAuthenticated, user, logout } = useAuth();
   const { itemCount } = useCart();
   const location = useLocation();
 
   const navigationLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Collections', path: '/collections' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { 
+      name: 'TEA COLLECTIONS', 
+      path: '/collections',
+      dropdown: [
+        { name: 'Black Tea', path: '/collections/black-tea' },
+        { name: 'Green Tea', path: '/collections/green-tea' },
+        { name: 'White Tea', path: '/collections/white-tea' },
+        { name: 'Oolong Tea', path: '/collections/oolong' },
+        { name: 'Herbal Tea', path: '/collections/herbal' },
+        { name: 'Matcha', path: '/collections/matcha' },
+        { name: 'Chai', path: '/collections/chai' },
+        { name: 'Teaware', path: '/collections/teaware' },
+      ]
+    },
+    { name: 'ACCESSORIES', path: '/accessories' },
+    { name: 'BLOG', path: '/blog' },
+    { name: 'CONTACT US', path: '/contact' },
   ];
 
   const isActivePath = (path) => {
@@ -30,116 +48,131 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-neutral-200">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <img
-                className="h-8 w-auto"
-                src="/images/logo/logo-main.svg"
-                alt="Tea Store"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-              <span 
-                className="hidden ml-2 text-xl font-display font-semibold text-primary-800"
-                style={{ display: 'none' }}
-              >
-                TeaBliss
-              </span>
+              <div className="flex items-center">
+                <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.12-.56 3.03-1.03C14.6 26.59 14.13 26.31 13.63 26 13.13 25.69 12.59 25.32 12 24.9 12 24.9 12 24.9 12 24.9c-.59.42-1.13.79-1.63 1.1-.5.31-.97.59-1.4.84.86.22 1.76.38 2.7.47.18-.07.36-.15.54-.23C16.04 25.96 19 22.05 19 17V7L12 2z"/>
+                </svg>
+                <span className="ml-2 text-lg font-medium text-gray-900">Brand Name</span>
+              </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-12">
             {navigationLinks.map((link) => (
-              <Link
+              <div 
                 key={link.name}
-                to={link.path}
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
-                  isActivePath(link.path)
-                    ? 'text-primary-600 border-b-2 border-primary-600'
-                    : 'text-neutral-600 hover:text-primary-600'
-                }`}
+                className="relative"
+                onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {link.name}
-              </Link>
+                <Link
+                  to={link.path}
+                  className={`text-sm font-medium tracking-wide transition-colors ${
+                    isActivePath(link.path)
+                      ? 'text-gray-900'
+                      : 'text-gray-700 hover:text-gray-900'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+                
+                {link.dropdown && (
+                  <NavigationDropdown
+                    title={link.name}
+                    items={link.dropdown}
+                    isOpen={activeDropdown === link.name}
+                  />
+                )}
+              </div>
             ))}
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-6">
             {/* Search */}
-            <button className="p-2 text-neutral-600 hover:text-primary-600 transition-colors">
-              <img src="/images/icons/search.svg" alt="Search" className="w-5 h-5" />
-            </button>
+            <div className="relative">
+              <button 
+                className="p-1 text-gray-700 hover:text-gray-900 transition-colors"
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+              
+              <SearchDropdown
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+              />
+            </div>
 
-            {/* Cart */}
-            <button 
-              className="relative p-2 text-neutral-600 hover:text-primary-600 transition-colors"
-              onClick={() => setIsCartOpen(true)}
-            >
-              <img src="/images/icons/cart.svg" alt="Cart" className="w-5 h-5" />
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {itemCount > 99 ? '99+' : itemCount}
-                </span>
-              )}
-            </button>
-
-            {/* User Actions */}
+            {/* User Account */}
             {isAuthenticated ? (
               <div className="relative group">
-                <button className="flex items-center space-x-1 p-2 text-neutral-600 hover:text-primary-600 transition-colors">
-                  <img src="/images/icons/profile.svg" alt="Profile" className="w-5 h-5" />
-                  <span className="text-sm font-medium">{user?.name}</span>
+                <button className="flex items-center space-x-1 p-1 text-gray-700 hover:text-gray-900 transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
                 </button>
                 
                 {/* Dropdown Menu */}
-                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="py-2">
                     <Link
                       to="/profile"
-                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                     >
-                      My Profile
+                      Profile
                     </Link>
                     <Link
                       to="/orders"
-                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                     >
-                      My Orders
+                      Orders
                     </Link>
-                    <hr className="my-1" />
                     <button
                       onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50"
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                     >
-                      Sign Out
+                      Logout
                     </button>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="flex items-center space-x-2">
-                <Link
-                  to="/login"
-                  className="text-sm font-medium text-neutral-600 hover:text-primary-600 transition-colors"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  to="/register"
-                  className="btn-primary text-sm px-4 py-2"
-                >
-                  Sign Up
-                </Link>
-              </div>
+              <Link
+                to="/login"
+                className="p-1 text-gray-700 hover:text-gray-900 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </Link>
             )}
+
+            {/* Cart */}
+            <button 
+              className="relative p-1 text-gray-700 hover:text-gray-900 transition-colors"
+              onClick={() => setIsCartOpen(true)}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4m-2.4 0L3 3H1m6 10v6a1 1 0 001 1h8a1 1 0 001-1v-6M7 13L5.4 5H21l-4 8H7z" />
+              </svg>
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center text-[10px]">
+                  {itemCount > 9 ? '9+' : itemCount}
+                </span>
+              )}
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -230,6 +263,12 @@ const Header = () => {
           </div>
         )}
       </div>
+
+      {/* Cart Sidebar */}
+      <CartSidebar 
+        isOpen={isCartOpen} 
+        onClose={() => setIsCartOpen(false)} 
+      />
     </header>
   );
 };
