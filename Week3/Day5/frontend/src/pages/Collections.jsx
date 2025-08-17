@@ -54,7 +54,8 @@ const Collections = () => {
       console.log('API response:', data); // Debug log
       
       if (data.success) {
-        setProducts(data.products || []);
+        // backend returns { success: true, data: { products, pagination } }
+        setProducts((data.data && data.data.products) || []);
       } else {
         setError(data.message || 'Failed to fetch products');
         setProducts([]);
