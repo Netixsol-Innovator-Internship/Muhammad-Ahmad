@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
+import ApiService from '../services/api';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -9,9 +10,11 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState('50g');
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
+  const [relatedProducts, setRelatedProducts] = useState([]);
 
   // Product variants with pricing
   const variants = [
@@ -49,34 +52,55 @@ const ProductDetail = () => {
 
   useEffect(() => {
     // For demo purposes, use sample data instead of API call
-    setProduct(sampleProduct);
-    setLoading(false);
-    
-    // Uncomment this for real API integration:
-    // fetchProduct();
+    fetchProduct();
+    fetchRelatedProducts();
   }, [id]);
 
   const fetchProduct = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/products/${id}`);
-      const data = await response.json();
+      setError(null);
+      const response = await ApiService.getProduct(id);
 
-      if (data.success) {
-        // backend returns { success: true, data: product }
-        setProduct(data.data || data.product || null);
+      if (response.success) {
+        setProduct(response.data);
       } else {
+        setError('Product not found');
         navigate('/collections');
       }
     } catch (error) {
       console.error('Error fetching product:', error);
+      setError(error.message || 'Failed to load product');
       navigate('/collections');
     } finally {
       setLoading(false);
     }
   };
 
+  const fetchRelatedProducts = async () => {
+    try {
+      // Fetch 3 related products from the same collection
+      const response = await ApiService.getProducts({
+        limit: 3,
+        collection: product?.collection || 'Chai'
+      });
+
+      if (response.success) {
+        setRelatedProducts(response.data.products.filter(p => p._id !== id));
+      }
+    } catch (error) {
+      console.error('Error fetching related products:', error);
+    }
+  };
+
   const getCurrentPrice = () => {
+    // If product has variants, use variant pricing, otherwise use base price
+    if (product?.variants && product.variants.length > 0) {
+      const variant = product.variants.find(v => v.size === selectedVariant);
+      return variant ? variant.price : product.price;
+    }
+    
+    // Fallback to static variant pricing for display
     const variant = variants.find(v => v.size === selectedVariant);
     return variant ? variant.price : product?.price || 0;
   };
@@ -84,16 +108,23 @@ const ProductDetail = () => {
   const handleAddToCart = async () => {
     try {
       setAddingToCart(true);
-      // For demo purposes, just log the action
-      console.log('Adding to cart:', {
-        productId: product._id,
-        variant: selectedVariant,
-        quantity: quantity,
-        price: getCurrentPrice()
-      });
       
-      // Uncomment for real cart integration:
-      // await addToCart(product._id, quantity, { variant: selectedVariant });
+      // Add to cart with variant and price information
+      await addToCart({
+        id: product._id,
+        name: product.name,
+        price: getCurrentPrice(),
+        image: product.images?.[0] || '/images/placeholders/product-placeholder.jpg',
+        variant: selectedVariant,
+        quantity: quantity
+      });
+
+      // Also try to sync with backend cart if user is logged in
+      try {
+        await ApiService.addToCart(product._id, quantity);
+      } catch (backendError) {
+        console.log('Backend cart sync failed (user may not be logged in):', backendError.message);
+      }
       
       // Show success message
       alert('Added to bag successfully!');
@@ -176,9 +207,9 @@ const ProductDetail = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-sm text-gray-600">Origin: {product.origin}</span>
+                <span className="text-sm text-gray-600">Origin: {product.origin || 'Unknown'}</span>
               </div>
-              {product.isOrganic && (
+              {(product.isOrganic || product.quality?.toLowerCase().includes('organic')) && (
                 <div className="flex items-center space-x-2">
                   <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -186,7 +217,7 @@ const ProductDetail = () => {
                   <span className="text-sm text-gray-600">Organic</span>
                 </div>
               )}
-              {product.isVegan && (
+              {(product.isVegan || product.collection?.toLowerCase().includes('herbal')) && (
                 <div className="flex items-center space-x-2">
                   <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
@@ -266,7 +297,7 @@ const ProductDetail = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0V5a1 1 0 001 1h8a1 1 0 001-1V4M7 4l1 14h8l1-14M7 4h10" />
               </svg>
               <span className="text-sm font-medium text-gray-900">SERVING SIZE:</span>
-              <span className="text-sm text-gray-600">{product.steepingInstructions.servingSize}</span>
+              <span className="text-sm text-gray-600">{product.steepingInstructions?.servingSize || '1 tsp per cup'}</span>
             </div>
             
             <div className="flex items-center space-x-3">
@@ -274,7 +305,7 @@ const ProductDetail = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
               </svg>
               <span className="text-sm font-medium text-gray-900">WATER TEMPERATURE:</span>
-              <span className="text-sm text-gray-600">{product.steepingInstructions.waterTemp}</span>
+              <span className="text-sm text-gray-600">{product.steepingInstructions?.waterTemp || '100°C'}</span>
             </div>
             
             <div className="flex items-center space-x-3">
@@ -282,13 +313,13 @@ const ProductDetail = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span className="text-sm font-medium text-gray-900">STEEPING TIME:</span>
-              <span className="text-sm text-gray-600">{product.steepingInstructions.steepingTime}</span>
+              <span className="text-sm text-gray-600">{product.steepingInstructions?.steepingTime || '3-5 minutes'}</span>
             </div>
             
             <div className="flex items-center space-x-3">
               <div 
                 className="w-5 h-5 rounded-full border border-gray-300"
-                style={{ backgroundColor: product.steepingInstructions.colorAfter3Min }}
+                style={{ backgroundColor: product.steepingInstructions?.colorAfter3Min || '#8B4513' }}
               ></div>
               <span className="text-sm font-medium text-gray-900">COLOR AFTER 3 MINUTES</span>
             </div>
@@ -301,26 +332,28 @@ const ProductDetail = () => {
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span className="font-medium text-gray-900">FLAVOR</span>
-              <div className="text-gray-600">{product.flavor}</div>
+              <div className="text-gray-600">{product.flavours?.join(', ') || product.flavor || 'Rich and full-bodied'}</div>
             </div>
             <div>
               <span className="font-medium text-gray-900">QUALITIES</span>
-              <div className="text-gray-600">{product.qualities}</div>
+              <div className="text-gray-600">{product.qualities || product.quality || 'Premium'}</div>
             </div>
             <div>
               <span className="font-medium text-gray-900">CAFFEINE</span>
-              <div className="text-gray-600">{product.caffeine}</div>
+              <div className="text-gray-600">{product.caffeine || 'Medium'}</div>
             </div>
             <div>
-              <span className="font-medium text-gray-900">ALLERGENS</span>
-              <div className="text-gray-600">{product.allergens}</div>
+              <span className="font-medium text-gray-900">WEIGHT</span>
+              <div className="text-gray-600">{product.weight || '50g'}</div>
             </div>
           </div>
 
           {/* Ingredients */}
           <div className="mt-8">
             <h3 className="text-lg font-medium text-gray-900 mb-3">Ingredient</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">{product.ingredients}</p>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {product.ingredients || product.description || 'Premium tea blend with natural ingredients.'}
+            </p>
           </div>
         </div>
       </div>
@@ -329,23 +362,41 @@ const ProductDetail = () => {
       <div className="mt-20">
         <h2 className="text-2xl font-light text-gray-900 mb-8 text-center">You may also like</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { name: 'Ceylon Ginger Cinnamon chai tea', price: '4.85', size: '50 g' },
-            { name: 'Ceylon Ginger Cinnamon chai tea', price: '4.85', size: '50 g' },
-            { name: 'Ceylon Ginger Cinnamon chai tea', price: '4.85', size: '50 g' }
-          ].map((item, index) => (
-            <div key={index} className="text-center group cursor-pointer">
+          {relatedProducts.length > 0 ? relatedProducts.map((item) => (
+            <div 
+              key={item._id} 
+              className="text-center group cursor-pointer"
+              onClick={() => navigate(`/product/${item._id}`)}
+            >
               <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
                 <img
-                  src="/images/placeholders/product-placeholder.jpg"
+                  src={item.images?.[0] || '/images/placeholders/product-placeholder.jpg'}
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    e.target.src = '/images/placeholders/product-placeholder.jpg';
+                  }}
                 />
               </div>
               <h3 className="text-sm font-medium text-gray-900 mb-1">{item.name}</h3>
-              <p className="text-sm text-gray-500">€{item.price} / {item.size}</p>
+              <p className="text-sm text-gray-500">€{item.price?.toFixed(2)} / {item.weight || '50g'}</p>
             </div>
-          ))}
+          )) : (
+            // Fallback if no related products
+            [1, 2, 3].map((index) => (
+              <div key={index} className="text-center">
+                <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
+                  <img
+                    src="/images/placeholders/product-placeholder.jpg"
+                    alt="Related product"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-sm font-medium text-gray-900 mb-1">Related Tea Product</h3>
+                <p className="text-sm text-gray-500">€{(Math.random() * 10 + 3).toFixed(2)} / 50g</p>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

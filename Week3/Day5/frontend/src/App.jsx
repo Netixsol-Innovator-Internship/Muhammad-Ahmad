@@ -8,6 +8,8 @@ import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import OrderConfirmation from './pages/OrderConfirmation';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
@@ -21,9 +23,12 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/collections" element={<Collections />} />
               <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/order-confirmation" element={<OrderConfirmation />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={

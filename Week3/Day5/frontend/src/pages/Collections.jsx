@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
+import ApiService from '../services/api';
 
 const Collections = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -8,10 +9,21 @@ const Collections = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [pagination, setPagination] = useState({});
+  const [availableFilters, setAvailableFilters] = useState({
+    collections: [],
+    origins: [],
+    qualities: [],
+    caffeinelevels: []
+  });
   const [filters, setFilters] = useState({
     collection: searchParams.get('collection') || '',
+    origin: searchParams.get('origin') || '',
+    quality: searchParams.get('quality') || '',
+    caffeine: searchParams.get('caffeine') || '',
     priceRange: '',
-    sortBy: 'name'
+    sortBy: 'createdAt',
+    sortOrder: 'desc'
   });
 
   const collections = [
@@ -29,43 +41,60 @@ const Collections = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [filters]);
+    fetchFilterOptions();
+  }, []);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [filters, searchParams]);
 
   const fetchProducts = async () => {
     try {
       setLoading(true);
       setError(null);
-      const queryParams = new URLSearchParams();
       
-      if (filters.collection) queryParams.append('collection', filters.collection);
-      if (filters.priceRange) queryParams.append('priceRange', filters.priceRange);
-      queryParams.append('sortBy', filters.sortBy);
-
-      console.log('Fetching products with params:', queryParams.toString()); // Debug log
+      // Build query parameters
+      const queryParams = {};
+      if (filters.collection) queryParams.collection = filters.collection;
+      if (filters.origin) queryParams.origin = filters.origin;
+      if (filters.quality) queryParams.quality = filters.quality;
+      if (filters.caffeine) queryParams.caffeine = filters.caffeine;
+      if (filters.sortBy) queryParams.sortBy = filters.sortBy;
+      if (filters.sortOrder) queryParams.sortOrder = filters.sortOrder;
       
-      const response = await fetch(`http://localhost:5000/api/products?${queryParams}`);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      // Handle price range
+      if (filters.priceRange) {
+        const [min, max] = filters.priceRange.split('-');
+        if (min) queryParams.minPrice = min;
+        if (max && max !== '+') queryParams.maxPrice = max;
       }
+
+      console.log('Fetching products with params:', queryParams); // Debug log
       
-      const data = await response.json();
+      const response = await ApiService.getProducts(queryParams);
       
-      console.log('API response:', data); // Debug log
-      
-      if (data.success) {
-        // backend returns { success: true, data: { products, pagination } }
-        setProducts((data.data && data.data.products) || []);
+      if (response.success) {
+        setProducts(response.data.products);
+        setPagination(response.data.pagination);
       } else {
-        setError(data.message || 'Failed to fetch products');
-        setProducts([]);
+        setError('Failed to load products');
       }
     } catch (error) {
       console.error('Error fetching products:', error);
-      setError('Failed to load products. Please try again.');
-      setProducts([]);
+      setError(error.message || 'Failed to load products');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchFilterOptions = async () => {
+    try {
+      const response = await ApiService.getFilterOptions();
+      if (response.success) {
+        setAvailableFilters(response.data);
+      }
+    } catch (error) {
+      console.error('Error fetching filter options:', error);
     }
   };
 
@@ -142,7 +171,7 @@ const Collections = () => {
                   />
                   <span className="ml-2 text-sm text-gray-700">All Collections</span>
                 </label>
-                {collections.map((collection) => (
+                {(availableFilters.collections?.length > 0 ? availableFilters.collections : collections).map((collection) => (
                   <label key={collection} className="flex items-center">
                     <input
                       type="radio"

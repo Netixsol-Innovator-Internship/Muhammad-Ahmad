@@ -1,13 +1,40 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ApiService from '../services/api';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [collectionsData, setCollectionsData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
+    fetchFeaturedProducts();
+    fetchCollections();
   }, []);
+
+  const fetchFeaturedProducts = async () => {
+    try {
+      const response = await ApiService.getProducts({ limit: 8, sortBy: 'createdAt', sortOrder: 'desc' });
+      if (response.success) {
+        setFeaturedProducts(response.data.products);
+      }
+    } catch (error) {
+      console.error('Error fetching featured products:', error);
+    }
+  };
+
+  const fetchCollections = async () => {
+    try {
+      const response = await ApiService.getFilterOptions();
+      if (response.success && response.data.collections) {
+        setCollectionsData(response.data.collections);
+      }
+    } catch (error) {
+      console.error('Error fetching collections:', error);
+    }
+  };
 
   const scrollToCollections = () => {
     document.getElementById('collections').scrollIntoView({ 
