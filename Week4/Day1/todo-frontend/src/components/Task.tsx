@@ -2,10 +2,10 @@ import React from 'react'
 
 interface myTaskProps {
     title: string;
-    id: number;
-    onDelete: (id: number) => void;
+    id: string;
+    onDelete: (id: string) => void | Promise<void>;
     completed: boolean;
-    onToggleCompleted: (id: number) => void;
+    onToggleCompleted: (id: string) => void | Promise<void>;
 }
 
 const Task: React.FC<myTaskProps> = (props) => {

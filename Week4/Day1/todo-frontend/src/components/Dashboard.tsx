@@ -1,27 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Task from './Task';
 
 
 const Dashboard: React.FC = () => {
 
     // Manage Tasks
-    const [tasks, setTasks] = useState<{ title: string; completed: boolean }[]>([]);
+
+    interface TaskType {
+        id: string;
+        title: string;
+        description?: string;
+        completed: boolean;
+    }
+
+    const [tasks, setTasks] = useState<TaskType[]>([]);
     const [filter, setFilter] = useState<string>("all");
     const [taskInput, setTaskInput] = useState("");
 
-    const handleDeleteTask = (id: number) => {
-        setTasks(tasks.filter((_, idx) => idx !== id));
+    // Fetch tasks from backend
+    useEffect(() => {
+        axios.get<TaskType[]>('http://localhost:4000/api/tasks')
+            .then(res => setTasks(res.data))
+            .catch(() => setTasks([]));
+    }, []);
+
+    const handleDeleteTask = async (id: string) => {
+        try {
+            await axios.delete(`http://localhost:4000/api/tasks/${id}`);
+            setTasks(tasks.filter(task => task.id !== id));
+        } catch (err) {}
     };
 
-    const handleToggleCompleted = (id: number) => {
-        setTasks(tasks.map((task, idx) => idx === id ? { ...task, completed: !task.completed } : task));
+    const handleToggleCompleted = async (id: string) => {
+        const task = tasks.find(t => t.id === id);
+        if (!task) return;
+        try {
+            const res = await axios.put<TaskType>(`http://localhost:4000/api/tasks/${id}`, {
+                completed: !task.completed
+            });
+            setTasks(tasks.map(t => t.id === id ? res.data : t));
+        } catch (err) {}
     };
 
-    const handleAddTask = () => {
+    const handleAddTask = async () => {
         if (taskInput.trim() === "") return;
-        setTasks([...tasks, { title: taskInput, completed: false }]);
-        setTaskInput("");
+        try {
+            const res = await axios.post<TaskType>('http://localhost:4000/api/tasks', {
+                title: taskInput
+            });
+            setTasks([...tasks, res.data]);
+            setTaskInput("");
+        } catch (err) {}
     };
+
 
     const filterTasks = (filter: string) => {
         setFilter(filter);
@@ -62,10 +94,10 @@ const Dashboard: React.FC = () => {
                         if (filter === "pending") return !task.completed;
                         return true;
                     })
-                    .map((task, idx) => (
+                    .map((task) => (
                         <Task
-                            key={idx}
-                            id={idx}
+                            key={task.id}
+                            id={task.id}
                             title={task.title}
                             onDelete={handleDeleteTask}
                             completed={task.completed}
