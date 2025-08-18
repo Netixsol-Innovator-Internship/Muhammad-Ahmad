@@ -82,9 +82,24 @@ const Dashboard: React.FC = () => {
                 <div className='my-6 flex justify-between'>
                     <h2 className='font-bold text-xl my-2'>Tasks</h2>
                     <div className='space-x-1'>
-                        <button className='bg-green-500 text-white px-2 py-1 rounded' onClick={() => filterTasks("completed")}>Completed Tasks</button>
-                        <button className='bg-red-500 text-white px-2 py-1 rounded' onClick={() => filterTasks("pending")}>Pending Tasks</button>
-                        <button className='bg-gray-500 text-white px-2 py-1 rounded' onClick={() => filterTasks("all")}>All Tasks</button>
+                        <button
+                            className={`px-2 py-1 rounded text-white ${filter === "completed" ? "bg-green-700 border-2 border-green-900" : "bg-green-500"}`}
+                            onClick={() => filterTasks("completed")}
+                        >
+                            Completed Tasks
+                        </button>
+                        <button
+                            className={`px-2 py-1 rounded text-white ${filter === "pending" ? "bg-red-700 border-2 border-red-900" : "bg-red-500"}`}
+                            onClick={() => filterTasks("pending")}
+                        >
+                            Pending Tasks
+                        </button>
+                        <button
+                            className={`px-2 py-1 rounded text-white ${filter === "all" ? "bg-gray-700 border-2 border-gray-900" : "bg-gray-500"}`}
+                            onClick={() => filterTasks("all")}
+                        >
+                            All Tasks
+                        </button>
                     </div>
                 </div>
                 {/* Tasks Component */}
