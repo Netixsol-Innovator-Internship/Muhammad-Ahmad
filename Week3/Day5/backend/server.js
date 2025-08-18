@@ -12,7 +12,9 @@ const app = express();
 app.use(cors({
   origin: [
     process.env.FRONTEND_URL || 'http://localhost:3000',
-    'http://localhost:5173'
+    'http://localhost:5173',
+    /.*\.vercel\.app$/,  // Allow all Vercel deployments
+    'https://ahmad-week3-day5-frontend.vercel.app'  // Your specific frontend URL
   ],
   credentials: true
 }));
