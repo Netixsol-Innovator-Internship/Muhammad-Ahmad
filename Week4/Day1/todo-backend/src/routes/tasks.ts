@@ -10,14 +10,7 @@ interface Task {
 
 // In-memory storage for Vercel deployment
 // Note: Data will be lost on each deployment/restart
-let tasks: Task[] = [
-  {
-    id: uuidv4(),
-    title: "Sample Task",
-    description: "This is a sample task for testing",
-    completed: false
-  }
-];
+let tasks: Task[] = [];
 
 const router = Router();
 
