@@ -74,7 +74,7 @@ const Dashboard: React.FC = () => {
                     value={taskInput}
                     onChange={e => setTaskInput(e.target.value)}
                 />
-                <button className='bg-blue-700 text-white px-2 py-1 rounded' onClick={handleAddTask}>Add Task</button>
+                <button className='cursor-pointer bg-blue-700 text-white px-2 py-1 rounded' onClick={handleAddTask}>Add Task</button>
             </div>
 
             {/* Tasks Container */}
@@ -84,19 +84,19 @@ const Dashboard: React.FC = () => {
                     <h2 className='font-bold text-xl my-2'>Tasks</h2>
                     <div className='space-x-1'>
                         <button
-                            className={`px-2 py-1 rounded text-white ${filter === "completed" ? "bg-green-700 border-2 border-green-900" : "bg-green-500"}`}
+                            className={`px-2 py-1 rounded cursor-pointer text-white ${filter === "completed" ? "bg-green-700 border-2 border-green-900" : "bg-green-500"}`}
                             onClick={() => filterTasks("completed")}
                         >
                             Completed Tasks
                         </button>
                         <button
-                            className={`px-2 py-1 rounded text-white ${filter === "pending" ? "bg-red-700 border-2 border-red-900" : "bg-red-500"}`}
+                            className={`px-2 py-1 cursor-pointer rounded text-white ${filter === "pending" ? "bg-red-700 border-2 border-red-900" : "bg-red-500"}`}
                             onClick={() => filterTasks("pending")}
                         >
                             Pending Tasks
                         </button>
                         <button
-                            className={`px-2 py-1 rounded text-white ${filter === "all" ? "bg-gray-700 border-2 border-gray-900" : "bg-gray-500"}`}
+                            className={`px-2 py-1 cursor-pointer rounded text-white ${filter === "all" ? "bg-gray-700 border-2 border-gray-900" : "bg-gray-500"}`}
                             onClick={() => filterTasks("all")}
                         >
                             All Tasks
