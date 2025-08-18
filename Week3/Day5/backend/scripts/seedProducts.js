@@ -84,6 +84,11 @@ const products = [
 
 const run = async () => {
 	const uri = process.env.MONGO_URI;
+	// Optional base URL for building absolute image URLs (useful when frontend
+	// is hosted separately from backend). If not set, the script will use
+	// root-relative URLs like /images/products/xxx which rely on the backend
+	// serving /images/ at runtime.
+	const BACKEND_URL = process.env.BACKEND_URL || '';
 	if (!uri) {
 		console.error('MONGO_URI not set in .env');
 		process.exit(1);
@@ -99,8 +104,11 @@ const run = async () => {
 			const imgCount = 1 + (i % 3); // 1..3
 			for (let k = 0; k < imgCount; k++) {
 				const idx = (i + k) % availableImages.length;
-				// Images will be served from /images/<path> by server
-				imgs.push(`/images/${availableImages[idx]}`);
+				// Images will be served from /images/<path> by server.
+				// If BACKEND_URL is provided, build absolute URLs so images resolve
+				// correctly when frontend is served from a different host.
+				const rel = `/images/${availableImages[idx]}`;
+				imgs.push(BACKEND_URL ? `${BACKEND_URL.replace(/\/$/, '')}${rel}` : rel);
 			}
 			return { ...p, images: imgs };
 		});
