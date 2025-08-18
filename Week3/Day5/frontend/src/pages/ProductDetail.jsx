@@ -28,6 +28,18 @@ const ProductDetail = () => {
     { size: 'sampler', label: 'Sampler', price: 1.90 }
   ];
 
+  // Map variant sizes to icon filenames placed in public/images/icons
+  const variantIcons = {
+    '50g': '/images/icons/50-gram-bag.svg',
+    '100g': '/images/icons/100-gram-bag.svg',
+    '170g': '/images/icons/170-gram-bag.svg',
+    '250g': '/images/icons/250-gram-bag.svg',
+    '1kg': '/images/icons/1-kg-bag.svg',
+    'sampler': '/images/icons/sampler.svg'
+  };
+
+  const getVariantIcon = (size) => variantIcons[size] || '/images/placeholders/product-placeholder.jpg';
+
   // Sample product data matching the image
   const sampleProduct = {
     _id: id || '1',
@@ -246,7 +258,12 @@ const ProductDetail = () => {
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
-                  <div className="w-8 h-10 mx-auto mb-2 bg-gray-200 rounded"></div>
+                  <img
+                    src={getVariantIcon(variant.size)}
+                    alt={variant.label}
+                    className="w-8 h-10 mx-auto mb-2 object-contain"
+                    onError={(e) => { e.target.src = '/images/placeholders/product-placeholder.jpg'; }}
+                  />
                   <div className="text-xs text-gray-600">{variant.label}</div>
                 </button>
               ))}
