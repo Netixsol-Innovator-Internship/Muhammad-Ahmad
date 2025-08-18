@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Task from './Task';
+import { API_ENDPOINTS } from '../config/api';
 
 
 const Dashboard: React.FC = () => {
@@ -20,14 +21,14 @@ const Dashboard: React.FC = () => {
 
     // Fetch tasks from backend
     useEffect(() => {
-        axios.get<TaskType[]>('http://localhost:4000/api/tasks')
+        axios.get<TaskType[]>(API_ENDPOINTS.TASKS)
             .then(res => setTasks(res.data))
             .catch(() => setTasks([]));
     }, []);
 
     const handleDeleteTask = async (id: string) => {
         try {
-            await axios.delete(`http://localhost:4000/api/tasks/${id}`);
+            await axios.delete(`${API_ENDPOINTS.TASKS}/${id}`);
             setTasks(tasks.filter(task => task.id !== id));
         } catch (err) {}
     };
@@ -36,7 +37,7 @@ const Dashboard: React.FC = () => {
         const task = tasks.find(t => t.id === id);
         if (!task) return;
         try {
-            const res = await axios.put<TaskType>(`http://localhost:4000/api/tasks/${id}`, {
+            const res = await axios.put<TaskType>(`${API_ENDPOINTS.TASKS}/${id}`, {
                 completed: !task.completed
             });
             setTasks(tasks.map(t => t.id === id ? res.data : t));
@@ -46,7 +47,7 @@ const Dashboard: React.FC = () => {
     const handleAddTask = async () => {
         if (taskInput.trim() === "") return;
         try {
-            const res = await axios.post<TaskType>('http://localhost:4000/api/tasks', {
+            const res = await axios.post<TaskType>(API_ENDPOINTS.TASKS, {
                 title: taskInput
             });
             setTasks([...tasks, res.data]);
