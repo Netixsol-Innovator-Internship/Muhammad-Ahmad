@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // backend API base
+  baseURL: "https://ahmad-week3-day3-task-backend.vercel.app/", // backend API base
   headers: {
     "Content-Type": "application/json"
   }
