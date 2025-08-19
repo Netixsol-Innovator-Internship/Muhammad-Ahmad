@@ -20,12 +20,12 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'A simple API to manage your daily tasks. You can create, read, update, and delete tasks.', // A helpful description
     },
-    servers: [
-      {
-        url: 'http://localhost:3000',
-        description: 'Development server',
-      },
-    ],
+		servers: [
+			{
+				url: 'https://ahmad-week3-day1-api-docs.vercel.app',
+				description: 'Deployment URL',
+			},
+		],
   },
   apis: ['./server.js'],
 };
@@ -377,9 +377,9 @@ app.delete("/api/tasks/:id", (req, res) => {
 })
 
 
-// Start the server (like opening your shop for business)
-// app.listen(port, () => {
-// 	console.log(`Server is running on http://localhost:${port}`);
-// });
+// Start the server
+app.listen(port, () => {
+	console.log(`Server is running on https://ahmad-week3-day1-api-docs.vercel.app`);
+});
 
 module.exports=app;

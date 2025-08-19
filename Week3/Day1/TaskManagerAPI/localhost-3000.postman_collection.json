@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "c57e7066-f286-4c53-8f8d-fad08faaba7f",
-		"name": "localhost:3000",
+		"name": "ahmad-week3-day1-api-docs.vercel.app",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "46983200",
 		"_collection_link": "https://m-ahmad-usman-5854500.postman.co/workspace/Muhammad-Ahmad's-Team's-Workspa~b424b1ba-b08a-4232-8077-5108b159efff/collection/46983200-c57e7066-f286-4c53-8f8d-fad08faaba7f?action=share&source=collection_link&creator=46983200"
@@ -28,12 +28,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/tasks/2",
-					"protocol": "http",
+					"raw": "https://ahmad-week3-day1-api-docs.vercel.app/api/tasks/2",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"ahmad-week3-day1-api-docs",
+						"vercel",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"tasks",
@@ -64,12 +65,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/tasks/2",
-					"protocol": "http",
+					"raw": "https://ahmad-week3-day1-api-docs.vercel.app/api/tasks/2",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"ahmad-week3-day1-api-docs",
+						"vercel",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"tasks",
@@ -100,12 +102,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/tasks/",
-					"protocol": "http",
+					"raw": "https://ahmad-week3-day1-api-docs.vercel.app/api/tasks/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"ahmad-week3-day1-api-docs",
+						"vercel",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"tasks",
@@ -139,12 +142,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/tasks/",
-					"protocol": "http",
+					"raw": "https://ahmad-week3-day1-api-docs.vercel.app/api/tasks/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"ahmad-week3-day1-api-docs",
+						"vercel",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"tasks",
@@ -175,12 +179,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/tasks/1",
-					"protocol": "http",
+					"raw": "https://ahmad-week3-day1-api-docs.vercel.app/api/tasks/1",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"ahmad-week3-day1-api-docs",
+						"vercel",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"tasks",
@@ -214,12 +219,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/tasks/2",
-					"protocol": "http",
+					"raw": "https://ahmad-week3-day1-api-docs.vercel.app/api/tasks/2",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"ahmad-week3-day1-api-docs",
+						"vercel",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"tasks",
@@ -253,12 +259,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/tasks/1",
-					"protocol": "http",
+					"raw": "https://ahmad-week3-day1-api-docs.vercel.app/api/tasks/1",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"ahmad-week3-day1-api-docs",
+						"vercel",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"tasks",
