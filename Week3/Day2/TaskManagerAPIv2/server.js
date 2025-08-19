@@ -11,8 +11,8 @@ const requiredEnvVars = ['MONGODB_URI', 'JWT_SECRET'];
 const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
 
 if (missingVars.length > 0) {
-    console.error('❌ Missing required environment variables:', missingVars.join(', '));
-    console.error('💡 Please check your .env file');
+    console.error(' Missing required environment variables:', missingVars.join(', '));
+    console.error(' Please check your .env file');
 }
 
 // Import database connection
@@ -47,6 +47,10 @@ const swaggerOptions = {
     },
     servers: [
       {
+        url: 'https://ahmad-week3-day2-backend.vercel.app',
+        description: 'Production server (Vercel)',
+      },
+      {
         url: `http://localhost:${port}`,
         description: 'Development server',
       },
@@ -79,7 +83,7 @@ app.get('/', (req, res) => {
   res.json({
     success: true,
     message: 'Welcome to Task Manager API v2!',
-    documentation: `http://localhost:${port}/api-docs`,
+    documentation: 'https://ahmad-week3-day2-backend.vercel.app/api-docs',
     status: 'Server is running perfectly! 🚀'
   });
 });
@@ -121,8 +125,8 @@ app.use((req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`);
-  console.log(`📚 API Documentation: http://localhost:${port}/api-docs`);
+  console.log(`Server running on http://localhost:${port}`);
+  console.log(`API Documentation: https://ahmad-week3-day2-backend.vercel.app/api-docs`);
 });
 
 module.exports = app;
