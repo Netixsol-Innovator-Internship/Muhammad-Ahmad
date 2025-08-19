@@ -22,7 +22,7 @@ const JobCard:React.FC<JobCardProps> = (props) => {
     props.tools? filters.push(...props.tools): <></>;
     
     return (
-        <article className="relative bg-[#fff] shadow-lg my-12 p-6 max-w-[600px] min-[900px]:w-full min-[900px]:max-w-[900px] mx-auto rounded-md flex flex-col min-[900px]:flex-row min-[900px]:items-center gap-6">
+        <article className="relative bg-[#fff] shadow-lg mt-12 md:mt-4 p-6 max-w-[600px] min-[900px]:w-full min-[900px]:max-w-[900px] mx-auto rounded-md flex flex-col min-[900px]:flex-row min-[900px]:items-center gap-6">
             
             <div className="flex items-center gap-6 w-full md:w-auto">
                 <Image
@@ -39,7 +39,7 @@ const JobCard:React.FC<JobCardProps> = (props) => {
                         {props.new? <span className="bg-[#2c3a3a] text-[#fff] text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide">Featured</span>: <></>}
                     </div>
                     
-                    <h2 className="font-bold text-lg md:text-xl text-[#2c3a3a] hover:text-[#5da5a4] cursor-pointer">{props.position}</h2>
+                    <h2 className="font-bold text-lg md:text-xl text-[#2c3a3a] hover:text-[#5da5a4] cursor-pointer mb-2">{props.position}</h2>
                     
                     <div className="flex items-center gap-2 text-[#7b8e8e] text-sm font-medium">
                         <span>{props.postedAt}</span>
@@ -51,7 +51,7 @@ const JobCard:React.FC<JobCardProps> = (props) => {
                 </div>
             </div>
             <div className="min-[900px]:ml-auto flex-wrap flex gap-2">
-                {filters.map(filter => (<span className="bg-[#eef6f6] text-[#5da5a4] text-sm font-bold px-3 py-1 rounded">
+                {filters.map((filter, idx) => (<span key={idx} className="bg-[#eef6f6] hover:bg-[#5da5a4] text-[#5da5a4] hover:text-white cursor-pointer text-sm font-bold px-3 py-1 rounded">
                     {filter}
                 </span>))}
             </div>

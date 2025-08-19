@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import JobCard from "@/components/JobCard"
+import FilterBar from '@/components/FilterBar';
 
 interface Job {
   logo: string,
@@ -33,10 +34,11 @@ function Home() {
   }, []);
 
   return (
-    <div className='space-y-5 py-5 md:py-0 mx-4'>
 
-      {loading ? <div>Loading...</div> : jobs.map((job, idx) => <JobCard key={idx} {...job} />)}
-
+    <div className='mx-4'>
+      <div className='mt-20 md:mt-0'>
+        {loading ? <div>Loading...</div> : jobs.map((job, idx) => <JobCard key={idx} {...job} />)}
+      </div>
     </div>
   );
 }
