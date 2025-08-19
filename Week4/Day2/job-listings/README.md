@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Week 4 - Day 2
 
-## Getting Started
+## Job Listings — Next.js + Tailwind + Zustand
 
-First, run the development server:
+A small, responsive job-listings UI built with Next.js (app router), Tailwind CSS, and Zustand for client-side state. It loads job data from a local JSON file and lets users filter jobs by role, level, languages, and tools.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project summary
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This repository contains a single-page job listings UI inspired by common frontend challenge designs. It demonstrates:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- A Next.js 13+ app using the app directory.
+- Tailwind CSS utility classes for layout and styling.
+- Zustand for compact client-side state management (active filters).
+- A data-driven list of job cards loaded from `public/data.json`.
+- Accessible controls: filter chips, clear button, and keyboard-friendly buttons.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How it works (implementation details)
 
-## Learn More
+- Data source: `public/data.json` contains an array of job objects. The app fetches this file from the client using `fetch('/data.json')` in `app/page.tsx`.
 
-To learn more about Next.js, take a look at the following resources:
+- State management: `store/filterStore.ts` exposes a small Zustand store with `activeFilters`, `addFilter`, `removeFilter`, and `clearAllFilters` functions. Components import `useFilterStore` to read or update filters.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Components:
+  - `components/Header.tsx` — decorative header (background image + color).
+  - `components/FilterBar.tsx` — visible only when filters are active; shows current filters with remove buttons and a Clear action.
+  - `components/JobCard.tsx` — renders job details (company, position, badges) and clickable filter chips (role, level, languages, tools).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Filtering logic: `app/page.tsx` keeps the fetched jobs in local state and computes `filteredJobs` with `useMemo`. A job is shown only when it matches all active filters (logical AND across selected tags).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Live Preview:
+**Preview**: [ahmad-week4-day2-job-listing.vercel.app](https://ahmad-week4-day2-job-listing.vercel.app)
