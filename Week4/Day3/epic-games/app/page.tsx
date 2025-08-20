@@ -5,6 +5,7 @@ import Hero from "@/components/Hero/Hero"
 import GamesOnSale from "@/components/GamesOnSale/GamesOnSale"
 import FeaturedGame from "@/components/FeaturedGame"
 import FreeGames from "@/components/FreeGames/FreeGames"
+import TopGames from "@/components/TopGames/TopGames"
 
 const Home: React.FC = () => {
   return (
@@ -44,6 +45,8 @@ const Home: React.FC = () => {
 
         {/* Free Games Section */}
         <FreeGames></FreeGames>
+
+        <TopGames></TopGames>
 
       </div>
     </>
