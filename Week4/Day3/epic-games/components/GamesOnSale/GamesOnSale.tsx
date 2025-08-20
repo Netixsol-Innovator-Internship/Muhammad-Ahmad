@@ -15,7 +15,7 @@ import { Navigation } from 'swiper/modules';
 
 // My components
 import Card from '@/components/GamesOnSale/Card'
-import useGamesStore from '@/stores/useGamesStore'
+import useGamesStore, { SaleItem } from '@/stores/useGamesStore'
 
 const GamesOnSale = () => {
     const prevRef = React.useRef<HTMLButtonElement>(null);
@@ -73,17 +73,19 @@ const GamesOnSale = () => {
                 } : false}
                 onBeforeInit={(swiper) => {
                     if (showNavigation) {
-                        // @ts-ignore
+                        // The navigation params are assigned at runtime once refs are available.
+                        // Swiper's types don't allow assigning prevEl/nextEl directly here.
+                        // @ts-expect-error - assigning navigation refs at runtime
                         swiper.params.navigation.prevEl = prevRef.current;
-                        // @ts-ignore
+                        // @ts-expect-error - assigning navigation refs at runtime
                         swiper.params.navigation.nextEl = nextRef.current;
                     }
                 }}
                 onInit={(swiper) => {
                     if (showNavigation) {
-                        // @ts-ignore
+                        // @ts-expect-error - assigning navigation refs at runtime
                         swiper.params.navigation.prevEl = prevRef.current;
-                        // @ts-ignore
+                        // @ts-expect-error - assigning navigation refs at runtime
                         swiper.params.navigation.nextEl = nextRef.current;
                         swiper.navigation.update();
                     }
@@ -130,12 +132,12 @@ const GamesOnSale = () => {
                 observer={true}
                 observeParents={true}
             >
-                {gamesOnSale.map((game, idx) => {
-                    const src = (game as any).src || (game as any).image || ''
-                    const title = (game as any).title || 'Untitled'
-                    const saleInPercent = (game as any).discount || (game as any).saleInPercent || ''
-                    const newPrice = (game as any).discountPrice ? `₹${(game as any).discountPrice}` : ((game as any).newPrice || ((game as any).price ? `₹${(game as any).price}` : ''))
-                    const oldPrice = (game as any).oldPrice ? `₹${(game as any).oldPrice}` : ''
+                {gamesOnSale.map((game: SaleItem, idx) => {
+                    const src = game.src || ''
+                    const title = game.title || 'Untitled'
+                    const saleInPercent = game.discount || ''
+                    const newPrice = game.discountPrice ? `₹${game.discountPrice}` : (game.price ? `₹${game.price}` : '')
+                    const oldPrice = game.oldPrice ? `₹${game.oldPrice}` : ''
                     return (
                         <SwiperSlide key={idx}>
                             <Card

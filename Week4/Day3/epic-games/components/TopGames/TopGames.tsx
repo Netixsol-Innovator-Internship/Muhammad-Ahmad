@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 // Hardcoded data for TopGames (images expected under public/images/...)
+import Image from 'next/image'
 const TOP_SELLERS = [
   { src: '/images/top-sellers/ghostbusters.png', title: 'Ghostbusters: Spirits Unleashed', price: '₹3,999' },
   { src: '/images/top-sellers/gta-v.png', title: 'GTA V : Premier edition', price: '₹2,499' },
@@ -39,8 +40,8 @@ const TopGames: React.FC = () => {
             {TOP_SELLERS.map((g, i) => (
               <article key={i} className="bg-neutral-900/50 rounded-lg overflow-hidden hover:bg-neutral-800/70 transition-all duration-200 cursor-pointer border border-neutral-800/50">
                 <div className="flex">
-                  <div className="w-20 h-20 flex-shrink-0">
-                    <img src={g.src} alt={g.title} className="w-full h-full object-cover rounded-l-lg" />
+                  <div className="w-20 h-20 flex-shrink-0 relative">
+                    <Image src={g.src} alt={g.title} fill className="object-cover rounded-l-lg" />
                   </div>
                   <div className="flex-1 p-3 flex flex-col justify-around">
                     <h3 className="text-white text-sm mb-1">{g.title}</h3>
@@ -60,8 +61,8 @@ const TopGames: React.FC = () => {
             {BEST_SELLERS.map((g, i) => (
               <article key={i} className="bg-neutral-900/50 rounded-lg overflow-hidden hover:bg-neutral-800/70 transition-all duration-200 cursor-pointer border border-neutral-800/50">
                 <div className="flex">
-                  <div className="w-20 h-20 flex-shrink-0">
-                    <img src={g.src} alt={g.title} className="w-full h-full object-cover rounded-l-lg" />
+                  <div className="w-20 h-20 flex-shrink-0 relative">
+                    <Image src={g.src} alt={g.title} fill className="object-cover rounded-l-lg" />
                   </div>
                   <div className="flex-1 p-3 flex flex-col justify-around">
                     <h3 className="text-white text-sm mb-1">{g.title}</h3>
@@ -81,8 +82,8 @@ const TopGames: React.FC = () => {
             {TOP_UPCOMING.map((g, i) => (
               <article key={i} className="bg-neutral-900/50 rounded-lg overflow-hidden hover:bg-neutral-800/70 transition-all duration-200 cursor-pointer border border-neutral-800/50">
                 <div className="flex">
-                  <div className="w-20 h-20 flex-shrink-0">
-                    <img src={g.src} alt={g.title} className="w-full h-full object-cover rounded-l-lg" />
+                  <div className="w-20 h-20 flex-shrink-0 relative">
+                    <Image src={g.src} alt={g.title} fill className="object-cover rounded-l-lg" />
                   </div>
                   <div className="flex-1 p-3 flex flex-col justify-around">
                     <h3 className="text-white text-sm mb-1">{g.title}</h3>

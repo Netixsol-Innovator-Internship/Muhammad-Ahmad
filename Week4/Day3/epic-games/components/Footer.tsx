@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+import Image from 'next/image'
 
 const Footer: React.FC = () => {
     return (
@@ -9,13 +10,13 @@ const Footer: React.FC = () => {
                 {/* Social Icons */}
                 <div className="flex justify-start gap-6 mb-8">
                     <a href="#" aria-label="Facebook" className='cursor-pointer'>
-                        <img src="/svgs/facebook-logo.svg" alt="Facebook" className="w-4 h-6" />
+                        <Image src="/svgs/facebook-logo.svg" alt="Facebook" width={16} height={24} />
                     </a>
                     <a href="#" aria-label="Twitter" className='cursor-pointer'>
-                        <img src="/svgs/twitter-logo.svg" alt="Twitter" className="w-6 h-6" />
+                        <Image src="/svgs/twitter-logo.svg" alt="Twitter" width={24} height={24} />
                     </a>
                     <a href="#" aria-label="YouTube" className='cursor-pointer'>
-                        <img src="/svgs/youtube-logo.svg" alt="YouTube" className="w-6 h-6" />
+                        <Image src="/svgs/youtube-logo.svg" alt="YouTube" width={24} height={24} />
                     </a>
                 </div>
 

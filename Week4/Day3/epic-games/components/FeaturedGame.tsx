@@ -10,7 +10,7 @@ interface FeaturedGameProps {
 
 const FeaturedGame:React.FC<FeaturedGameProps> = (props) => {
   return (
-        <article className='text-white text-sm space-y-2 max-w-[320px]'>
+        <article className='text-white text-sm space-y-2 max-w-[320px] cursor-pointer'>
             <Image
                 src={props.image}
                 alt={props.title}

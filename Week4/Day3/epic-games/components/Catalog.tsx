@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Catalog: React.FC = () => {
   return (
-    <section className="w-full py-8 px-4 flex items-center justify-center">
+    <section className="w-full py-8 px-4 flex items-center justify-center cursor-pointer">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left: Catalog Image */}
         <div className="flex justify-center">
