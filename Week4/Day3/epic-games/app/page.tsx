@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar"
 import Hero from "@/components/Hero/Hero"
 import GamesOnSale from "@/components/GamesOnSale/GamesOnSale"
 import FeaturedGame from "@/components/FeaturedGame"
+import FreeGames from "@/components/FreeGames/FreeGames"
 
 const Home: React.FC = () => {
   return (
@@ -40,6 +41,9 @@ const Home: React.FC = () => {
             price="₹3,499">
           </FeaturedGame>
         </section>
+
+        {/* Free Games Section */}
+        <FreeGames></FreeGames>
 
       </div>
     </>
