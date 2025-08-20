@@ -8,13 +8,13 @@ const Footer: React.FC = () => {
             
                 {/* Social Icons */}
                 <div className="flex justify-start gap-6 mb-8">
-                    <a href="#" aria-label="Facebook">
+                    <a href="#" aria-label="Facebook" className='cursor-pointer'>
                         <img src="/svgs/facebook-logo.svg" alt="Facebook" className="w-4 h-6" />
                     </a>
-                    <a href="#" aria-label="Twitter">
+                    <a href="#" aria-label="Twitter" className='cursor-pointer'>
                         <img src="/svgs/twitter-logo.svg" alt="Twitter" className="w-6 h-6" />
                     </a>
-                    <a href="#" aria-label="YouTube">
+                    <a href="#" aria-label="YouTube" className='cursor-pointer'>
                         <img src="/svgs/youtube-logo.svg" alt="YouTube" className="w-6 h-6" />
                     </a>
                 </div>
@@ -22,22 +22,22 @@ const Footer: React.FC = () => {
                 {/* Resource Links */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-2 gap-x-6 mb-8 text-[1rem]">
                     <span className="font-medium text-gray-400 col-span-2 sm:col-span-3 md:col-span-5 mb-2">Resource</span>
-                    <a href="#" className="hover:text-white">Creator Support</a>
-                    <a href="#" className="hover:text-white">Published On Epic</a>
-                    <a href="#" className="hover:text-white">Profession</a>
-                    <a href="#" className="hover:text-white">Company</a>
-                    <a href="#" className="hover:text-white">Fan Work Policy</a>
-                    <a href="#" className="hover:text-white">User Exp Service</a>
-                    <a href="#" className="hover:text-white">User Licence</a>
-                    <a href="#" className="hover:text-white">Online Service</a>
-                    <a href="#" className="hover:text-white">Community</a>
-                    <a href="#" className="hover:text-white">Epic Newsroom</a>
-                    <a href="#" className="hover:text-white">Battle Breakers</a>
-                    <a href="#" className="hover:text-white">Fortnite</a>
-                    <a href="#" className="hover:text-white">Infinity Blade</a>
-                    <a href="#" className="hover:text-white">Robo Recall</a>
-                    <a href="#" className="hover:text-white">Shadow Complex</a>
-                    <a href="#" className="hover:text-white">Unreal Tournament</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Creator Support</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Published On Epic</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Profession</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Company</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Fan Work Policy</a>
+                    <a href="#" className="hover:text-white cursor-pointer">User Exp Service</a>
+                    <a href="#" className="hover:text-white cursor-pointer">User Licence</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Online Service</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Community</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Epic Newsroom</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Battle Breakers</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Fortnite</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Infinity Blade</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Robo Recall</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Shadow Complex</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Unreal Tournament</a>
                 </div>
 
                 {/* Legal Text */}
@@ -47,9 +47,9 @@ const Footer: React.FC = () => {
 
                 {/* Policy Links */}
                 <div className="flex flex-wrap gap-4 text-xs text-gray-300">
-                    <a href="#" className="hover:text-white">Terms of Service</a>
-                    <a href="#" className="hover:text-white">Privacy Policy</a>
-                    <a href="#" className="hover:text-white">Store Refund Policy</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Terms of Service</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Privacy Policy</a>
+                    <a href="#" className="hover:text-white cursor-pointer">Store Refund Policy</a>
                 </div>
         </footer>
     );

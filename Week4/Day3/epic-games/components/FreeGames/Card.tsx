@@ -9,7 +9,7 @@ interface FreeGameCardProps {
 
 const Card: React.FC<FreeGameCardProps> = ({ image, title, dateRange }) => {
   return (
-    <article className="bg-transparent rounded flex flex-col min-w-[180px] max-w-[220px]">
+  <article className="bg-transparent rounded flex flex-col min-w-[180px] max-w-[220px] cursor-pointer">
       <div className="overflow-hidden rounded w-full flex justify-center items-center h-[260px]">
         <Image
           src={image}

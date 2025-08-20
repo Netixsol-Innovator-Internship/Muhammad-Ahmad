@@ -18,7 +18,7 @@ const FreeGames = () => {
                     <h2 className='hidden sm:block'>Free Games</h2>
                 </div>
 
-                <button className='border-1 py-1 px-2 md:px-5'>view More</button>
+                <button className='border-1 py-1 px-2 md:px-5 cursor-pointer'>view More</button>
             </div>
 
             <div className='grid justify-items-center mt-8 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>

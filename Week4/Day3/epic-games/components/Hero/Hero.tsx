@@ -16,7 +16,9 @@ const Hero: React.FC = () => {
                         src="/svgs/search.svg"
                         alt="Search"
                         width={24}
-                        height={28}>
+                        height={28}
+                        className='cursor-pointer'
+                    >
                     </Image>
                     <input
                         type="text"
@@ -26,9 +28,9 @@ const Hero: React.FC = () => {
                 </div>
                 {/* Navigation  */}
                 <nav className="hidden sm:flex items-center gap-6 text-sm">
-                    <a href="#" className="text-white font-medium">Discover</a>
-                    <a href="#" className="text-gray-400 hover:text-white">Browse</a>
-                    <a href="#" className="text-gray-400 hover:text-white">News</a>
+                    <a href="#" className="text-white font-medium cursor-pointer">Discover</a>
+                    <a href="#" className="text-gray-400 hover:text-white cursor-pointer">Browse</a>
+                    <a href="#" className="text-gray-400 hover:text-white cursor-pointer">News</a>
                 </nav>
             </div>
 
@@ -45,7 +47,7 @@ const Hero: React.FC = () => {
                             <div className='text-white text-[15px] flex flex-col gap-1 px-4 sm:px-10 pb-8 sm:max-w-[80%] md:max-w-[60%]'>
                                 <p className='font-light'>PRE-PURCHASE AVAILABLE</p>
                                 <p>{description}</p>
-                                <button className='bg-white text-black mt-5 rounded-md py-3 px-4 w-fit'>PRE-PURCHASE NOW</button>
+                                <button className='bg-white text-black mt-5 rounded-md py-3 px-4 w-fit cursor-pointer'>PRE-PURCHASE NOW</button>
                             </div>
                         </div>
                     )

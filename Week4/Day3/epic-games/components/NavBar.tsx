@@ -15,14 +15,16 @@ const NavBar: React.FC = () => {
                         src="/svgs/epic-logo.svg"
                         alt="Epic Logo"
                         width={24}
-                        height={28}>
+                        height={28}
+                        className='cursor-pointer'
+                    >
                     </Image>
 
                     <ul className='hidden sm:flex gap-6'>
-                        <li><a href="#">STORE</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">HELP</a></li>
-                        <li><a href="#">UNREAL ENGINE</a></li>
+                        <li><a href="#" className='cursor-pointer'>STORE</a></li>
+                        <li><a href="#" className='cursor-pointer'>FAQ</a></li>
+                        <li><a href="#" className='cursor-pointer'>HELP</a></li>
+                        <li><a href="#" className='cursor-pointer'>UNREAL ENGINE</a></li>
                     </ul>
                 </div>
 
@@ -31,7 +33,9 @@ const NavBar: React.FC = () => {
                         src="/svgs/globe.svg"
                         alt="Globe"
                         width={24}
-                        height={28}>
+                        height={28}
+                        className='cursor-pointer'
+                    >
                     </Image>
 
                     <div className='flex gap-1 items-center'>
@@ -42,10 +46,10 @@ const NavBar: React.FC = () => {
                             height={28}>
                         </Image>
 
-                        <a href="#">SIGN IN</a>
+                        <a href="#" className='cursor-pointer'>SIGN IN</a>
                     </div>
 
-                    <button className='h-full px-6 bg-[#007AFF] font-medium text-white'>Download</button>
+                    <button className='h-full px-6 bg-[#007AFF] font-medium text-white cursor-pointer'>Download</button>
                 </div>
 
                 {/* Hamburger icon for mobile screens */}
@@ -64,10 +68,10 @@ const NavBar: React.FC = () => {
             && <div className='bg-[#313131] py-4 pl-4 text-[#AAAAAA] font-medium flex flex-col gap-3'>
 
                 <ul className='flex flex-col gap-3'>
-                    <li><a href="#">STORE</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">HELP</a></li>
-                    <li><a href="#">UNREAL ENGINE</a></li>
+                    <li><a href="#" className='cursor-pointer'>STORE</a></li>
+                    <li><a href="#" className='cursor-pointer'>FAQ</a></li>
+                    <li><a href="#" className='cursor-pointer'>HELP</a></li>
+                    <li><a href="#" className='cursor-pointer'>UNREAL ENGINE</a></li>
                 </ul>
 
                 <Image
@@ -85,10 +89,10 @@ const NavBar: React.FC = () => {
                         height={28}>
                     </Image>
 
-                    <a href="#">SIGN IN</a>
+                    <a href="#" className='cursor-pointer'>SIGN IN</a>
                 </div>
 
-                <button className='px-4 py-2 bg-[#007AFF] font-medium text-white w-fit'>Download</button>
+                <button className='px-4 py-2 bg-[#007AFF] font-medium text-white w-fit cursor-pointer'>Download</button>
             </div>}
            
 
