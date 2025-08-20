@@ -7,6 +7,7 @@ import FeaturedGame from "@/components/FeaturedGame"
 import FreeGames from "@/components/FreeGames/FreeGames"
 import TopGames from "@/components/TopGames/TopGames"
 import Catalog from "@/components/Catalog"
+import Footer from "@/components/Footer"
 
 const Home: React.FC = () => {
   return (
@@ -24,19 +25,19 @@ const Home: React.FC = () => {
 
         {/* Featured Games Section */}
         <section className="my-6 grid gap-y-8 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-6'">
-          <FeaturedGame 
+          <FeaturedGame
             image="/images/NFS-featured.png"
             title="NFS UNBOUND"
             description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
             price="₹3,499">
           </FeaturedGame>
-          <FeaturedGame 
+          <FeaturedGame
             image="/images/NFS-featured.png"
             title="NFS UNBOUND"
             description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
             price="₹3,499">
           </FeaturedGame>
-          <FeaturedGame 
+          <FeaturedGame
             image="/images/NFS-featured.png"
             title="NFS UNBOUND"
             description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
@@ -52,19 +53,19 @@ const Home: React.FC = () => {
 
         {/* Featured Games Section */}
         <section className="my-6 grid gap-y-8 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-6'">
-          <FeaturedGame 
+          <FeaturedGame
             image="/images/NFS-featured.png"
             title="NFS UNBOUND"
             description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
             price="₹3,499">
           </FeaturedGame>
-          <FeaturedGame 
+          <FeaturedGame
             image="/images/NFS-featured.png"
             title="NFS UNBOUND"
             description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
             price="₹3,499">
           </FeaturedGame>
-          <FeaturedGame 
+          <FeaturedGame
             image="/images/NFS-featured.png"
             title="NFS UNBOUND"
             description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
@@ -79,6 +80,8 @@ const Home: React.FC = () => {
         <Catalog></Catalog>
 
       </div>
+
+      <Footer></Footer>
     </>
   )
 }
