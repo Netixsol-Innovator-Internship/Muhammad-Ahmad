@@ -46,7 +46,33 @@ const Home: React.FC = () => {
         {/* Free Games Section */}
         <FreeGames></FreeGames>
 
+        {/* Top Games section */}
         <TopGames></TopGames>
+
+        {/* Featured Games Section */}
+        <section className="my-6 grid gap-y-8 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-6'">
+          <FeaturedGame 
+            image="/images/NFS-featured.png"
+            title="NFS UNBOUND"
+            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
+            price="₹3,499">
+          </FeaturedGame>
+          <FeaturedGame 
+            image="/images/NFS-featured.png"
+            title="NFS UNBOUND"
+            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
+            price="₹3,499">
+          </FeaturedGame>
+          <FeaturedGame 
+            image="/images/NFS-featured.png"
+            title="NFS UNBOUND"
+            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
+            price="₹3,499">
+          </FeaturedGame>
+        </section>
+
+        {/* Games On Sale section */}
+        <GamesOnSale></GamesOnSale>
 
       </div>
     </>
