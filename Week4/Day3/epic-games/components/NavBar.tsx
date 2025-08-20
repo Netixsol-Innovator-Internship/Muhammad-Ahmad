@@ -18,7 +18,7 @@ const NavBar: React.FC = () => {
                         height={28}>
                     </Image>
 
-                    <ul className='hidden sm:flex gap-3'>
+                    <ul className='hidden sm:flex gap-6'>
                         <li><a href="#">STORE</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">HELP</a></li>
