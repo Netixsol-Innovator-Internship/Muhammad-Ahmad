@@ -6,6 +6,7 @@ import GamesOnSale from "@/components/GamesOnSale/GamesOnSale"
 import FeaturedGame from "@/components/FeaturedGame"
 import FreeGames from "@/components/FreeGames/FreeGames"
 import TopGames from "@/components/TopGames/TopGames"
+import Catalog from "@/components/Catalog"
 
 const Home: React.FC = () => {
   return (
@@ -71,8 +72,11 @@ const Home: React.FC = () => {
           </FeaturedGame>
         </section>
 
+        {/* Title has to be updated */}
         {/* Games On Sale section */}
         <GamesOnSale></GamesOnSale>
+
+        <Catalog></Catalog>
 
       </div>
     </>
