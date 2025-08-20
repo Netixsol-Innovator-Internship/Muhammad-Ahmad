@@ -1,5 +1,12 @@
-import Image from "next/image";
+import NavBar from "@/components/NavBar"
 
-export default function Home() {
-  return (null);
+const Home:React.FC = () => {
+  return (
+    <div className="max-w-screen-2xl mx-auto">
+      <NavBar></NavBar>
+    </div>
+  )
 }
+
+export default Home
+
