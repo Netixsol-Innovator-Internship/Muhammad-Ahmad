@@ -3,6 +3,7 @@ import Image from "next/image"
 import NavBar from "@/components/NavBar"
 import Hero from "@/components/Hero/Hero"
 import GamesOnSale from "@/components/GamesOnSale/GamesOnSale"
+import FeaturedGame from "@/components/FeaturedGame"
 
 const Home: React.FC = () => {
   return (
@@ -11,10 +12,34 @@ const Home: React.FC = () => {
         <NavBar></NavBar>
       </div>
 
+      {/* Container */}
       <div className="max-w-screen-lg mx-auto px-4">
         <Hero></Hero>
 
+        {/* Games On Sale section */}
         <GamesOnSale></GamesOnSale>
+
+        {/* Featured Games Section */}
+        <section className="my-6 grid gap-y-8 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-6'">
+          <FeaturedGame 
+            image="/images/NFS-featured.png"
+            title="NFS UNBOUND"
+            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
+            price="₹3,499">
+          </FeaturedGame>
+          <FeaturedGame 
+            image="/images/NFS-featured.png"
+            title="NFS UNBOUND"
+            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
+            price="₹3,499">
+          </FeaturedGame>
+          <FeaturedGame 
+            image="/images/NFS-featured.png"
+            title="NFS UNBOUND"
+            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
+            price="₹3,499">
+          </FeaturedGame>
+        </section>
 
       </div>
     </>
