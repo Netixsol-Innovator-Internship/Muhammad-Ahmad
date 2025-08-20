@@ -15,83 +15,14 @@ import { Navigation } from 'swiper/modules';
 
 // My components
 import Card from '@/components/GamesOnSale/Card'
-
-const gamesOnSale = [
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-    {
-        image: "/images/valorant-GOS.png",
-        title: "Valorant",
-        saleInPercent: "-10%",
-        newPrice: "₹850",
-        oldPrice: "₹900",
-    },
-];
+import useGamesStore from '@/stores/useGamesStore'
 
 const GamesOnSale = () => {
     const prevRef = React.useRef<HTMLButtonElement>(null);
     const nextRef = React.useRef<HTMLButtonElement>(null);
+    const gamesOnSale = useGamesStore((s) => s.sale)
+    const totalSlides = gamesOnSale.length;
+    const shouldCenter = totalSlides < 5; // center when fewer than 5 cards
     return (
         <section className="my-8 text-white">
             <div className='flex justify-between items-center'>
@@ -127,21 +58,56 @@ const GamesOnSale = () => {
                     // @ts-ignore
                     swiper.params.navigation.nextEl = nextRef.current;
                 }}
-                slidesPerView={5}
+                centeredSlides={shouldCenter}
+                centeredSlidesBounds={shouldCenter}
+                breakpoints={{
+                    // when window width is >= 320px (mobile)
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    },
+                    400: {
+                        slidesPerView: 2,
+                        spaceBetween: 10
+                    },
+                    600: {
+                        slidesPerView: 3,
+                        spaceBetween: 10
+                    },
+                    800: {
+                        slidesPerView: 4,
+                        spaceBetween: 14
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 16
+                    },
+                    1280: {
+                        slidesPerView: 5,
+                        spaceBetween: 16
+                    }
+                }}
                 spaceBetween={16}
                 className="mySwiper"
             >
-                {gamesOnSale.map((game, idx) => (
-                    <SwiperSlide key={idx}>
-                        <Card
-                            image={game.image}
-                            title={game.title}
-                            saleInPercent={game.saleInPercent}
-                            newPrice={game.newPrice}
-                            oldPrice={game.oldPrice}
-                        />
-                    </SwiperSlide>
-                ))}
+                {gamesOnSale.map((game, idx) => {
+                    const src = (game as any).src || (game as any).image || ''
+                    const title = (game as any).title || 'Untitled'
+                    const saleInPercent = (game as any).discount || (game as any).saleInPercent || ''
+                    const newPrice = (game as any).discountPrice ? `₹${(game as any).discountPrice}` : ((game as any).newPrice || ((game as any).price ? `₹${(game as any).price}` : ''))
+                    const oldPrice = (game as any).oldPrice ? `₹${(game as any).oldPrice}` : ''
+                    return (
+                        <SwiperSlide key={idx}>
+                            <Card
+                                image={src}
+                                title={title}
+                                saleInPercent={saleInPercent}
+                                newPrice={newPrice}
+                                oldPrice={oldPrice}
+                            />
+                        </SwiperSlide>
+                    )
+                })}
             </Swiper>
         </section>
     )

@@ -11,9 +11,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = (props) => {
   return (
-    <article className='cursor-pointer !min-w-[200px] relative rounded'>
-      
-      <div className='absolute top-0 right-0 bottom-0 left-0 bg-transparent hover:bg-white/5'></div>
+    <article className='cursor-pointer !min-w-[200px] rounded'>
       
       <Image
         src={props.image}

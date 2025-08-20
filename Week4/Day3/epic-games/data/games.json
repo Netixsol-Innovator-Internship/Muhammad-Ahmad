@@ -1,0 +1,110 @@
+{
+  "hero-main": [
+    {
+      "src": "/images/god-of-war.jpg",
+      "description": "Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive"
+    }
+  ],
+  "hero-secondary": [
+    {
+      "src": "/images/god-of-war-card.jpg",
+      "title": "God Of War 4"
+    },
+    {
+      "src": "/images/farcry-card.png",
+      "title": "Farcry 6 Golden Edition"
+    },
+    {
+      "src": "/images/gta-v.png",
+      "title": "GTA V"
+    },
+    {
+      "src": "/images/outlast.png",
+      "title": "Outlast 2"
+    }
+  ],
+  "sale": [
+    {
+      "src": "/images/valorant.png",
+      "title": "Valorant",
+      "oldPrice": 900,
+      "discountPrice": 850,
+      "discount": "-10%"
+    },
+    {
+      "src": "/images/assasin.png",
+      "title": "Assassin's Creed Valhalla",
+      "oldPrice": 3499,
+      "discountPrice": 2999,
+      "discount": "-20%"
+    },
+    {
+      "src": "/images/red-dead.png",
+      "title": "Red Dead Redemption 2",
+      "price": 3199,
+      "discountPrice": 1599,
+      "discount": "-50%"
+    },
+    {
+      "src": "/images/tomb-raider.png",
+      "title": "The Tomb Raider",
+      "price": 2195,
+      "discountPrice": 2000,
+      "discount": "-20%"
+    },
+    {
+      "src": "/images/cyberpunk.png",
+      "title": "Cyberpunk 2077",
+      "price": 4000,
+      "discountPrice": 2000,
+      "discount": "-50%"
+    }
+  ],
+  "featured": [
+    {
+      "src": "/images/NFS.png",
+      "title": "NFS Unbound",
+      "description": "Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more.",
+      "price": 3499
+    },
+    {
+      "src": "/images/fifa.png",
+      "title": "Fifa 23",
+      "description": "FIFA 23 brings The World's Game to the pitch, with HyperMotion2 Technology, men’s and women’s FIFA World Cup",
+      "price": 3699
+    },
+    {
+      "src": "/images/uncharted.png",
+      "title": "Uncharted 4",
+      "description": "Get the definitive Uncharterd 4 experience with all Season Pass content, the Ultimate Pack, and upcoming expansion.",
+      "price": 2199
+    }
+  ],
+  "freeGames": [
+    {
+      "src": "/images/darkwood.png",
+      "title": "Darkwood",
+      "freePeriod": "Free Now-Jul25"
+    },
+    {
+      "src": "/images/assasin-creed.png",
+      "title": "Assasin Creed Black Flag",
+      "freePeriod": "Free Now-Jul25"
+    },
+    {
+      "src": "/images/warface.png",
+      "title": "Warface",
+      "freePeriod": "Free Now-Jul25"
+    },
+    {
+      "src": "/images/cyberpunk.png",
+      "title": "Cyberpunk 2077",
+      "freePeriod": "Free Now-Jul25"
+    }
+  ],
+  "catalog": [
+    {
+      "src": "/images/catalog.png"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Card from "@/components/Hero/Card"
+import useGamesStore from '@/stores/useGamesStore'
 
 const Hero: React.FC = () => {
     return (
@@ -34,20 +36,26 @@ const Hero: React.FC = () => {
             <section className='mt-8 grid md:grid-cols-[3fr_1fr] md:gap-6'>
 
                 {/* Main Section */}
-                <div className='h-[432px] flex items-end rounded-3xl bg-[url(/images/god-of-war.jpg)] bg-center bg-cover'>
-                    <div className='text-white text-[15px] flex flex-col gap-1 px-4 sm:px-10 pb-8 sm:max-w-[80%] md:max-w-[60%]'>
-                        <p className='font-light'>PRE-PURCHASE AVAILABLE</p>
-                        <p>Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive</p>
-                        <button className='bg-white text-black mt-5 rounded-md py-3 px-4 w-fit'>PRE-PURCHASE NOW</button>
-                    </div>
-                </div>
+                {(() => {
+                    const heroMain = useGamesStore(s => s.heroMain)
+                    const bg = heroMain?.[0]?.src || '/images/god-of-war.jpg'
+                    const description = heroMain?.[0]?.description || 'Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive'
+                    return (
+                        <div className='h-[432px] flex items-end rounded-3xl bg-center bg-cover' style={{ backgroundImage: `url(${bg})` }}>
+                            <div className='text-white text-[15px] flex flex-col gap-1 px-4 sm:px-10 pb-8 sm:max-w-[80%] md:max-w-[60%]'>
+                                <p className='font-light'>PRE-PURCHASE AVAILABLE</p>
+                                <p>{description}</p>
+                                <button className='bg-white text-black mt-5 rounded-md py-3 px-4 w-fit'>PRE-PURCHASE NOW</button>
+                            </div>
+                        </div>
+                    )
+                })()}
 
                 {/* Secondary Section. Cards */}
                 <div className='hidden md:block text-white'>
-                    <Card image="/images/god-of-war-card.jpg" title="God Of War 4"></Card>
-                    <Card image="/images/god-of-war-card.jpg" title="God Of War 4"></Card>
-                    <Card image="/images/god-of-war-card.jpg" title="God Of War 4"></Card>
-                    <Card image="/images/god-of-war-card.jpg" title="God Of War 4"></Card>
+                    {useGamesStore(s => s.heroSecondary).map((h, idx) => (
+                        <Card key={idx} image={h.src} title={h.title || 'Untitled'} />
+                    ))}
                 </div>
             </section>
 

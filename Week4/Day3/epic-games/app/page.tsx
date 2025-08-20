@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar"
 import Hero from "@/components/Hero/Hero"
 import GamesOnSale from "@/components/GamesOnSale/GamesOnSale"
 import FeaturedGame from "@/components/FeaturedGame"
+import FeaturedList from '@/components/FeaturedList'
 import FreeGames from "@/components/FreeGames/FreeGames"
 import TopGames from "@/components/TopGames/TopGames"
 import Catalog from "@/components/Catalog"
@@ -24,26 +25,7 @@ const Home: React.FC = () => {
         <GamesOnSale></GamesOnSale>
 
         {/* Featured Games Section */}
-        <section className="my-6 grid gap-y-8 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-6'">
-          <FeaturedGame
-            image="/images/NFS-featured.png"
-            title="NFS UNBOUND"
-            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
-            price="₹3,499">
-          </FeaturedGame>
-          <FeaturedGame
-            image="/images/NFS-featured.png"
-            title="NFS UNBOUND"
-            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
-            price="₹3,499">
-          </FeaturedGame>
-          <FeaturedGame
-            image="/images/NFS-featured.png"
-            title="NFS UNBOUND"
-            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
-            price="₹3,499">
-          </FeaturedGame>
-        </section>
+  <FeaturedList />
 
         {/* Free Games Section */}
         <FreeGames></FreeGames>
@@ -52,26 +34,7 @@ const Home: React.FC = () => {
         <TopGames></TopGames>
 
         {/* Featured Games Section */}
-        <section className="my-6 grid gap-y-8 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-6'">
-          <FeaturedGame
-            image="/images/NFS-featured.png"
-            title="NFS UNBOUND"
-            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
-            price="₹3,499">
-          </FeaturedGame>
-          <FeaturedGame
-            image="/images/NFS-featured.png"
-            title="NFS UNBOUND"
-            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
-            price="₹3,499">
-          </FeaturedGame>
-          <FeaturedGame
-            image="/images/NFS-featured.png"
-            title="NFS UNBOUND"
-            description="Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
-            price="₹3,499">
-          </FeaturedGame>
-        </section>
+  <FeaturedList />
 
         {/* Title has to be updated */}
         {/* Games On Sale section */}

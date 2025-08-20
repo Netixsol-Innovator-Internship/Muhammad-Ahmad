@@ -1,6 +1,8 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Card from "@/components/FreeGames/Card"
+import useGamesStore from '@/stores/useGamesStore'
 
 const FreeGames = () => {
     return (
@@ -20,26 +22,14 @@ const FreeGames = () => {
             </div>
 
             <div className='grid justify-items-center mt-8 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-                <Card
-                    image="/images/darkwood-free.png"
-                    title="Darkwood"
-                    dateRange='Free Now - Jul 25'>
-                </Card>
-                <Card
-                    image="/images/darkwood-free.png"
-                    title="Darkwood"
-                    dateRange='Free Now - Jul 25'>
-                </Card>
-                <Card
-                    image="/images/darkwood-free.png"
-                    title="Darkwood"
-                    dateRange='Free Now - Jul 25'>
-                </Card>
-                <Card
-                    image="/images/darkwood-free.png"
-                    title="Darkwood"
-                    dateRange='Free Now - Jul 25'>
-                </Card>
+                {useGamesStore(s => s.freeGames).map((g, idx) => (
+                    <Card
+                        key={idx}
+                        image={g.src}
+                        title={g.title || 'Untitled'}
+                        dateRange={g.freePeriod || ''}
+                    />
+                ))}
             </div>
         </section>
     )
