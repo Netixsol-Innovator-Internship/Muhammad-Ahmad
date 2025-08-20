@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Week 4 - Day 3
 
-## Getting Started
+## Project Summary
 
-First, run the development server:
+This project is a modern, responsive web application inspired by the Epic Games Store. It showcases dynamic game listings, sales, featured games, top sellers, and more, using Next.js, React, TypeScript, Zustand, Swiper.js, and Tailwind CSS. The UI is designed to be visually appealing and highly interactive, with smooth carousels and responsive layouts for all screen sizes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Dynamic Game Data:** All game data is managed in a central JSON file (`data/games.json`) and loaded into a Zustand store for easy access and updates across the app.
+- **Responsive Carousels:** Swiper.js powers the Games On Sale slider, with breakpoints for different screen sizes and centering logic for fewer cards.
+- **Top Games Section:** Hardcoded arrays for Top Sellers, Best Sellers, and Top Upcoming games, with images mapped to actual files in `public/images`.
+- **Featured & Free Games:** Dynamic rendering of featured and free games from the store.
+- **Navigation & Footer:** Custom navigation bar and footer with interactive links and social icons.
+- **Cursor Pointer:** All clickable elements (buttons, links, cards) use the `cursor-pointer` class for clear interactivity.
+- **TypeScript & Tailwind:** Strong typing and utility-first styling for maintainable, scalable code.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Implementation Details
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Tech Stack:**
+  - Next.js (App Router)
+  - React & TypeScript
+  - Zustand (state management)
+  - Swiper.js (carousels)
+  - Tailwind CSS (styling)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Live Preview:
+**Preview:** [ahmad-week4-day3-epic-games.vercel.app](https://ahmad-week4-day3-epic-games.vercel.app)
