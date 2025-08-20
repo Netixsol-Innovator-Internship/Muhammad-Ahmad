@@ -1,6 +1,8 @@
+import Image from "next/image"
+
 import NavBar from "@/components/NavBar"
 import Hero from "@/components/Hero/Hero"
-import GameOnSale from "@/components/GameOnSale"
+import GamesOnSale from "@/components/GamesOnSale/GamesOnSale"
 
 const Home: React.FC = () => {
   return (
@@ -12,10 +14,7 @@ const Home: React.FC = () => {
       <div className="max-w-screen-lg mx-auto px-4">
         <Hero></Hero>
 
-        {/* Games on Sale Section */}
-        <section>
-          <GameOnSale></GameOnSale>
-        </section>
+        <GamesOnSale></GamesOnSale>
 
       </div>
     </>
