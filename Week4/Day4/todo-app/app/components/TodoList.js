@@ -1,16 +1,23 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { useGetTodosQuery } from '../store/todosApi';
 import TodoItem from './TodoItem';
 
 export default function TodoList() {
-  const { data: todos = [], error, isLoading } = useGetTodosQuery();
+  const { data: apiTodos = [], error, isLoading } = useGetTodosQuery();
+  const userTodos = useSelector(state => state.localTodos.userTodos);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Combine user todos (at top) with API todos
+  const allTodos = useMemo(() => {
+    return [...userTodos, ...apiTodos];
+  }, [userTodos, apiTodos]);
+
   const filteredTodos = useMemo(() => {
-    let filtered = todos;
+    let filtered = allTodos;
 
     // Apply search filter
     if (searchTerm) {
@@ -28,14 +35,16 @@ export default function TodoList() {
       default:
         return filtered;
     }
-  }, [todos, filter, searchTerm]);
+  }, [allTodos, filter, searchTerm]);
 
   const stats = useMemo(() => {
-    const total = todos.length;
-    const completed = todos.filter(todo => todo.completed).length;
+    const total = allTodos.length;
+    const completed = allTodos.filter(todo => todo.completed).length;
     const active = total - completed;
-    return { total, completed, active };
-  }, [todos]);
+    const userCreated = userTodos.length;
+    const fromApi = apiTodos.length;
+    return { total, completed, active, userCreated, fromApi };
+  }, [allTodos, userTodos, apiTodos]);
 
   if (isLoading) {
     return (
@@ -48,13 +57,24 @@ export default function TodoList() {
   if (error) {
     return (
       <div className="text-center py-8">
-        <p className="text-red-500">Error loading todos. Please try again.</p>
+        <p className="text-red-500">Error loading initial todos. You can still add your own!</p>
       </div>
     );
   }
 
   return (
     <div>
+      {/* Info about todos */}
+      <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+        <p className="text-blue-700 text-sm">
+          📝 {stats.userCreated} user todos + {stats.fromApi} from API = {stats.total} total
+          <br />
+          <span className="text-blue-600 text-xs">
+            Your todos appear at the top. Add as many as you want!
+          </span>
+        </p>
+      </div>
+
       {/* Search and Filter Controls */}
       <div className="mb-6 space-y-4">
         <input
@@ -115,7 +135,7 @@ export default function TodoList() {
       ) : (
         <div className="space-y-2">
           {filteredTodos.map(todo => (
-            <TodoItem key={todo.id} todo={todo} />
+            <TodoItem key={`${todo.isUserCreated ? 'user' : 'api'}-${todo.id}`} todo={todo} />
           ))}
         </div>
       )}

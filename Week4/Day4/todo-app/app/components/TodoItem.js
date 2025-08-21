@@ -1,40 +1,63 @@
 'use client';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useUpdateTodoMutation, useDeleteTodoMutation } from '../store/todosApi';
+import { updateUserTodo, deleteUserTodo, toggleUserTodo } from '../store/localTodosSlice';
 
 export default function TodoItem({ todo }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(todo.title);
-  const [updateTodo, { isLoading: isUpdating }] = useUpdateTodoMutation();
-  const [deleteTodo, { isLoading: isDeleting }] = useDeleteTodoMutation();
+  const dispatch = useDispatch();
+  
+  // Only use API mutations for API todos
+  const [updateApiTodo, { isLoading: isUpdatingApi }] = useUpdateTodoMutation();
+  const [deleteApiTodo, { isLoading: isDeletingApi }] = useDeleteTodoMutation();
+
+  const isUserTodo = todo.isUserCreated;
+  const isLoading = isUpdatingApi || isDeletingApi;
 
   const handleToggleComplete = async () => {
-    try {
-      await updateTodo({
-        id: todo.id,
-        title: todo.title,
-        completed: !todo.completed,
-        userId: todo.userId,
-      });
-    } catch (error) {
-      console.error('Failed to update todo:', error);
+    if (isUserTodo) {
+      // Handle user todo locally
+      dispatch(toggleUserTodo(todo.id));
+    } else {
+      // Handle API todo
+      try {
+        await updateApiTodo({
+          id: todo.id,
+          title: todo.title,
+          completed: !todo.completed,
+          userId: todo.userId,
+        });
+      } catch (error) {
+        console.error('Failed to update todo:', error);
+      }
     }
   };
 
   const handleEdit = async () => {
     if (isEditing) {
       if (editTitle.trim() && editTitle !== todo.title) {
-        try {
-          await updateTodo({
+        if (isUserTodo) {
+          // Handle user todo locally
+          dispatch(updateUserTodo({
             id: todo.id,
             title: editTitle.trim(),
-            completed: todo.completed,
-            userId: todo.userId,
-          });
-        } catch (error) {
-          console.error('Failed to update todo:', error);
-          setEditTitle(todo.title);
+          }));
+        } else {
+          // Handle API todo
+          try {
+            await updateApiTodo({
+              id: todo.id,
+              title: editTitle.trim(),
+              completed: todo.completed,
+              userId: todo.userId,
+            });
+          } catch (error) {
+            console.error('Failed to update todo:', error);
+            setEditTitle(todo.title);
+          }
         }
       }
       setIsEditing(false);
@@ -49,18 +72,33 @@ export default function TodoItem({ todo }) {
   };
 
   const handleDelete = async () => {
-    try {
-      await deleteTodo(todo.id);
-    } catch (error) {
-      console.error('Failed to delete todo:', error);
+    if (isUserTodo) {
+      // Handle user todo locally
+      dispatch(deleteUserTodo(todo.id));
+    } else {
+      // Handle API todo
+      try {
+        await deleteApiTodo(todo.id);
+      } catch (error) {
+        console.error('Failed to delete todo:', error);
+      }
     }
   };
 
   return (
-    <div className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+    <div className={`flex items-center gap-3 p-4 rounded-lg shadow-sm border transition-shadow ${
+      isUserTodo 
+        ? 'bg-green-50 border-green-200 hover:shadow-md' 
+        : 'bg-white border-gray-200 hover:shadow-md'
+    }`}>
+      {/* Todo indicator */}
+      {isUserTodo && (
+        <div className="w-2 h-2 bg-green-500 rounded-full" title="Your todo"></div>
+      )}
+      
       <button
         onClick={handleToggleComplete}
-        disabled={isUpdating}
+        disabled={isLoading}
         className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
           todo.completed
             ? 'bg-green-500 border-green-500 text-white'
@@ -103,7 +141,7 @@ export default function TodoItem({ todo }) {
           <>
             <button
               onClick={handleEdit}
-              disabled={isUpdating}
+              disabled={isLoading}
               className="px-2 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
             >
               Save
@@ -119,17 +157,17 @@ export default function TodoItem({ todo }) {
           <>
             <button
               onClick={handleEdit}
-              disabled={isUpdating || isDeleting}
+              disabled={isLoading}
               className="px-2 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors disabled:opacity-50"
             >
               Edit
             </button>
             <button
               onClick={handleDelete}
-              disabled={isUpdating || isDeleting}
+              disabled={isLoading}
               className="px-2 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors disabled:opacity-50"
             >
-              {isDeleting ? 'Deleting...' : 'Delete'}
+              {isLoading ? 'Deleting...' : 'Delete'}
             </button>
           </>
         )}
