@@ -3,7 +3,7 @@ const { body, param, query } = require('express-validator');
 const router = express.Router();
 const productController = require('../controllers/productController');
 const validationHandler = require('../middleware/validationHandler');
-// const auth = require('../middleware/auth'); // Will be used for admin routes later
+const { productManagement } = require('../middleware');
 
 /**
  * @swagger
@@ -207,7 +207,7 @@ router.post('/', [
   body('quality').optional().isString(),
   body('caffeine').optional().isString(),
   body('stock').optional().isInt({ min: 0 }).withMessage('Stock must be a non-negative integer')
-], validationHandler, productController.createProduct);
+], validationHandler, productManagement('create'), productController.createProduct);
 
 /**
  * @swagger
@@ -247,7 +247,7 @@ router.put('/:id', [
   body('quality').optional().isString(),
   body('caffeine').optional().isString(),
   body('stock').optional().isInt({ min: 0 }).withMessage('Stock must be a non-negative integer')
-], validationHandler, productController.updateProduct);
+], validationHandler, productManagement('update'), productController.updateProduct);
 
 /**
  * @swagger
@@ -270,6 +270,6 @@ router.put('/:id', [
  */
 router.delete('/:id', [
   param('id').isMongoId().withMessage('Invalid product ID')
-], validationHandler, productController.deleteProduct);
+], validationHandler, productManagement('delete'), productController.deleteProduct);
 
 module.exports = router;

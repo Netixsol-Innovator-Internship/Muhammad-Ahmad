@@ -39,11 +39,13 @@ connectDB();
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const mountDocs = require('./docs/swagger');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Swagger docs
 mountDocs(app);

@@ -9,7 +9,8 @@
     "seed": "node scripts/seedProducts.js",
     "check": "node scripts/checkProducts.js",
     "create-super-admin": "node scripts/createSuperAdmin.js",
-    "test-auth": "node scripts/testAuthSystem.js"
+    "test-auth": "node scripts/testAuthSystem.js",
+    "test-admin": "node scripts/testAdminSystem.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

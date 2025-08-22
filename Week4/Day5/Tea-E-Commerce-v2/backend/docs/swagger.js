@@ -100,6 +100,18 @@ const options = {
       {
         name: 'Cart',
         description: 'Shopping cart operations'
+      },
+      {
+        name: 'Admin - Users',
+        description: 'Admin user management operations'
+      },
+      {
+        name: 'Admin - Products',
+        description: 'Admin product management operations'
+      },
+      {
+        name: 'Admin - Dashboard',
+        description: 'Admin dashboard and statistics'
       }
     ]
   },
