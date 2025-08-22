@@ -138,25 +138,25 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* Breadcrumb */}
-      <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-        <button onClick={() => navigate('/')} className="hover:text-gray-700">
+      <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8 overflow-x-auto">
+        <button onClick={() => navigate('/')} className="hover:text-gray-700 whitespace-nowrap">
           HOME
         </button>
         <span>/</span>
-        <button onClick={() => navigate('/collections')} className="hover:text-gray-700">
+        <button onClick={() => navigate('/collections')} className="hover:text-gray-700 whitespace-nowrap">
           COLLECTIONS
         </button>
         <span>/</span>
-        <button onClick={() => navigate('/collections?collection=Chai')} className="hover:text-gray-700">
+        <button onClick={() => navigate('/collections?collection=Chai')} className="hover:text-gray-700 whitespace-nowrap">
           CHAI
         </button>
         <span>/</span>
-        <span className="text-gray-900 uppercase">{product.name}</span>
+        <span className="text-gray-900 uppercase truncate">{product.name}</span>
       </nav>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
         {/* Product Image */}
         <div>
           <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
@@ -172,14 +172,14 @@ const ProductDetail = () => {
         </div>
 
         {/* Product Information */}
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Product Header */}
           <div>
-            <h1 className="text-3xl font-light text-gray-900 mb-4">{product.name}</h1>
-            <p className="text-gray-600 text-lg mb-6">{product.description}</p>
+            <h1 className="text-2xl sm:text-3xl font-light text-gray-900 mb-3 sm:mb-4">{product.name}</h1>
+            <p className="text-gray-600 text-base sm:text-lg mb-4 sm:mb-6">{product.description}</p>
             
             {/* Product Badges */}
-            <div className="flex items-center space-x-6 mb-6">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-4 sm:mb-6">
               <div className="flex items-center space-x-2">
                 <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -206,7 +206,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Price */}
-            <div className="text-3xl font-light text-gray-900 mb-8">
+            <div className="text-2xl sm:text-3xl font-light text-gray-900 mb-6 sm:mb-8">
               €{getCurrentPrice().toFixed(2)}
             </div>
           </div>
@@ -214,12 +214,12 @@ const ProductDetail = () => {
           {/* Variants */}
           <div>
             <h3 className="text-sm font-medium text-gray-900 mb-4">Variants</h3>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
               {variants.map((variant) => (
                 <button
                   key={variant.size}
                   onClick={() => setSelectedVariant(variant.size)}
-                  className={`p-4 border rounded-lg text-center transition-colors ${
+                  className={`p-3 sm:p-4 border rounded-lg text-center transition-colors ${
                     selectedVariant === variant.size
                       ? 'border-gray-900 bg-gray-50'
                       : 'border-gray-200 hover:border-gray-300'
@@ -228,7 +228,7 @@ const ProductDetail = () => {
                   <img
                     src={getVariantIcon(variant.size)}
                     alt={variant.label}
-                    className="w-8 h-10 mx-auto mb-2 object-contain"
+                    className="w-6 h-8 sm:w-8 sm:h-10 mx-auto mb-2 object-contain"
                     onError={(e) => { e.target.src = '/images/placeholders/product-placeholder.jpg'; }}
                   />
                   <div className="text-xs text-gray-600">{variant.label}</div>
@@ -238,18 +238,18 @@ const ProductDetail = () => {
           </div>
 
           {/* Add to Cart */}
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center border border-gray-300 rounded-md">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <div className="flex items-center border border-gray-300 rounded-md w-full sm:w-auto">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="p-3 text-gray-500 hover:text-gray-700"
+                className="p-3 text-gray-500 hover:text-gray-700 flex-1 sm:flex-none"
               >
                 −
               </button>
-              <span className="px-4 py-3 text-gray-900 min-w-[3rem] text-center">{quantity}</span>
+              <span className="px-4 py-3 text-gray-900 min-w-[3rem] text-center flex-1 sm:flex-none">{quantity}</span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="p-3 text-gray-500 hover:text-gray-700"
+                className="p-3 text-gray-500 hover:text-gray-700 flex-1 sm:flex-none"
               >
                 +
               </button>
@@ -258,7 +258,7 @@ const ProductDetail = () => {
             <button
               onClick={handleAddToCart}
               disabled={addingToCart}
-              className="flex-1 bg-gray-900 text-white py-3 px-6 rounded-md font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="flex-1 bg-gray-900 text-white py-3 px-6 rounded-md font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm sm:text-base"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H20M7 13v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-9m15-4v4a1 1 0 01-1 1h-1" />
@@ -270,33 +270,39 @@ const ProductDetail = () => {
       </div>
 
       {/* Product Details Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mt-12 sm:mt-16">
         {/* Steeping Instructions */}
         <div>
-          <h2 className="text-2xl font-light text-gray-900 mb-6">Steeping instructions</h2>
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">Steeping instructions</h2>
+          <div className="space-y-3 sm:space-y-4">
+            <div className="flex items-start sm:items-center space-x-3">
+              <svg className="w-5 h-5 text-gray-600 mt-0.5 sm:mt-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0V5a1 1 0 001 1h8a1 1 0 001-1V4M7 4l1 14h8l1-14M7 4h10" />
               </svg>
-              <span className="text-sm font-medium text-gray-900">SERVING SIZE:</span>
-              <span className="text-sm text-gray-600">{product.steepingInstructions?.servingSize || '1 tsp per cup'}</span>
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <span className="text-sm font-medium text-gray-900 sm:mr-2">SERVING SIZE:</span>
+                <span className="text-sm text-gray-600">{product.steepingInstructions?.servingSize || '1 tsp per cup'}</span>
+              </div>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-start sm:items-center space-x-3">
+              <svg className="w-5 h-5 text-gray-600 mt-0.5 sm:mt-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
               </svg>
-              <span className="text-sm font-medium text-gray-900">WATER TEMPERATURE:</span>
-              <span className="text-sm text-gray-600">{product.steepingInstructions?.waterTemp || '100°C'}</span>
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <span className="text-sm font-medium text-gray-900 sm:mr-2">WATER TEMPERATURE:</span>
+                <span className="text-sm text-gray-600">{product.steepingInstructions?.waterTemp || '100°C'}</span>
+              </div>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-start sm:items-center space-x-3">
+              <svg className="w-5 h-5 text-gray-600 mt-0.5 sm:mt-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="text-sm font-medium text-gray-900">STEEPING TIME:</span>
-              <span className="text-sm text-gray-600">{product.steepingInstructions?.steepingTime || '3-5 minutes'}</span>
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <span className="text-sm font-medium text-gray-900 sm:mr-2">STEEPING TIME:</span>
+                <span className="text-sm text-gray-600">{product.steepingInstructions?.steepingTime || '3-5 minutes'}</span>
+              </div>
             </div>
             
             <div className="flex items-center space-x-3">

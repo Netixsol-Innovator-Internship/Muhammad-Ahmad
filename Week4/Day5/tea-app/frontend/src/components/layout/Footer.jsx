@@ -57,12 +57,12 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Collections */}
           <div>
             <h3 className="text-sm font-medium text-gray-900 mb-4 tracking-wide">COLLECTIONS</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {footerSections.collections.map((item, index) => (
                 <li key={index}>
                   <Link
@@ -79,7 +79,7 @@ const Footer = () => {
           {/* Learn */}
           <div>
             <h3 className="text-sm font-medium text-gray-900 mb-4 tracking-wide">LEARN</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {footerSections.learn.map((item, index) => (
                 <li key={index}>
                   <Link
@@ -96,7 +96,7 @@ const Footer = () => {
           {/* Customer Service */}
           <div>
             <h3 className="text-sm font-medium text-gray-900 mb-4 tracking-wide">CUSTOMER SERVICE</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {footerSections.customerService.map((item, index) => (
                 <li key={index}>
                   <Link
@@ -111,15 +111,15 @@ const Footer = () => {
           </div>
 
           {/* Contact Us */}
-          <div>
+          <div className="sm:col-span-2 lg:col-span-1">
             <h3 className="text-sm font-medium text-gray-900 mb-4 tracking-wide">CONTACT US</h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               {footerSections.contactUs.map((item, index) => (
                 <li key={index} className="flex items-start space-x-2">
                   <span className="text-gray-500 mt-0.5 flex-shrink-0">
                     {item.icon}
                   </span>
-                  <span className="text-sm text-gray-600 leading-relaxed">
+                  <span className="text-sm text-gray-600 leading-relaxed break-words">
                     {item.text}
                   </span>
                 </li>
@@ -129,18 +129,18 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div className="flex items-center">
               <div className="flex items-center">
-                <svg className="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.12-.56 3.03-1.03C14.6 26.59 14.13 26.31 13.63 26 13.13 25.69 12.59 25.32 12 24.9 12 24.9 12 24.9 12 24.9c-.59.42-1.13.79-1.63 1.1-.5.31-.97.59-1.4.84.86.22 1.76.38 2.7.47.18-.07.36-.15.54-.23C16.04 25.96 19 22.05 19 17V7L12 2z"/>
                 </svg>
-                <span className="ml-2 text-lg font-medium text-gray-900">Brand Name</span>
+                <span className="ml-2 text-base sm:text-lg font-medium text-gray-900">Brand Name</span>
               </div>
             </div>
             
-            <div className="text-sm text-gray-500">
+            <div className="text-xs sm:text-sm text-gray-500 text-center sm:text-right">
               © {currentYear} Brand Name. All rights reserved.
             </div>
           </div>

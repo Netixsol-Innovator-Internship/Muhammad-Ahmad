@@ -117,23 +117,23 @@ const Collections = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-light text-gray-900 mb-2">Tea Collections</h1>
-        <p className="text-gray-600">Discover our premium selection of teas from around the world</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-light text-gray-900 mb-2">Tea Collections</h1>
+        <p className="text-gray-600 text-sm sm:text-base">Discover our premium selection of teas from around the world</p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
         {/* Sidebar Filters */}
         <div className="lg:w-64 flex-shrink-0">
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Filters</h3>
+          <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-4">Filters</h3>
             
             {/* Collection Filter */}
             <div className="mb-6">
               <h4 className="text-sm font-medium text-gray-900 mb-3">Collection</h4>
-              <div className="space-y-2">
+              <div className="space-y-2 max-h-48 overflow-y-auto">
                 <label className="flex items-center">
                   <input
                     type="radio"
@@ -167,7 +167,7 @@ const Collections = () => {
               <select
                 value={filters.priceRange}
                 onChange={(e) => handleFilterChange('priceRange', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm"
               >
                 {priceRanges.map((range) => (
                   <option key={range.value} value={range.value}>
@@ -183,7 +183,7 @@ const Collections = () => {
               <select
                 value={filters.sortBy}
                 onChange={(e) => handleFilterChange('sortBy', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm"
               >
                 <option value="name">Name</option>
                 <option value="price_asc">Price: Low to High</option>
@@ -196,19 +196,19 @@ const Collections = () => {
 
         {/* Products Grid */}
         <div className="flex-1">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-4 sm:mb-6">
             <p className="text-sm text-gray-600">
               {products.length} product{products.length !== 1 ? 's' : ''} found
             </p>
           </div>
 
           {products.length === 0 ? (
-            <div className="text-center py-12">
-              <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center py-8 sm:py-12">
+              <svg className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4-8-4m16 0v10l-8 4-8-4V7" />
               </svg>
               <h3 className="text-lg font-medium text-gray-900 mb-2">No Products Found</h3>
-              <p className="text-gray-500 mb-4">
+              <p className="text-gray-500 mb-4 text-sm sm:text-base px-4">
                 {filters.collection || filters.priceRange ? 
                   'No products match your current filters. Try adjusting your search criteria.' :
                   'No products are currently available. Please check back later.'
@@ -220,21 +220,21 @@ const Collections = () => {
                     setFilters({ collection: '', priceRange: '', sortBy: 'name' });
                     setSearchParams({});
                   }}
-                  className="text-gray-900 hover:text-gray-700 font-medium"
+                  className="text-gray-900 hover:text-gray-700 font-medium text-sm"
                 >
                   Clear All Filters
                 </button>
               )}
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {products.map((product) => (
                 <Link
                   key={product._id}
                   to={`/products/${product._id}`}
                   className="group cursor-pointer"
                 >
-                  <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
+                  <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-3 sm:mb-4">
                     <img
                       src={getImageUrl(product.images?.[0])}
                       alt={product.name}
@@ -244,8 +244,8 @@ const Collections = () => {
                       }}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="text-sm font-medium text-gray-900 group-hover:text-gray-700 transition-colors">
+                  <div className="space-y-1 sm:space-y-2">
+                    <h3 className="text-sm font-medium text-gray-900 group-hover:text-gray-700 transition-colors line-clamp-2">
                       {product.name}
                     </h3>
                     <p className="text-xs text-gray-500 uppercase tracking-wide">

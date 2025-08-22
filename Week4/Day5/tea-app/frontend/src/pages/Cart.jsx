@@ -39,7 +39,7 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="text-center">
           <svg
             className="mx-auto h-12 w-12 text-gray-400"
@@ -70,16 +70,16 @@ const Cart = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-light text-gray-900 mb-8">Shopping Cart</h1>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <h1 className="text-2xl sm:text-3xl font-light text-gray-900 mb-6 sm:mb-8">Shopping Cart</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2">
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+            <div className="px-4 sm:px-6 py-4 bg-gray-50 border-b border-gray-200">
               <div className="flex justify-between items-center">
-                <h2 className="text-lg font-medium text-gray-900">
+                <h2 className="text-base sm:text-lg font-medium text-gray-900">
                   Cart Items ({cartItems.length})
                 </h2>
                 <button
@@ -93,14 +93,14 @@ const Cart = () => {
 
             <div className="divide-y divide-gray-200">
               {cartItems.map((item) => (
-                <div key={item._id} className="p-6">
+                <div key={item._id} className="p-4 sm:p-6">
                   <div className="flex items-start space-x-4">
                     {/* Product Image */}
                     <div className="flex-shrink-0">
                       <img
                         src={item.product?.images?.[0] || '/images/placeholders/product-placeholder.jpg'}
                         alt={item.product?.name}
-                        className="w-20 h-20 object-cover rounded-md"
+                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md"
                         onError={(e) => {
                           e.target.src = '/images/placeholders/product-placeholder.jpg';
                         }}
@@ -124,7 +124,10 @@ const Cart = () => {
                         ${item.product?.price?.toFixed(2)}
                       </p>
                     </div>
+                  </div>
 
+                  {/* Mobile Layout for Quantity and Remove */}
+                  <div className="mt-4 flex items-center justify-between">
                     {/* Quantity Controls */}
                     <div className="flex items-center space-x-3">
                       <div className="flex items-center border border-gray-300 rounded-md">
@@ -156,7 +159,7 @@ const Cart = () => {
                       <button
                         onClick={() => handleRemoveItem(item.product._id)}
                         disabled={updating[item.product._id]}
-                        className="text-red-500 hover:text-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="text-red-500 hover:text-red-700 disabled:opacity-50 disabled:cursor-not-allowed p-2"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path
@@ -168,13 +171,13 @@ const Cart = () => {
                         </svg>
                       </button>
                     </div>
-                  </div>
 
-                  {/* Item Total */}
-                  <div className="mt-4 flex justify-end">
-                    <p className="text-sm font-semibold text-gray-900">
-                      Subtotal: ${((item.product?.price || 0) * item.quantity).toFixed(2)}
-                    </p>
+                    {/* Item Total */}
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900">
+                        ${((item.product?.price || 0) * item.quantity).toFixed(2)}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -182,7 +185,7 @@ const Cart = () => {
           </div>
 
           {/* Continue Shopping */}
-          <div className="mt-6">
+          <div className="mt-4 sm:mt-6">
             <Link
               to="/collections"
               className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors"
@@ -196,9 +199,9 @@ const Cart = () => {
         </div>
 
         {/* Order Summary */}
-        <div className="lg:col-span-1">
-          <div className="bg-white border border-gray-200 rounded-lg p-6 sticky top-8">
-            <h2 className="text-lg font-medium text-gray-900 mb-4">Order Summary</h2>
+        <div className="lg:col-span-1 mt-6 lg:mt-0">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 lg:sticky lg:top-8">
+            <h2 className="text-base sm:text-lg font-medium text-gray-900 mb-4">Order Summary</h2>
 
             <div className="space-y-3 text-sm">
               <div className="flex justify-between">
@@ -236,7 +239,7 @@ const Cart = () => {
 
             <button
               onClick={() => navigate('/checkout')}
-              className="w-full mt-6 bg-gray-900 text-white py-3 px-4 rounded-md font-medium hover:bg-gray-800 transition-colors"
+              className="w-full mt-6 bg-gray-900 text-white py-3 px-4 rounded-md font-medium hover:bg-gray-800 transition-colors text-sm sm:text-base"
             >
               Proceed to Checkout
             </button>

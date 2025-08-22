@@ -1,24 +1,24 @@
 const About = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-light text-gray-900 mb-8">About Us</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-6 sm:mb-8">About Us</h1>
         
         <div className="prose prose-gray max-w-none">
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
             We are passionate about bringing you the finest tea from around the world, 
             carefully curated to ensure exceptional quality and flavor in every cup.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-8 sm:mb-12">
             <div>
-              <h2 className="text-2xl font-light text-gray-900 mb-4">Our Story</h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4">Our Story</h2>
+              <p className="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">
                 Founded with a love for tea and a commitment to quality, our journey began 
                 when we discovered the incredible diversity and complexity of teas from 
                 different regions around the world.
               </p>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                 Today, we work directly with tea gardens and suppliers to bring you 
                 authentic, high-quality teas that tell the story of their origin and 
                 the hands that crafted them.
@@ -26,22 +26,22 @@ const About = () => {
             </div>
             
             <div>
-              <h2 className="text-2xl font-light text-gray-900 mb-4">Our Mission</h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4">Our Mission</h2>
+              <p className="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">
                 To make exceptional tea accessible to everyone, while supporting 
                 sustainable farming practices and fair trade relationships with 
                 tea producers worldwide.
               </p>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                 We believe that every cup of tea should be a moment of mindfulness, 
                 connection, and appreciation for the craft behind it.
               </p>
             </div>
           </div>
           
-          <div className="bg-gray-50 rounded-lg p-8 mb-12">
-            <h2 className="text-2xl font-light text-gray-900 mb-6">Our Values</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-gray-50 rounded-lg p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">Our Values</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center bg-gray-900 rounded-full">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,20 +81,20 @@ const About = () => {
           </div>
           
           <div>
-            <h2 className="text-2xl font-light text-gray-900 mb-6">Contact Us</h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
+            <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">Contact Us</h2>
+            <p className="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">
               Have questions about our teas or need recommendations? We'd love to hear from you.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="/contact" 
-                className="inline-flex items-center px-6 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors text-sm sm:text-base"
               >
                 Get in Touch
               </a>
               <a 
                 href="/collections" 
-                className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors text-sm sm:text-base"
               >
                 Browse Teas
               </a>
