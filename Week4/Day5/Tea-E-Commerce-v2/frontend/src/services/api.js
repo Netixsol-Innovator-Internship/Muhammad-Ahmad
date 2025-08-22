@@ -72,23 +72,22 @@ class ApiService {
   }
 
   async addToCart(productId, quantity = 1) {
-    return this.request('/cart/add', {
+    return this.request('/cart', {
       method: 'POST',
-      body: JSON.stringify({ productId, quantity }),
+      body: JSON.stringify({ productId, qty: quantity }),
     });
   }
 
   async updateCartItem(productId, quantity) {
-    return this.request('/cart/update', {
+    return this.request(`/cart/item/${productId}`, {
       method: 'PUT',
-      body: JSON.stringify({ productId, quantity }),
+      body: JSON.stringify({ qty: quantity }),
     });
   }
 
   async removeFromCart(productId) {
-    return this.request('/cart/remove', {
+    return this.request(`/cart/item/${productId}`, {
       method: 'DELETE',
-      body: JSON.stringify({ productId }),
     });
   }
 

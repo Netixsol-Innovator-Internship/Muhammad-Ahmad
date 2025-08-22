@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ApiService from '../services/api';
+import { productsAPI } from '../utils/api';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,9 +16,9 @@ const Home = () => {
 
   const fetchFeaturedProducts = async () => {
     try {
-      const response = await ApiService.getProducts({ limit: 8, sortBy: 'createdAt', sortOrder: 'desc' });
-      if (response.success) {
-        setFeaturedProducts(response.data.products);
+      const response = await productsAPI.getProducts({ limit: 8, sortBy: 'createdAt', sortOrder: 'desc' });
+      if (response.data.success) {
+        setFeaturedProducts(response.data.data.products);
       }
     } catch (error) {
       console.error('Error fetching featured products:', error);
@@ -27,9 +27,9 @@ const Home = () => {
 
   const fetchCollections = async () => {
     try {
-      const response = await ApiService.getFilterOptions();
-      if (response.success && response.data.collections) {
-        setCollectionsData(response.data.collections);
+      const response = await productsAPI.getFilterOptions();
+      if (response.data.success && response.data.data.collections) {
+        setCollectionsData(response.data.data.collections);
       }
     } catch (error) {
       console.error('Error fetching collections:', error);

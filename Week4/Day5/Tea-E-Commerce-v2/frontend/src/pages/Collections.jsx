@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
-import ApiService from '../services/api';
+import { productsAPI } from '../utils/api';
 
 const Collections = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -71,11 +71,11 @@ const Collections = () => {
 
       console.log('Fetching products with params:', queryParams); // Debug log
       
-      const response = await ApiService.getProducts(queryParams);
+      const response = await productsAPI.getProducts(queryParams);
       
-      if (response.success) {
-        setProducts(response.data.products);
-        setPagination(response.data.pagination);
+      if (response.data.success) {
+        setProducts(response.data.data.products);
+        setPagination(response.data.data.pagination);
       } else {
         setError('Failed to load products');
       }
@@ -89,9 +89,9 @@ const Collections = () => {
 
   const fetchFilterOptions = async () => {
     try {
-      const response = await ApiService.getFilterOptions();
-      if (response.success) {
-        setAvailableFilters(response.data);
+      const response = await productsAPI.getFilterOptions();
+      if (response.data.success) {
+        setAvailableFilters(response.data.data);
       }
     } catch (error) {
       console.error('Error fetching filter options:', error);

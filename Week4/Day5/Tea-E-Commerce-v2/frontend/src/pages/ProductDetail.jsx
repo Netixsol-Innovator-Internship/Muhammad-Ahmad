@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
-import ApiService from '../services/api';
+import { productsAPI } from '../utils/api';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -74,10 +74,10 @@ const ProductDetail = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await ApiService.getProduct(id);
+      const response = await productsAPI.getProduct(id);
 
-      if (response.success) {
-        setProduct(response.data);
+      if (response.data.success) {
+        setProduct(response.data.data);
       } else {
         setError('Product not found');
         navigate('/collections');
@@ -94,13 +94,13 @@ const ProductDetail = () => {
   const fetchRelatedProducts = async () => {
     try {
       // Fetch 3 related products from the same collection
-      const response = await ApiService.getProducts({
+      const response = await productsAPI.getProducts({
         limit: 3,
         collection: product?.collection || 'Chai'
       });
 
-      if (response.success) {
-        setRelatedProducts(response.data.products.filter(p => p._id !== id));
+      if (response.data.success) {
+        setRelatedProducts(response.data.data.products.filter(p => p._id !== id));
       }
     } catch (error) {
       console.error('Error fetching related products:', error);
