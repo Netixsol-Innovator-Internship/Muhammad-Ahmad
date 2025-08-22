@@ -13,13 +13,20 @@ app.use(cors({
   origin: [
     process.env.FRONTEND_URL || 'http://localhost:3000',
     'http://localhost:5173',
-    /.*\.vercel\.app$/,  // Allow all Vercel deployments
-    'https://ahmad-week3-day5-frontend.vercel.app'  // Your specific frontend URL
+    'https://ahmad-week4-day5-tea-frontend.vercel.app',
+    /.*\.vercel\.app$/
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  preflightContinue: false,
+  optionsSuccessStatus: 200
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // Serve product and collection images from backend first (place files in backend/public/images)
 // This allows the backend to be the canonical host for media. Keep a fallback to the
@@ -56,6 +63,16 @@ app.get('/health', (req, res) => {
     status: 'ok', 
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// CORS test endpoint
+app.get('/api/test-cors', (req, res) => {
+  res.json({
+    success: true,
+    message: 'CORS is working correctly',
+    origin: req.headers.origin,
+    timestamp: new Date().toISOString()
   });
 });
 
