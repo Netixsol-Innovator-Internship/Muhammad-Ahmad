@@ -123,7 +123,7 @@ const AdminProducts = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <LoadingSpinner />
+        <LoadingSpinner size="lg" type="dots" />
       </div>
     );
   }
@@ -137,13 +137,13 @@ const AdminProducts = () => {
   }
 
   return (
-    <div>
+    <div className="animate-fade-in">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 animate-slide-up">
         <h1 className="text-2xl font-bold text-gray-900">Product Management</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-all duration-200 hover:scale-105 hover:shadow-lg transform"
         >
           Add Product
         </button>
@@ -151,8 +151,8 @@ const AdminProducts = () => {
 
       {/* Product Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-fade-in">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto animate-scale-in shadow-2xl">
             <h2 className="text-lg font-semibold mb-4">
               {editingProduct ? 'Edit Product' : 'Add New Product'}
             </h2>
@@ -246,16 +246,23 @@ const AdminProducts = () => {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-4 py-2 text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"
+                  className="px-4 py-2 text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 transition-all duration-200 hover:scale-105"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isCreating || isUpdating}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-200 disabled:opacity-50 hover:scale-105 disabled:hover:scale-100"
                 >
-                  {isCreating || isUpdating ? 'Saving...' : (editingProduct ? 'Update' : 'Create')}
+                  {isCreating || isUpdating ? (
+                    <div className="flex items-center">
+                      <LoadingSpinner size="sm" className="mr-2" />
+                      Saving...
+                    </div>
+                  ) : (
+                    editingProduct ? 'Update' : 'Create'
+                  )}
                 </button>
               </div>
             </form>
@@ -264,7 +271,7 @@ const AdminProducts = () => {
       )}
 
       {/* Products Table */}
-      <div className="bg-white shadow rounded-lg overflow-hidden">
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden animate-slide-up delay-200 hover:shadow-xl transition-shadow duration-300">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -287,8 +294,8 @@ const AdminProducts = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {products.map((product) => (
-                <tr key={product._id}>
+              {products.map((product, index) => (
+                <tr key={product._id} className={`hover:bg-gray-50 transition-colors duration-200 animate-fade-in-up delay-${(index % 5 + 1) * 100}`}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div>
                       <div className="text-sm font-medium text-gray-900">
@@ -299,19 +306,25 @@ const AdminProducts = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     ${product.price}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {product.collection || '-'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {product.stock || 0}
+                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                      product.stock > 10 ? 'bg-green-100 text-green-800' : 
+                      product.stock > 0 ? 'bg-yellow-100 text-yellow-800' : 
+                      'bg-red-100 text-red-800'
+                    }`}>
+                      {product.stock || 0}
+                    </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm space-x-2">
                     <button
                       onClick={() => handleEdit(product)}
-                      className="text-blue-600 hover:text-blue-900"
+                      className="text-blue-600 hover:text-blue-900 hover:bg-blue-50 px-2 py-1 rounded transition-all duration-200"
                     >
                       Edit
                     </button>
@@ -319,7 +332,7 @@ const AdminProducts = () => {
                       <button
                         onClick={() => handleDelete(product._id)}
                         disabled={isDeleting}
-                        className="text-red-600 hover:text-red-900 disabled:opacity-50"
+                        className="text-red-600 hover:text-red-900 hover:bg-red-50 px-2 py-1 rounded disabled:opacity-50 transition-all duration-200"
                       >
                         Delete
                       </button>

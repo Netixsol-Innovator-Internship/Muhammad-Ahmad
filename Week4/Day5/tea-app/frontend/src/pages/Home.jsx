@@ -53,16 +53,21 @@ const Home = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Image */}
           <div className={`order-2 lg:order-1 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <div className="relative group">
+            <div className="relative group hover-lift">
               <img
                 src="/images/hero/tea-spoons-hero.jpg"
                 alt="Various teas in spoons"
-                className="w-full h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+                className="w-full h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300"
                 onError={(e) => {
                   e.target.src = '/images/hero/hero-landing-page.jpg';
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Floating badge */}
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium text-gray-900 animate-bounce-in delay-1000">
+                Premium Quality
+              </div>
             </div>
           </div>
           
