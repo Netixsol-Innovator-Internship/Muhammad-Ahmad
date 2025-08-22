@@ -3,7 +3,11 @@ const User = require('../models/User');
 
 const generateToken = (user) => {
   return jwt.sign(
-    { id: user._id, email: user.email }, 
+    { 
+      id: user._id, 
+      email: user.email, 
+      role: user.role 
+    }, 
     process.env.JWT_SECRET, 
     { expiresIn: '7d' }
   );
@@ -37,6 +41,7 @@ exports.register = async (req, res) => {
           id: user._id, 
           name: user.name, 
           email: user.email,
+          role: user.role,
           createdAt: user.createdAt
         },
         token
@@ -87,6 +92,15 @@ exports.login = async (req, res) => {
       });
     }
 
+    // Check if user is blocked
+    if (user.isBlocked) {
+      return res.status(403).json({
+        success: false,
+        message: 'Your account has been blocked. Please contact support for assistance.',
+        isBlocked: true
+      });
+    }
+
     // Check password
     const isPasswordMatch = await user.matchPassword(password);
     if (!isPasswordMatch) {
@@ -106,6 +120,8 @@ exports.login = async (req, res) => {
           id: user._id, 
           name: user.name, 
           email: user.email,
+          role: user.role,
+          isBlocked: user.isBlocked,
           createdAt: user.createdAt
         },
         token
@@ -143,6 +159,8 @@ exports.getProfile = async (req, res) => {
           id: user._id,
           name: user.name,
           email: user.email,
+          role: user.role,
+          isBlocked: user.isBlocked,
           createdAt: user.createdAt
         }
       }
