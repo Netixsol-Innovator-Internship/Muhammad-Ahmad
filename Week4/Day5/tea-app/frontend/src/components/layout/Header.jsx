@@ -48,17 +48,17 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center group">
+            <Link to="/" className="flex items-center">
               <div className="flex items-center">
-                <svg className="w-8 h-8 text-gray-900 group-hover:text-blue-600 transition-colors duration-200" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.12-.56 3.03-1.03C14.6 26.59 14.13 26.31 13.63 26 13.13 25.69 12.59 25.32 12 24.9 12 24.9 12 24.9 12 24.9c-.59.42-1.13.79-1.63 1.1-.5.31-.97.59-1.4.84.86.22 1.76.38 2.7.47.18-.07.36-.15.54-.23C16.04 25.96 19 22.05 19 17V7L12 2z"/>
                 </svg>
-                <span className="ml-2 text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-200">Tea Haven</span>
+                <span className="ml-2 text-lg font-medium text-gray-900">Brand Name</span>
               </div>
             </Link>
           </div>
@@ -74,16 +74,13 @@ const Header = () => {
               >
                 <Link
                   to={link.path}
-                  className={`text-sm font-medium tracking-wide transition-all duration-200 relative group ${
+                  className={`text-sm font-medium tracking-wide transition-colors ${
                     isActivePath(link.path)
                       ? 'text-gray-900'
                       : 'text-gray-700 hover:text-gray-900'
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 ${isActivePath(link.path) ? 'bg-green-600' : 'bg-blue-600'} transform origin-left transition-transform duration-200 ${
-                    isActivePath(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`}></span>
                 </Link>
                 
                 {link.dropdown && (
@@ -102,7 +99,7 @@ const Header = () => {
             {/* Search */}
             <div className="relative">
               <button 
-                className="p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all duration-200 transform hover:scale-105"
+                className="p-1 text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

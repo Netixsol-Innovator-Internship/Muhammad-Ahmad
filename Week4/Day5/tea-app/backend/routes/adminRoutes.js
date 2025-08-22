@@ -5,6 +5,7 @@ const auth = require('../middleware/auth');
 const { requireAdmin } = require('../middleware/roleAuth');
 const validationHandler = require('../middleware/validationHandler');
 const adminUserController = require('../controllers/adminUserController');
+const { uploadMultiple, handleUploadError } = require('../middleware/upload');
 
 // All admin routes require authentication and admin role
 router.use(auth);
@@ -98,5 +99,59 @@ router.put('/users/:userId/block', [
     .isMongoId()
     .withMessage('Invalid user ID')
 ], validationHandler, adminUserController.toggleUserBlock);
+
+/**
+ * @swagger
+ * /api/admin/upload/images:
+ *   post:
+ *     summary: Upload product images (Admin only)
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               images:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *                 maxItems: 5
+ *     responses:
+ *       200:
+ *         description: Images uploaded successfully
+ *       400:
+ *         description: Invalid file format or size
+ */
+router.post('/upload/images', uploadMultiple, handleUploadError, (req, res) => {
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'No images provided'
+      });
+    }
+
+    const imageUrls = req.files.map(file => `/images/products/${file.filename}`);
+
+    res.json({
+      success: true,
+      message: 'Images uploaded successfully',
+      data: {
+        images: imageUrls
+      }
+    });
+  } catch (error) {
+    console.error('Upload error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to upload images'
+    });
+  }
+});
 
 module.exports = router;

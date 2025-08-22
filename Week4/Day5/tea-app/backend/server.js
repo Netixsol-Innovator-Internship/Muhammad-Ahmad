@@ -6,27 +6,42 @@ const connectDB = require('./config/db');
 
 dotenv.config();
 
+// Environment validation for production
+if (process.env.NODE_ENV === 'production') {
+  const requiredEnvVars = ['MONGO_URI', 'JWT_SECRET', 'FRONTEND_URL'];
+  const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+  
+  if (missingVars.length > 0) {
+    console.error('Missing required environment variables:', missingVars);
+    // Don't exit in serverless environment, just log the error
+  }
+}
+
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+  process.env.FRONTEND_URL || "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://ahmad-week4-day5-tea-frontend.vercel.app" // your deployed frontend
+];
+
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:3000',
-    'http://localhost:5173',
-    'https://ahmad-week4-day5-tea-frontend.vercel.app',
-    /.*\.vercel\.app$/
-  ],
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-  preflightContinue: false,
-  optionsSuccessStatus: 200
 }));
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-
-// Handle preflight requests
-app.options('*', cors());
 
 // Serve product and collection images from backend first (place files in backend/public/images)
 // This allows the backend to be the canonical host for media. Keep a fallback to the
@@ -36,11 +51,14 @@ app.use(
   express.static(path.join(__dirname, 'public', 'images'), { maxAge: '30d' })
 );
 
-// Fallback: still serve images from frontend/public/images if they exist there
-app.use('/images', express.static(path.join(__dirname, '..', 'frontend', 'public', 'images')));
+// Note: Fallback to frontend images removed for Vercel deployment compatibility
+// app.use('/images', express.static(path.join(__dirname, '..', 'frontend', 'public', 'images')));
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB - handle errors gracefully in serverless environment
+connectDB().catch(err => {
+  console.error('Database connection failed:', err.message);
+  // Continue without database in serverless environment
+});
 
 // Routes
 const authRoutes = require('./routes/authRoutes');
@@ -57,22 +75,21 @@ app.use('/api/admin', adminRoutes);
 // Swagger docs
 mountDocs(app);
 
+// Simple test endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Tea Backend API is running!',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development'
-  });
-});
-
-// CORS test endpoint
-app.get('/api/test-cors', (req, res) => {
-  res.json({
-    success: true,
-    message: 'CORS is working correctly',
-    origin: req.headers.origin,
-    timestamp: new Date().toISOString()
   });
 });
 
@@ -97,18 +114,21 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`API Documentation: http://localhost:${PORT}/docs`);
-  console.log(`Health Check: http://localhost:${PORT}/health`);
-});
+// For local development only
+// if (process.env.NODE_ENV !== 'production') {
+//   const server = app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+//     console.log(`API Documentation: http://localhost:${PORT}/docs`);
+//     console.log(`Health Check: http://localhost:${PORT}/health`);
+//   });
 
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Shutting down gracefully...');
-  server.close(() => {
-    console.log('Process terminated');
-  });
-});
+//   // Graceful shutdown
+//   process.on('SIGTERM', () => {
+//     console.log('SIGTERM received. Shutting down gracefully...');
+//     server.close(() => {
+//       console.log('Process terminated');
+//     });
+//   });
+// }
 
 module.exports = app;

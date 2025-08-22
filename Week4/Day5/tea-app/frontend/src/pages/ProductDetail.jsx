@@ -3,20 +3,30 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
-import ApiService from '../services/api';
+import { getImageUrl } from '../utils/api';
+import { useGetProductQuery, useGetProductsQuery } from '../store/productsApiSlice';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { isAuthenticated } = useAuth();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
+  // RTK Query hooks
+  const { data: productData, isLoading, error } = useGetProductQuery(id);
+  const { data: relatedProductsData } = useGetProductsQuery({ 
+    limit: 4, 
+    collection: productData?.data?.collection || '' 
+  }, {
+    skip: !productData?.data?.collection // Skip if no collection yet
+  });
+
+  const product = productData?.data;
+  const relatedProducts = relatedProductsData?.data?.products?.filter(p => p._id !== id) || [];
+
   const [selectedVariant, setSelectedVariant] = useState('50g');
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
-  const [relatedProducts, setRelatedProducts] = useState([]);
 
   // Product variants with pricing
   const variants = [
@@ -64,49 +74,6 @@ const ProductDetail = () => {
     ingredients: 'Black Ceylon tea, Green tea, Ginger root, Cloves, Black pepper, Cinnamon sticks, Cinnamon, Cinnamon pieces.'
   };
 
-  useEffect(() => {
-    // For demo purposes, use sample data instead of API call
-    fetchProduct();
-    fetchRelatedProducts();
-  }, [id]);
-
-  const fetchProduct = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await ApiService.getProduct(id);
-
-      if (response.success) {
-        setProduct(response.data);
-      } else {
-        setError('Product not found');
-        navigate('/collections');
-      }
-    } catch (error) {
-      console.error('Error fetching product:', error);
-      setError(error.message || 'Failed to load product');
-      navigate('/collections');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchRelatedProducts = async () => {
-    try {
-      // Fetch 3 related products from the same collection
-      const response = await ApiService.getProducts({
-        limit: 3,
-        collection: product?.collection || 'Chai'
-      });
-
-      if (response.success) {
-        setRelatedProducts(response.data.products.filter(p => p._id !== id));
-      }
-    } catch (error) {
-      console.error('Error fetching related products:', error);
-    }
-  };
-
   const getCurrentPrice = () => {
     // If product has variants, use variant pricing, otherwise use base price
     if (product?.variants && product.variants.length > 0) {
@@ -146,7 +113,7 @@ const ProductDetail = () => {
     }
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-96 flex items-center justify-center">
         <LoadingSpinner />
@@ -154,7 +121,7 @@ const ProductDetail = () => {
     );
   }
 
-  if (!product) {
+  if (error || !product) {
     return (
       <div className="min-h-96 flex items-center justify-center">
         <div className="text-center">
@@ -194,7 +161,7 @@ const ProductDetail = () => {
         <div>
           <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
             <img
-              src={product.images?.[0] || '/images/placeholders/product-placeholder.jpg'}
+              src={getImageUrl(product.images?.[0])}
               alt={product.name}
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -386,7 +353,7 @@ const ProductDetail = () => {
             >
               <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
                 <img
-                  src={item.images?.[0] || '/images/placeholders/product-placeholder.jpg'}
+                  src={getImageUrl(item.images?.[0])}
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => {

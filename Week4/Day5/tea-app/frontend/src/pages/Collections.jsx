@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { useGetProductsQuery, useGetFilterOptionsQuery } from '../store/productsApiSlice';
+import { getImageUrl } from '../utils/api';
 
 const Collections = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -235,7 +236,7 @@ const Collections = () => {
                 >
                   <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
                     <img
-                      src={product.images?.[0] || '/images/placeholders/product-placeholder.jpg'}
+                      src={getImageUrl(product.images?.[0])}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {

@@ -10,8 +10,6 @@ const connectDB = async (retries = 3, delayMs = 3000) => {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       await mongoose.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000
       });
       console.log('MongoDB connected');

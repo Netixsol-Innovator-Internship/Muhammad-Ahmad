@@ -1,6 +1,23 @@
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const BASE_URL = API_BASE_URL.replace('/api', ''); // Remove /api to get base server URL
+
+// Helper function to construct full image URLs
+export const getImageUrl = (imagePath) => {
+  if (!imagePath) return '/images/placeholders/product-placeholder.jpg';
+  
+  // If it's already a full URL, return as is
+  if (imagePath.startsWith('http')) return imagePath;
+  
+  // If it starts with /, construct full URL with backend base
+  if (imagePath.startsWith('/')) {
+    return `${BASE_URL}${imagePath}`;
+  }
+  
+  // Otherwise, assume it's a relative path and add /images prefix
+  return `${BASE_URL}/images/${imagePath}`;
+};
 
 // Create axios instance
 const api = axios.create({
@@ -8,8 +25,6 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true,
-  timeout: 10000
 });
 
 // Request interceptor to add auth token

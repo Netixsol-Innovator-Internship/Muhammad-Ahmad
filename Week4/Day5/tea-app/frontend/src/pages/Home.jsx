@@ -1,40 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ApiService from '../services/api';
+import { useGetProductsQuery, useGetFilterOptionsQuery } from '../store/productsApiSlice';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [collectionsData, setCollectionsData] = useState([]);
   const navigate = useNavigate();
+
+  // RTK Query hooks
+  const { data: productsData } = useGetProductsQuery({ limit: 8, sortBy: 'createdAt', sortOrder: 'desc' });
+  const { data: filterOptionsData } = useGetFilterOptionsQuery();
+
+  const featuredProducts = productsData?.data?.products || [];
+  const collectionsData = filterOptionsData?.data?.collections || [];
 
   useEffect(() => {
     setIsVisible(true);
-    fetchFeaturedProducts();
-    fetchCollections();
   }, []);
-
-  const fetchFeaturedProducts = async () => {
-    try {
-      const response = await ApiService.getProducts({ limit: 8, sortBy: 'createdAt', sortOrder: 'desc' });
-      if (response.success) {
-        setFeaturedProducts(response.data.products);
-      }
-    } catch (error) {
-      console.error('Error fetching featured products:', error);
-    }
-  };
-
-  const fetchCollections = async () => {
-    try {
-      const response = await ApiService.getFilterOptions();
-      if (response.success && response.data.collections) {
-        setCollectionsData(response.data.collections);
-      }
-    } catch (error) {
-      console.error('Error fetching collections:', error);
-    }
-  };
 
   const scrollToCollections = () => {
     document.getElementById('collections').scrollIntoView({ 
@@ -53,21 +34,16 @@ const Home = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Image */}
           <div className={`order-2 lg:order-1 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <div className="relative group hover-lift">
+            <div className="relative group">
               <img
                 src="/images/hero/tea-spoons-hero.jpg"
                 alt="Various teas in spoons"
-                className="w-full h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300"
+                className="w-full h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                 onError={(e) => {
                   e.target.src = '/images/hero/hero-landing-page.jpg';
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              {/* Floating badge */}
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium text-gray-900 animate-bounce-in delay-1000">
-                Premium Quality
-              </div>
             </div>
           </div>
           

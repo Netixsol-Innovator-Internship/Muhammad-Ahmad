@@ -78,7 +78,7 @@ const FeaturedProducts = () => {
   if (loading) {
     return (
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">
             Featured Products
           </h2>
@@ -90,11 +90,11 @@ const FeaturedProducts = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="animate-pulse">
-              <div className="bg-neutral-200 h-64 rounded-lg mb-4 shimmer"></div>
+              <div className="bg-neutral-200 h-64 rounded-lg mb-4"></div>
               <div className="space-y-2">
-                <div className="h-4 bg-neutral-200 rounded w-3/4 shimmer"></div>
-                <div className="h-4 bg-neutral-200 rounded w-1/2 shimmer"></div>
-                <div className="h-4 bg-neutral-200 rounded w-1/4 shimmer"></div>
+                <div className="h-4 bg-neutral-200 rounded w-3/4"></div>
+                <div className="h-4 bg-neutral-200 rounded w-1/2"></div>
+                <div className="h-4 bg-neutral-200 rounded w-1/4"></div>
               </div>
             </div>
           ))}
@@ -105,7 +105,7 @@ const FeaturedProducts = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-12 animate-fade-in-up">
+      <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">
           Featured Products
         </h2>
@@ -115,9 +115,9 @@ const FeaturedProducts = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        {featuredProducts.map((product, index) => (
-          <div key={product._id} className={`group relative animate-fade-in-up delay-${(index + 1) * 100}`}>
-            <div className="card-hover overflow-hidden hover-lift">{/* Rest of product card */}
+        {featuredProducts.map((product) => (
+          <div key={product._id} className="group relative">
+            <div className="card-hover overflow-hidden">
               {/* Product Image */}
               <div className="relative overflow-hidden">
                 <img
@@ -139,7 +139,7 @@ const FeaturedProducts = () => {
                 {/* Quick Add Button */}
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-neutral-900 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 hover:scale-110 hover:shadow-xl"
+                  className="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-neutral-900 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
                 >
                   <img src="/images/icons/add.svg" alt="Add to cart" className="w-5 h-5" />
                 </button>
@@ -199,7 +199,7 @@ const FeaturedProducts = () => {
                   
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="btn-primary py-2 px-4 text-sm hover:transform hover:scale-105 transition-all duration-200"
+                    className="btn-primary py-2 px-4 text-sm"
                   >
                     Add to Cart
                   </button>
@@ -211,13 +211,13 @@ const FeaturedProducts = () => {
       </div>
 
       {/* View All Products Link */}
-      <div className="text-center animate-fade-in-up delay-500">
+      <div className="text-center">
         <Link
           to="/products"
-          className="btn-outline inline-flex items-center px-6 py-3 hover:shadow-lg hover:scale-105 transition-all duration-200"
+          className="btn-outline inline-flex items-center px-6 py-3"
         >
           View All Products
-          <svg className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </Link>
