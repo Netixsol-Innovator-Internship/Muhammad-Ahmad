@@ -60,6 +60,10 @@ connectDB().catch(err => {
   // Continue without database in serverless environment
 });
 
+// Initialize Cloudinary connection
+const { testConnection } = require('./config/cloudinary');
+testConnection();
+
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');

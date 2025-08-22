@@ -136,11 +136,12 @@ router.post('/upload/images', uploadMultiple, handleUploadError, (req, res) => {
       });
     }
 
-    const imageUrls = req.files.map(file => `/images/products/${file.filename}`);
+    // With Cloudinary, the URLs are available in req.files[].path
+    const imageUrls = req.files.map(file => file.path);
 
     res.json({
       success: true,
-      message: 'Images uploaded successfully',
+      message: 'Images uploaded successfully to Cloudinary',
       data: {
         images: imageUrls
       }
