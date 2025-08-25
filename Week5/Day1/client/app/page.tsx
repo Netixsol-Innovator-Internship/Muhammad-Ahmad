@@ -2,30 +2,47 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3001'); // Backend port
+const socket = io('http://localhost:3001'); // Backend Port
 
-export default function HomePage() {
-  const [message, setMessage] = useState('');
+export default function CommentSection() {
+  const [comments, setComments] = useState<{ text: string }[]>([]);
+  const [text, setText] = useState('');
 
   useEffect(() => {
-    socket.on('helloResponse', (data) => {
-      setMessage(data);
+    // Listen for broadcasted comments
+    socket.on('commentAdded', (comment) => {
+      setComments((prev) => [...prev, comment]);
     });
 
     return () => {
-      socket.off('helloResponse');
+      socket.off('commentAdded');
     };
   }, []);
 
-  const sendHello = () => {
-    socket.emit('hello', 'Hello from Next.js!');
+  const sendComment = () => {
+    if (text.trim() === '') return;
+
+    socket.emit('newComment', { text });
+    setText('');
   };
 
   return (
-    <div>
-      <h1>Socket.IO Test</h1>
-      <button className='bg-blue-600 p-3' onClick={sendHello}>Send Hello</button>
-      <p>Response: {message}</p>
+    <div style={{ padding: 20 }}>
+      <h1>Real-Time Comments</h1>
+
+      <input
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Write a comment..."
+      />
+
+      <button onClick={sendComment}>Send</button>
+
+      <ul>
+        {comments.map((c, i) => (
+          <li key={i}>{c.text}</li>
+        ))}
+      </ul>
     </div>
   );
 }
