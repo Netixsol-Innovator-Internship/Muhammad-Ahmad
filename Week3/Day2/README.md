@@ -122,4 +122,4 @@ src/
     └── db.js               # Database connection
 ```
 ## Live Preview:
-**Preview:** [ahmad-week3-day2-backend.vercel.app](https://ahmad-week3-day2-backend.vercel.app/)
+**Preview:** [ahmad-week3-day2-backend.vercel.app](https://ahmad-week3-day2-backend.vercel.app/api-docs)
