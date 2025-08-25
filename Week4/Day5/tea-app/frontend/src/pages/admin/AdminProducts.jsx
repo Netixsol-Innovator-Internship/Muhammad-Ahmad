@@ -394,74 +394,120 @@ const AdminProducts = () => {
         </div>
       )}
 
-      {/* Products Table */}
+      {/* Products Table (desktop) and Cards (mobile) */}
       <div className="bg-white shadow rounded-lg overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Product
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Price
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Collection
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Stock
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {products.map((product) => (
-                <tr key={product._id}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">
-                        {product.name}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {product.weight}
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    ${product.price}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {product.collection || '-'}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {product.stock || 0}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm space-x-2">
-                    <button
-                      onClick={() => handleEdit(product)}
-                      className="text-blue-600 hover:text-blue-900"
-                    >
-                      Edit
-                    </button>
-                    {user?.role === 'superAdmin' && (
-                      <button
-                        onClick={() => handleDelete(product._id)}
-                        disabled={isDeleting}
-                        className="text-red-600 hover:text-red-900 disabled:opacity-50"
-                      >
-                        Delete
-                      </button>
-                    )}
-                  </td>
+        {/* Desktop table - hidden on small screens */}
+        <div className="hidden sm:block">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Product
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Price
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Collection
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Stock
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {products.map((product) => (
+                  <tr key={product._id}>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div>
+                        <div className="text-sm font-medium text-gray-900">
+                          {product.name}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {product.weight}
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      ${product.price}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      {product.collection || '-'}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      {product.stock || 0}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm space-x-2">
+                      <button
+                        onClick={() => handleEdit(product)}
+                        className="text-blue-600 hover:text-blue-900"
+                      >
+                        Edit
+                      </button>
+                      {user?.role === 'superAdmin' && (
+                        <button
+                          onClick={() => handleDelete(product._id)}
+                          disabled={isDeleting}
+                          className="text-red-600 hover:text-red-900 disabled:opacity-50"
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-        
+
+        {/* Mobile cards - visible only on small screens */}
+        <div className="sm:hidden p-3 space-y-3">
+          {products.map((product) => (
+            <div key={product._id} className={`bg-white rounded-lg shadow p-3 flex items-start space-x-3 border ${product.isBlocked ? 'border-red-100' : 'border-transparent'}`}>
+              <div className="flex-shrink-0">
+                <img
+                  src={product.images?.[0] || ''}
+                  alt={product.name}
+                  className="w-16 h-16 object-cover rounded"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="text-sm font-medium text-gray-900 truncate">{product.name}</div>
+                    <div className="text-xs text-gray-500 truncate">{product.weight}</div>
+                    <div className="text-xs text-gray-500 mt-1">{product.collection || '-'}</div>
+                  </div>
+                  <div className="text-sm font-bold text-gray-900 ml-3">${product.price}</div>
+                </div>
+
+                <div className="mt-3 flex space-x-2">
+                  <button
+                    onClick={() => handleEdit(product)}
+                    className="flex-1 text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded hover:bg-blue-100"
+                  >
+                    Edit
+                  </button>
+                  {user?.role === 'superAdmin' && (
+                    <button
+                      onClick={() => handleDelete(product._id)}
+                      disabled={isDeleting}
+                      className="flex-1 text-xs text-red-600 bg-red-50 px-2 py-1 rounded hover:bg-red-100 disabled:opacity-50"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {products.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500">No products found</p>

@@ -63,18 +63,18 @@ const AdminDashboard = () => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
         {stats.map((stat) => (
           <Link
             key={stat.name}
             to={stat.link}
             className="bg-white rounded-lg shadow p-4 sm:p-6 hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center">
-              <div className="text-xl sm:text-2xl mr-3 sm:mr-4">{stat.icon}</div>
+            <div className="flex items-center space-x-3">
+              <div className="text-xl sm:text-2xl flex-shrink-0">{stat.icon}</div>
               <div className="min-w-0">
                 <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">{stat.name}</p>
-                <p className="text-xl sm:text-2xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-lg sm:text-xl font-bold text-gray-900 truncate">{stat.value}</p>
               </div>
             </div>
           </Link>
@@ -84,24 +84,24 @@ const AdminDashboard = () => {
       {/* Quick Actions */}
       <div className="mb-6 sm:mb-8">
         <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {quickActions.map((action) => (
             <Link
               key={action.name}
               to={action.link}
               className="bg-white rounded-lg shadow p-4 sm:p-6 hover:shadow-md transition-shadow border-l-4 border-gray-200 hover:border-blue-500"
             >
-              <div className="flex items-start">
-                <div className={`${action.color} text-white p-2 rounded-lg mr-3 sm:mr-4 flex-shrink-0`}>
-                  <span className="text-base sm:text-lg">{action.icon}</span>
+              <div className="flex items-start space-x-3">
+                  <div className={`${action.color} text-white p-2 rounded-lg flex-shrink-0`}>
+                    <span className="text-base sm:text-lg">{action.icon}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-sm sm:text-base font-medium text-gray-900 mb-1 truncate">
+                      {action.name}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed truncate">{action.description}</p>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1 truncate">
-                    {action.name}
-                  </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{action.description}</p>
-                </div>
-              </div>
             </Link>
           ))}
         </div>
