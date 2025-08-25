@@ -18,12 +18,9 @@ export class AppGateway {
 
     @SubscribeMessage('newComment')
     handleNewComment(
-        @ConnectedSocket() client: Socket,
-        @MessageBody() payload: { text: string }
+        @MessageBody() payload: { text: string; user: string }
     ) {
         console.log('New comment received:', payload);
-
-        // Broadcast to all connected clients (including sender)
         this.server.emit('commentAdded', payload);
     }
 }
